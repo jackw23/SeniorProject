@@ -813,6 +813,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 969119465}
+  - component: {fileID: 969119466}
   m_Layer: 5
   m_Name: Power Bar
   m_TagString: Untagged
@@ -846,6 +847,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &969119466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969119464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e74c84b934f66314bafb176b05f5ce33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthFill: {fileID: 879746712}
+  powerFill: {fileID: 1260083512}
+  fire: {fileID: 315329667}
+  water: {fileID: 1733239165}
+  earth: {fileID: 1263125112}
+  air: {fileID: 2124227688}
 --- !u!1 &1260083510
 GameObject:
   m_ObjectHideFlags: 0
