@@ -12,10 +12,13 @@ public class PowerBar : MonoBehaviour
     [SerializeField] public GameObject water;
     [SerializeField] public GameObject earth;
     [SerializeField] public GameObject air;
+    [SerializeField] public float maxHealth = 10f;
+    [SerializeField] public float powerCount = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
+        powerFill.fillAmount = 0f;
         fire.SetActive(true);
         water.SetActive(false);
         earth.SetActive(false);
@@ -53,5 +56,26 @@ public class PowerBar : MonoBehaviour
             earth.SetActive(false);
             air.SetActive(true);
         }
+        else if (Input.GetKeyDown(KeyCode.T))
+        {
+            TakeDamage();
+        }
+        else if (Input.GetKeyDown(KeyCode.Y))
+        {
+            FillPower();
+        }
+    }
+
+    public void TakeDamage()
+    {
+        if (healthFill.fillAmount >= 0)
+            healthFill.fillAmount -= 1f / maxHealth;
+        Debug.Log("took damage");
+    }
+
+    public void FillPower()
+    {
+        if (powerFill.fillAmount < 1)
+            powerFill.fillAmount += 1f / powerCount;
     }
 }
