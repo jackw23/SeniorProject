@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-namespace FMS
-{
-    public class StateMachine : MonoBehaviour
+public class StateMachine : MonoBehaviour
 {   
 
     public State currentState;
-
-    [SerializeField] private State initialState;
+    public MoveRightState moveRight;
+    public MoveLeftState moveLeft;
     
-    void Awake()
+    //[SerializeField] private State initialState;
+
+    void Start()
     {
-        currentState = initialState;
+        moveRight = (MoveRightState)ScriptableObject.CreateInstance(typeof(MoveRightState));
+        moveLeft = (MoveLeftState)ScriptableObject.CreateInstance(typeof(MoveLeftState));
+        currentState = moveRight;
+        currentState.Enter(this);
     }
 
     // Update is called once per frame
@@ -23,7 +25,12 @@ namespace FMS
         currentState.Execute(this);
     }
 
+    public void TransitionState(State state) 
+    {
+        currentState = state;
+        currentState.Enter(this);
+    }
     // TODO: Add components needed by the grunt for its various states, such as initial position and whatnot
 }
-}
+
 
