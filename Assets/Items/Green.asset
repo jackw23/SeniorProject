@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f547270693773e47af9c96c864d7071, type: 3}
-  m_Name: Red
+  m_Name: Green
   m_EditorClassIdentifier: 
-  id: 1
-  value: 10
-  itemName: Red
-  icon: {fileID: 21300000, guid: 8cdab9af5e3c441cc97197fec5bd07e4, type: 3}
+  id: 2
+  value: 5
+  itemName: Green
+  icon: {fileID: 21300000, guid: 7af9025362f79498fa2c2e74d329ec59, type: 3}
