@@ -423,7 +423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _first: {fileID: 1601295321}
   _second: {fileID: 594181080}
-  _scrollSpeed: 0.1
+  _scrollSpeed: 0.7
   _zOffset: -0.2
 --- !u!1 &594181079
 GameObject:
@@ -2640,7 +2640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _first: {fileID: 638553162}
   _second: {fileID: 1404860483}
-  _scrollSpeed: 0.2
+  _scrollSpeed: 1.4
   _zOffset: -0.1
 --- !u!1001 &2925689521841966693
 PrefabInstance:
