@@ -12,10 +12,11 @@ public class Item : ScriptableObject
     public string itemName = "new item"; // using new keyword hides the object.name??
     public Sprite icon;
     public ItemType itemType;
+    public int number = 0;
    public enum ItemType
     {
         HealthPotion,
-        UpgradePoints,
+        UpgradeCoins,
         Key
     }
 }

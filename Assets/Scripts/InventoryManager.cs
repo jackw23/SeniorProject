@@ -21,7 +21,43 @@ public class InventoryManager : MonoBehaviour
 
     public void Add(Item item)
     {
-        Items.Add(item);
+
+        int containsIndex = Contains(item);
+        if (containsIndex == -1)
+        {
+            Items.Add(item);
+            UpdateNumber(item, 1);
+
+        }
+        else
+        {
+            
+            UpdateNumber(Items[containsIndex], 1);
+
+        }
+        PrintInventory();
+    }
+
+    //returns index if item already exists, returns -1 if not
+    public int Contains(Item item)
+    {
+        int index = 0;
+        foreach (Item i in Items)
+        {
+            if (i == item)
+            {
+                return index;
+            }
+            index++;
+
+        }
+
+        return -1;
+    }
+
+    public void UpdateNumber(Item item, int num)
+    {
+        item.number = item.number + num;
     }
 
     public void Remove(Item item)
@@ -44,12 +80,15 @@ public class InventoryManager : MonoBehaviour
 
 
             var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
+            var itemNumber = obj.transform.Find("ItemNumber").GetComponent<Text>();
+
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
             var removeButton = obj.transform.Find("RemoveButton").GetComponent<Button>();
             //Debug.Log(itemName);
             //Debug.Log(itemIcon);
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
+            itemNumber.text = "x" + item.number.ToString();
 
             if (EnableRemove.isOn)
             {
@@ -89,6 +128,15 @@ public class InventoryManager : MonoBehaviour
 
         }
 
+    }
+
+    public void PrintInventory()
+    {
+        foreach (Item i in Items)
+        {
+            Debug.Log(i.itemName + " has " + i.number);
+
+        }
     }
 }
 
