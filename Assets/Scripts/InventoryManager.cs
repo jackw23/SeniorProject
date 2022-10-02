@@ -11,7 +11,9 @@ public class InventoryManager : MonoBehaviour
     public List<Item> Items = new List<Item>();
 
     public Transform ItemContent;
-    public GameObject InventoryItems;
+    public GameObject InventoryItem;
+    public Toggle EnableRemove;
+    public InventoryItemController[] InventoryItems;
     private void Awake()
     {
         Instance = this;
@@ -36,27 +38,57 @@ public class InventoryManager : MonoBehaviour
 
         foreach (var item in Items)
         {
-            GameObject obj = Instantiate(InventoryItems, ItemContent);
+            GameObject obj = Instantiate(InventoryItem, ItemContent);
 
             //Debug.Log("Picking up " + Item.name);
 
 
             var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
-
-            Debug.Log(itemName);
-            Debug.Log(itemIcon);
-
-            //var itemName = obj;
-            //var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
-
+            var removeButton = obj.transform.Find("RemoveButton").GetComponent<Button>();
+            //Debug.Log(itemName);
+            //Debug.Log(itemIcon);
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
 
-            //GameObject ChildGameObject1 = ParentGameObject.transform.GetChild(0).gameObject;
-            //obj.transform.GetChild(0) = item.itemName;
-            //obj.sprite = item.icon;
+            if (EnableRemove.isOn)
+            {
+                removeButton.gameObject.SetActive(true);
+            }
+        }
+
+        SetInventoryItems();
+    }
+
+    public void EnableItemsRemove()
+    {
+        if (EnableRemove.isOn)
+        {
+            foreach(Transform item in ItemContent)
+            {
+                item.Find("RemoveButton").gameObject.SetActive(true);
+            }
 
         }
+        else
+        {
+            foreach(Transform item in ItemContent)
+            {
+                item.Find("RemoveButton").gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void SetInventoryItems()
+    {
+        InventoryItems = ItemContent.GetComponentsInChildren<InventoryItemController>();
+
+        for (int i = 0; i < Items.Count; i++)
+        {
+            InventoryItems[i].AddItem(Items[i]);
+
+        }
+
     }
 }
+

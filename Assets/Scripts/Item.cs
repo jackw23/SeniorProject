@@ -11,14 +11,11 @@ public class Item : ScriptableObject
     public int value;
     public string itemName = "new item"; // using new keyword hides the object.name??
     public Sprite icon;
-
-    public virtual void Use()
+    public ItemType itemType;
+   public enum ItemType
     {
-        
-    }
-
-    public void RemoveFromInventory()
-    {
-        //Inventory.instance.Remove(this);
+        HealthPotion,
+        UpgradePoints,
+        Key
     }
 }
