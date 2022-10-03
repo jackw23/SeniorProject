@@ -16,3 +16,4 @@ MonoBehaviour:
   value: 15
   itemName: Blue
   icon: {fileID: 21300000, guid: f17f845912512da44953462ad6309b10, type: 3}
+  itemType: 0

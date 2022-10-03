@@ -9,6 +9,7 @@ public class InventoryManager : MonoBehaviour
     // Start is called before the first frame update
     public static InventoryManager Instance;
     public List<Item> Items = new List<Item>();
+    public Dictionary<Item, int> ItemAmounts = new Dictionary<Item, int>();
 
     public Transform ItemContent;
     public GameObject InventoryItem;
@@ -21,20 +22,31 @@ public class InventoryManager : MonoBehaviour
 
     public void Add(Item item)
     {
+        if (ItemAmounts.TryGetValue(item, out int amount))
+        {
+            ItemAmounts[item]++;
+        }
+        else
+        {
+            Items.Add(item);
+            ItemAmounts.Add(item, 1);
 
-        int containsIndex = Contains(item);
+        }
+        /*
+        //int containsIndex = Contains(item);
         if (containsIndex == -1)
         {
             Items.Add(item);
-            UpdateNumber(item, 1);
+            //UpdateNumber(item, 1);
 
         }
         else
         {
             
-            UpdateNumber(Items[containsIndex], 1);
+            //UpdateNumber(Items[containsIndex], 1);
 
         }
+        */
         PrintInventory();
     }
 
@@ -55,15 +67,17 @@ public class InventoryManager : MonoBehaviour
         return -1;
     }
 
+    /*
     public void UpdateNumber(Item item, int num)
     {
         item.number = item.number + num;
     }
-
+    */
     public void Remove(Item item)
     {
         Items.Remove(item);
     }
+    
 
     public void ListItem()
     {
@@ -88,7 +102,7 @@ public class InventoryManager : MonoBehaviour
             //Debug.Log(itemIcon);
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
-            itemNumber.text = "x" + item.number.ToString();
+            itemNumber.text = "x" + ItemAmounts[item].ToString();
 
             if (EnableRemove.isOn)
             {
@@ -134,7 +148,7 @@ public class InventoryManager : MonoBehaviour
     {
         foreach (Item i in Items)
         {
-            Debug.Log(i.itemName + " has " + i.number);
+            Debug.Log(i.itemName + " has " + ItemAmounts[i]);
 
         }
     }

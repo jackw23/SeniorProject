@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class InventoryItem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Item item;
+    public int amount;
+
+    public InventoryItem(Item item)
     {
-        
+        this.item = item;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddAmount(int amount)
     {
-        
+        this.amount = this.amount + amount;
+    }
+
+    public void RemoveAmount(int amount)
+    {
+        this.amount = this.amount - amount;
     }
 }
