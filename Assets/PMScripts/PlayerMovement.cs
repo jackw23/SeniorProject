@@ -1,34 +1,63 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
 /// Player movement class.
-/// Followed tutorial found here: https://www.youtube.com/watch?v=TcranVQUQ5U
+/// Followed the following tutorials found here: 
+/// https://www.youtube.com/watch?v=TcranVQUQ5U
+/// https://www.youtube.com/watch?v=KCzEnKLaaPc
+/// 
+/// To use this class, the character must have a RigidBody2D component, a BoxCollider2D component,
+/// as well as a transform added to check for walls for wall jumps.
+/// and other items the player should detect (like the ground) should have BoxCollider2D components.
+/// 
+/// Walls should have a "wall" layer added and ground should have a "ground" layer added to them.
+/// 
+/// The serialized parameters below can be tuned as needed for different characters.
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private float jumpPower;
+    [SerializeField] public float speed;
+    [SerializeField] public float jumpPower;
+    [SerializeField] public float flightPower;
+    [SerializeField] public bool canDoubleJump = true;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
-    private Rigidbody2D body;
-    //private Animator anim;
-    private BoxCollider2D boxCollider;
-    private float wallJumpCooldown;
-    private float horizontalInput;
+    [SerializeField] public float xWallForce;
+    [SerializeField] public float yWallForce;
+    [SerializeField] public float wallJumpTime;
+    [SerializeField] private bool hitGround = false;
 
+    private Rigidbody2D body;
+    private BoxCollider2D boxCollider;
+    private float horizontalInput;
+    private float distToGround;
+    private bool isTouchingFront;
+    private bool wallJumping;
+
+    public Transform frontCheck;
+    public float wallSlidingSpeed;
+    public bool flightEnabled = true;
+
+    /// <summary>
+    /// Init components
+    /// </summary>
     private void Awake()
     {
         //Grab references for rigidbody and animator from object
         body = GetComponent<Rigidbody2D>();
-        //anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+
+        groundLayer = LayerMask.GetMask("ground");
+        wallLayer = LayerMask.GetMask("wall");
     }
 
+    /// <summary>
+    /// this is running regularly and is the main function for player movement capabilities
+    /// </summary>
     private void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
+        body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
 
         //Flip player when moving left-right
         if (horizontalInput > 0.01f)
@@ -36,64 +65,55 @@ public class PlayerMovement : MonoBehaviour
         else if (horizontalInput < -0.01f)
             transform.localScale = new Vector3(-1, 1, 1);
 
-        //Set animator parameters
-        //anim.SetBool("run", horizontalInput != 0);
-        //anim.SetBool("grounded", isGrounded());
-
-        //Wall jump logic
-        if (wallJumpCooldown > 0.2f)
+        //check to enable double jumping
+        if (Physics2D.Raycast(transform.position, Vector2.down, distToGround + .1f, groundLayer))
         {
-            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
-
-            if (onWall() && !isGrounded())
-            {
-                body.gravityScale = 0;
-                body.velocity = Vector2.zero;
-            }
-            else
-                body.gravityScale = 7;
-
-            if (Input.GetKey(KeyCode.Space))
-                Jump();
+            canDoubleJump = true;
         }
-        else
-            wallJumpCooldown += Time.deltaTime;
-    }
 
-    private void Jump()
-    {
-        if (isGrounded())
+        isTouchingFront = Physics2D.OverlapCircle(frontCheck.position, 1.0f, wallLayer);
+
+        //wall kumping
+        if (Input.GetKey(KeyCode.UpArrow) && isTouchingFront)
+        {
+            wallJumping = true;
+            Invoke("setWallJumpFalse", wallJumpTime);
+        }
+
+        if (wallJumping)
+        {
+            body.velocity = new Vector2(xWallForce * -horizontalInput, yWallForce);
+        }
+
+        //jumping and double jumping
+        if (Input.GetKey(KeyCode.Space))
+        {
+
+            distToGround = boxCollider.bounds.extents.y;
+            if (Physics2D.Raycast(transform.position, Vector2.down, distToGround + .1f, groundLayer))
+            {
+                body.velocity = new Vector2(body.velocity.x, jumpPower);
+            }
+            else if (canDoubleJump)
+            {
+                body.velocity = new Vector2(body.velocity.x, jumpPower);
+                canDoubleJump = false;
+            } 
+        }
+
+        //flight
+        if (Input.GetKey(KeyCode.F) && flightEnabled)
         {
             body.velocity = new Vector2(body.velocity.x, jumpPower);
-            //anim.SetTrigger("jump");
-        }
-        else if (onWall() && !isGrounded())
-        {
-            if (horizontalInput == 0)
-            {
-                body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 10, 0);
-                transform.localScale = new Vector3(-Mathf.Sign(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-            }
-            else
-                body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 3, 6);
-
-            wallJumpCooldown = 0;
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    /// <summary>
+    /// helper function that disables wall jumping
+    /// </summary>
+    private void setWallJumpFalse()
     {
-    }
-
-    private bool isGrounded()
-    {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
-        return raycastHit.collider != null;
-    }
-    private bool onWall()
-    {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
-        return raycastHit.collider != null;
+        wallJumping = false;
     }
 
 }
