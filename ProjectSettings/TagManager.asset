@@ -3,12 +3,20 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
+<<<<<<< HEAD
   tags: []
+=======
+
+>>>>>>> main
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
+<<<<<<< HEAD
   - Background
+=======
+  - 
+>>>>>>> main
   - Water
   - UI
   - 
@@ -35,12 +43,16 @@ TagManager:
   - 
   - 
   - 
+<<<<<<< HEAD
   - 
   - 
+=======
+>>>>>>> main
   m_SortingLayers:
   - name: Default
     uniqueID: 0
     locked: 0
+<<<<<<< HEAD
   - name: Background
     uniqueID: 2894000231
     locked: 0
@@ -56,3 +68,6 @@ TagManager:
   - name: Front
     uniqueID: 3543143503
     locked: 0
+=======
+
+>>>>>>> main
