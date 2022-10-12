@@ -8,6 +8,30 @@ using TMPro;
 
 public class InventoryManager : MonoBehaviour
 {
+
+    public bool IsPalindrome(int x)
+    {
+        string s = x.ToString();
+
+        for (int i = 0; i < s.Length / 2; i++)
+        {
+            if (s[i] != s[s.Length - i - 1])
+                return false;
+        }
+        return true;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     // Start is called before the first frame update
     public static InventoryManager Instance;
     public List<Item> Items = new List<Item>();
@@ -34,21 +58,7 @@ public class InventoryManager : MonoBehaviour
             ItemAmounts.Add(item, 1);
 
         }
-        /*
-        //int containsIndex = Contains(item);
-        if (containsIndex == -1)
-        {
-            Items.Add(item);
-            //UpdateNumber(item, 1);
 
-        }
-        else
-        {
-            
-            //UpdateNumber(Items[containsIndex], 1);
-
-        }
-        */
         PrintInventory();
     }
 
@@ -69,12 +79,6 @@ public class InventoryManager : MonoBehaviour
         return -1;
     }
 
-    /*
-    public void UpdateNumber(Item item, int num)
-    {
-        item.number = item.number + num;
-    }
-    */
     public void Remove(Item item)
     {
         Items.Remove(item);
