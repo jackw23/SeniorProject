@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+//Code heavily inspired by this tutorial: https://www.youtube.com/watch?v=AoD_F1fSFFg
 
 public class InventoryItemController : MonoBehaviour
 {
