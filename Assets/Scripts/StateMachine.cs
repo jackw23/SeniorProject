@@ -8,6 +8,7 @@ public class StateMachine : MonoBehaviour
     public State currentState;
     public MoveRightState moveRight;
     public MoveLeftState moveLeft;
+    public ChaseState chase;
     
     //[SerializeField] private State initialState;
 
@@ -15,6 +16,7 @@ public class StateMachine : MonoBehaviour
     {
         moveRight = (MoveRightState)ScriptableObject.CreateInstance(typeof(MoveRightState));
         moveLeft = (MoveLeftState)ScriptableObject.CreateInstance(typeof(MoveLeftState));
+        chase = (ChaseState)ScriptableObject.CreateInstance(typeof(ChaseState));
         currentState = moveRight;
         currentState.Enter(this);
     }
