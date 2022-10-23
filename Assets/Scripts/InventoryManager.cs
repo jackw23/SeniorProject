@@ -8,30 +8,6 @@ using TMPro;
 
 public class InventoryManager : MonoBehaviour
 {
-
-    public bool IsPalindrome(int x)
-    {
-        string s = x.ToString();
-
-        for (int i = 0; i < s.Length / 2; i++)
-        {
-            if (s[i] != s[s.Length - i - 1])
-                return false;
-        }
-        return true;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
     // Start is called before the first frame update
     public static InventoryManager Instance;
     public List<Item> Items = new List<Item>();
