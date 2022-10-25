@@ -19,11 +19,13 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         // If we want the camera to follow the player up and down (like jumping), add player.transform.position.y
-        playerPosition = new Vector3(player.transform.position.x, transform.position.y, transform.position.z);
+        playerPosition = new Vector3(Mathf.Clamp(player.transform.position.x, -35.0f, 28.0f),
+            player.transform.position.y + 3.0f, transform.position.z);
 
         if (player.transform.localScale.x > 0f)
         {
-            playerPosition = new Vector3(playerPosition.x + offset, playerPosition.y, playerPosition.z);
+            playerPosition = new Vector3(Mathf.Clamp(playerPosition.x + offset, -35.0f, 28.0f),
+                playerPosition.y, playerPosition.z);
         }
         else
         {
