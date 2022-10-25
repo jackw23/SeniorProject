@@ -20,6 +20,20 @@ public class UpgradeButton
         this.number = number;
 
     }
+
+    public void addNumber()
+    {
+        Debug.Log("adding +1");
+        number = this.number + 1;
+
+    }
+
+    public void subtractNumber()
+    {
+        Debug.Log("subtract 1");
+        number = this.number - 1;
+
+    }
     public void Upgrade()
     {
 

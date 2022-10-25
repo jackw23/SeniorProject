@@ -6,75 +6,175 @@ using TMPro;
 
 public class  UISkillTree: MonoBehaviour
 {
-    public Button fireSkillLevelBtn;
-    public Button fireSkillCDBtn;
-    public Button fireUltimateLevel;
-    public Button fireUltimateCD;
+    public GameObject fireSkillLevelBtn;
+    public GameObject fireSkillLevelText;
 
-    public Button waterSkillLevel;
-    public Button waterSkillCD;
-    public Button waterUltimateLevel;
-    public Button waterUltimateCD;
+    public GameObject fireSkillCDBtn;
+    public GameObject fireSkillCDText;
 
-    public Button airSkillLevel;
-    public Button airSkillCD;
-    public Button airUltimateLevel;
-    public Button airUltimateCD;
+    public GameObject fireUltimateLevelBtn;
+    public GameObject fireUltimateLevelText;
 
-    public Button earthSkillLevel;
-    public Button earthSkillCD;
-    public Button earthUltimateLevel;
-    public Button earthUltimateCD;
+    public GameObject fireUltimateCDBtn;
+    public GameObject fireUltimateCDText;
+
+    public GameObject waterSkillLevelBtn;
+    public GameObject waterSkillLevelText;
+
+
+    public GameObject waterSkillCDBtn;
+    public GameObject waterSkillCDText;
+
+    public GameObject waterUltimateLevelBtn;
+    public GameObject waterUltimateLevelText;
+
+    public GameObject waterUltimateCDBtn;
+    public GameObject waterUltimateCDText;
+
+
+    public GameObject airSkillLevelBtn;
+    public GameObject airSkillLevelText;
+
+    public GameObject airSkillCDBtn;
+    public GameObject airSkillCDText;
+
+    public GameObject airUltimateLevelBtn;
+    public GameObject airUltimateLevelText;
+
+    public GameObject airUltimateCDBtn;
+    public GameObject airUltimateCDText;
+
+
+    public GameObject earthSkillLevelBtn;
+    public GameObject earthSkillLevelText;
+
+    public GameObject earthSkillCDBtn;
+    public GameObject earthSkillCDText;
+
+    public GameObject earthUltimateLevelBtn;
+    public GameObject earthUltimateLevelText;
+
+    public GameObject earthUltimateCDBtn;
+    public GameObject earthUltimateCDText;
+
+
+    //public Button yesUpgrade;
+    //public Button noUpgrade;
     
     public GameObject upgradePanel;
     public GameObject upgradeMessage;
-    private Dictionary<Item, int> ItemAmounts = new Dictionary<Item, int>();
-    UpgradeButton fireSkillLevel = new UpgradeButton("Fire", "Skill", "Level", 0);
+    //private List<>
+    UpgradeButton fireSkillLevel = new UpgradeButton("Fire", "Skill", "Level", 1);
     UpgradeButton fireSkillCD = new UpgradeButton("Fire", "Skill", "Cooldown", 10);
+    UpgradeButton waterSkillLevel = new UpgradeButton("Water", "Skill", "Level", 1);
+    UpgradeButton waterSkillCD = new UpgradeButton("Water", "Skill", "Cooldown", 10);
+    UpgradeButton airSkillLevel = new UpgradeButton("Air", "Skill", "Level", 1);
+    UpgradeButton airSkillCD = new UpgradeButton("Air", "Skill", "Cooldown", 10);
+    UpgradeButton earthSkillLevel = new UpgradeButton("Earth", "Skill", "Level", 1);
+    UpgradeButton earthSkillCD = new UpgradeButton("Earth", "Skill", "Cooldown", 10);
+
 
 
     private void Start()
     {
         //UpgradeButton fireSkillLevel = new UpgradeButton("Fire", "Skill", "Level", 0);
-
+       
     }
 
 
     void OnEnable()
     {
-        //Register Button Events
-        fireSkillLevelBtn.onClick.AddListener(() => Upgrade(fireSkillLevelBtn));
-        fireSkillCDBtn.onClick.AddListener(() => Upgrade(fireSkillCDBtn));
-        //fireUltimateLevel.onClick.AddListener(() => buttonCallBack3());
-        //fireUltimateCD.onClick.AddListener(() => buttonCallBack4());
+        fireSkillLevelBtn.GetComponent<Button>().onClick.AddListener(() => Upgrade(fireSkillLevelBtn));
+        fireSkillCDBtn.GetComponent<Button>().onClick.AddListener(() => Upgrade(fireSkillCDBtn));
+        waterSkillLevelBtn.GetComponent<Button>().onClick.AddListener(() => Upgrade(waterSkillLevelBtn));
+        waterSkillCDBtn.GetComponent<Button>().onClick.AddListener(() => Upgrade(waterSkillCDBtn));
+        airSkillLevelBtn.GetComponent<Button>().onClick.AddListener(() => Upgrade(airSkillLevelBtn));
+        airSkillCDBtn.GetComponent<Button>().onClick.AddListener(() => Upgrade(airSkillCDBtn));
+        earthSkillLevelBtn.GetComponent<Button>().onClick.AddListener(() => Upgrade(earthSkillLevelBtn));
+        earthSkillCDBtn.GetComponent<Button>().onClick.AddListener(() => Upgrade(earthSkillCDBtn));
+
+
     }
 
-    private void Upgrade(Button buttonPressed) 
+    private void Upgrade(GameObject buttonPressed) 
     {
+        //UpgradePanel upgradePanelObj = new UpgradePanel();
+
         if (buttonPressed == fireSkillLevelBtn)
         {
-            Debug.Log("Clicked: " + fireSkillLevelBtn.name);
-            //TMP_Text text = "Debug idk";
-            string tempMessage = "Would you like to upgrade " + fireSkillLevel.element + " " + fireSkillLevel.attackType + " to " +
-                fireSkillLevel.bottomText + " " + (fireSkillLevel.number+1)  + "?";
-            
-            upgradeMessage.GetComponent<TMP_Text>().text = tempMessage;
-
-            OpenUpgradePanel();
-           
-            //upgradeMessage.GetComponent<TMP_Text>().text = "asdfasdfasfasfasdf";
-
-
+            UpdateUpgradeMessage(fireSkillLevel);
+            UIUpgradePanel.setUpgradeButton(fireSkillLevel);
+            UIUpgradePanel.setUBText(fireSkillLevelText);
         }
 
         if (buttonPressed == fireSkillCDBtn)
         {
-            Debug.Log("Clicked: " + fireSkillCDBtn.name);
-            string tempMessage = "Would you like to reduce " + fireSkillCD.element + " " + fireSkillCD.attackType + " cooldown to " +
-                + (fireSkillCD.number - 1) + "seconds ?";
-
-            upgradeMessage.GetComponent<TMP_Text>().text = tempMessage;
+            UpdateUpgradeMessage(fireSkillCD);
+            UIUpgradePanel.setUpgradeButton(fireSkillCD);
+            UIUpgradePanel.setUBText(fireSkillCDText);
         }
+
+        if (buttonPressed == waterSkillLevelBtn)
+        {
+            UpdateUpgradeMessage(waterSkillLevel);
+            UIUpgradePanel.setUpgradeButton(waterSkillLevel);
+            UIUpgradePanel.setUBText(waterSkillLevelText);
+        }
+
+        if (buttonPressed == waterSkillCDBtn)
+        {
+            UpdateUpgradeMessage(waterSkillCD);
+            UIUpgradePanel.setUpgradeButton(waterSkillCD);
+            UIUpgradePanel.setUBText(waterSkillCDText);
+        }
+
+        if (buttonPressed == airSkillLevelBtn)
+        {
+            UpdateUpgradeMessage(airSkillLevel);
+            UIUpgradePanel.setUpgradeButton(airSkillLevel);
+            UIUpgradePanel.setUBText(airSkillLevelText);
+        }
+
+        if (buttonPressed == airSkillCDBtn)
+        {
+            UpdateUpgradeMessage(airSkillCD);
+            UIUpgradePanel.setUpgradeButton(airSkillCD);
+            UIUpgradePanel.setUBText(airSkillCDText);
+        }
+
+        if (buttonPressed == earthSkillLevelBtn)
+        {
+            UpdateUpgradeMessage(earthSkillLevel);
+            UIUpgradePanel.setUpgradeButton(earthSkillLevel);
+            UIUpgradePanel.setUBText(earthSkillLevelText);
+        }
+
+        if (buttonPressed == earthSkillCDBtn)
+        {
+            UpdateUpgradeMessage(earthSkillCD);
+            UIUpgradePanel.setUpgradeButton(earthSkillCD);
+            UIUpgradePanel.setUBText(earthSkillCDText);
+        }
+
+        //OpenUpgradePanel();
+    }
+
+    public void UpdateUpgradeMessage(UpgradeButton ub)
+    {
+        string tempMessage = "NO MESSAGE";
+        if (ub.bottomText == "Level")
+        {
+            tempMessage = "Would you like to upgrade " + ub.element + " " + ub.attackType + " to " +
+               ub.bottomText + " " + (ub.number + 1) + "?";
+        }
+        else if (ub.bottomText == "Cooldown")
+        {
+            tempMessage = "Would you like to reduce " + ub.element + " " + ub.attackType + " cooldown to " +
+                +(ub.number - 1) + " seconds ?";
+        }
+
+        upgradeMessage.GetComponent<TMP_Text>().text = tempMessage;
+
 
     }
     public void OpenUpgradePanel()
@@ -86,5 +186,20 @@ public class  UISkillTree: MonoBehaviour
         }
     }
 
+  
+    /*
+    public static void UpdateUI(GameObject buttonText, UpgradeButton button)
+    {
+        buttonText.GetComponent<TMP_Text>().text = button.number.ToString();
+
+    }*/
+
+    void OnDisable()
+    {
+        //Un-Register Button Events
+        fireSkillLevelBtn.GetComponent<Button>().onClick.RemoveAllListeners();
+        fireSkillCDBtn.GetComponent<Button>().onClick.RemoveAllListeners();
+        //yesUpgrade.onClick.RemoveAllListeners();
+    }
 
 }
