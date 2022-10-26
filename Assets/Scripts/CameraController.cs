@@ -8,11 +8,11 @@ public class CameraController : MonoBehaviour
     public float offset; // Allows offsetting the position of the camera depending on player direction
     public float offsetSmoothing; // Allows smoothing of offset
     private Vector3 playerPosition;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
