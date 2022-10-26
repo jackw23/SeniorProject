@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// this is running regularly and is the main function for player movement capabilities
     /// </summary>
-    private void Update()
+    private void FixedUpdate()
     {
         horizontalInput = Input.GetAxis("Horizontal");
         body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
