@@ -37,6 +37,10 @@ public class PlayerMovement : MonoBehaviour
     public Transform frontCheck;
     public float wallSlidingSpeed;
     public bool flightEnabled = true;
+    public Animator animator;
+
+    // Need float variable for animator movement use
+    float horizontalMove = 0f;
 
     /// <summary>
     /// Init components
@@ -54,10 +58,14 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>
     /// this is running regularly and is the main function for player movement capabilities
     /// </summary>
-    private void FixedUpdate()
+    private void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
         body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+        horizontalMove = horizontalInput * speed;
+
+        // Adds Animator Parameter that allows player to transition from idle state to run state, and vice versa
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
         //Flip player when moving left-right
         if (horizontalInput > 0.01f)
@@ -105,6 +113,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.F) && flightEnabled)
         {
             body.velocity = new Vector2(body.velocity.x, jumpPower);
+        }
+
+        // Attacking 
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            animator.SetBool("IsAttacking", true);
         }
     }
 
