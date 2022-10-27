@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 
 public class MoveRightState : State
 {
     public Transform enemyTransform;
+    public Transform playerTransform;
 
     public float movementSpeed = 1.2f;
 
@@ -13,14 +15,20 @@ public class MoveRightState : State
         {
             enemyTransform = GameObject.FindGameObjectWithTag("GameController").transform;
         }
+        if (playerTransform == null)
+        {
+            playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        }
     }
 
     public override void Execute(StateMachine stateMachine)
     {
-        if (enemyTransform.position.x <7.0f) 
+        if (Math.Abs(playerTransform.position.x - enemyTransform.position.x) < 3.0f) 
+        {
+            Exit(stateMachine);
+        } else if (enemyTransform.position.x < 7.0f) 
         {
             enemyTransform.position = enemyTransform.position + new Vector3(1.0f * movementSpeed * Time.deltaTime, 0, 0);
-            
         } else 
         {
             Exit(stateMachine);
@@ -29,6 +37,12 @@ public class MoveRightState : State
 
     public override void Exit(StateMachine stateMachine)
     {
-        stateMachine.TransitionState(stateMachine.moveLeft);
+        if (Math.Abs(playerTransform.position.x - enemyTransform.position.x) < 3.0f) 
+        {
+            stateMachine.TransitionState(stateMachine.chase);
+        } else 
+        {  
+            stateMachine.TransitionState(stateMachine.moveLeft);
+        }
     }
 }
