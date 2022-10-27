@@ -58,7 +58,6 @@ public class Waterball : MonoBehaviour
         lifetime = 0;
         direction = _direction;
         gameObject.SetActive(true);
-        hit = false;
         boxCollider.enabled = true;
 
         float localScaleX = transform.localScale.x;
