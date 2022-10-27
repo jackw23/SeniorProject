@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+//Code heavily inspired by this tutorial: https://www.youtube.com/watch?v=AoD_F1fSFFg
+
 
 public class InventoryManager : MonoBehaviour
 {
@@ -32,21 +34,7 @@ public class InventoryManager : MonoBehaviour
             ItemAmounts.Add(item, 1);
 
         }
-        /*
-        //int containsIndex = Contains(item);
-        if (containsIndex == -1)
-        {
-            Items.Add(item);
-            //UpdateNumber(item, 1);
 
-        }
-        else
-        {
-            
-            //UpdateNumber(Items[containsIndex], 1);
-
-        }
-        */
         PrintInventory();
     }
 
@@ -67,12 +55,6 @@ public class InventoryManager : MonoBehaviour
         return -1;
     }
 
-    /*
-    public void UpdateNumber(Item item, int num)
-    {
-        item.number = item.number + num;
-    }
-    */
     public void Remove(Item item)
     {
         Items.Remove(item);
@@ -88,12 +70,16 @@ public class InventoryManager : MonoBehaviour
 
         foreach (var item in Items)
         {
+            //TMP_Text tmpugui; 
             GameObject obj = Instantiate(InventoryItem, ItemContent);
 
             //Debug.Log("Picking up " + Item.name);
 
-
             var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
+            // = obj.transform.Find("ItemName").GetComponent<TMP_Text>();
+            //Debug.Log("Printing item name" + tmpugui);
+
+
             var itemNumber = obj.transform.Find("ItemNumber").GetComponent<Text>();
 
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
@@ -101,6 +87,8 @@ public class InventoryManager : MonoBehaviour
             //Debug.Log(itemName);
             //Debug.Log(itemIcon);
             itemName.text = item.itemName;
+            //Debug.Log("itemName.text" + tmpugui.text);
+
             itemIcon.sprite = item.icon;
             itemNumber.text = "x" + ItemAmounts[item].ToString();
 
@@ -110,7 +98,7 @@ public class InventoryManager : MonoBehaviour
             }
         }
 
-        SetInventoryItems();
+        //SetInventoryItems();
     }
 
     public void EnableItemsRemove()

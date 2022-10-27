@@ -11,9 +11,10 @@ TagManager:
   - 
   - Water
   - UI
-  - wall
-  - ground
   - canhit
+  - ground
+  - Minimap
+  - wall
   - 
   - 
   - 
@@ -38,6 +39,19 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background_Back
+    uniqueID: 207655821
+    locked: 0
+  - name: Background_Front
+    uniqueID: 2335006523
+    locked: 0
+  - name: House
+    uniqueID: 3161757857
+    locked: 0
+  - name: Ground_Back
+    uniqueID: 4105946701
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
+
