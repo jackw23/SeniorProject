@@ -11,6 +11,7 @@ TagManager:
   - 
   - Water
   - UI
+  - canhit
   - ground
   - Minimap
   - wall
@@ -53,9 +54,4 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Ground_Mask
-    uniqueID: 3764485317
-    locked: 0
-  - name: Ground_Front
-    uniqueID: 3772934021
-    locked: 0
+
