@@ -13,6 +13,15 @@ using UnityEngine;
 /// Walls should have a "wall" layer added and ground should have a "ground" layer added to them.
 /// 
 /// The serialized parameters below can be tuned as needed for different characters.
+/// 
+/// Recommended values to start out with:
+/// 
+/// Speed: 10
+/// Jump Power: 5
+/// Flight Power: 1
+/// X and Y Wall Force: 3
+/// Wall Jump Time: 0.05
+/// Check Radiius: 3
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {
@@ -25,7 +34,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float xWallForce;
     [SerializeField] public float yWallForce;
     [SerializeField] public float wallJumpTime;
-    [SerializeField] private bool hitGround = false;
+    [SerializeField] private float checkRadius;
+    [SerializeField] private int attacksRemaining = 99999;
 
     private Rigidbody2D body;
     private BoxCollider2D boxCollider;
@@ -34,7 +44,9 @@ public class PlayerMovement : MonoBehaviour
     private bool isTouchingFront;
     private bool wallJumping;
 
+    public int attackSelected;
     public Transform frontCheck;
+    //Animator anim;
     public float wallSlidingSpeed;
     public bool flightEnabled = true;
     public Animator animator;
@@ -50,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
         //Grab references for rigidbody and animator from object
         body = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
+        //anim = GetComponent<Animator>();
 
         groundLayer = LayerMask.GetMask("ground");
         wallLayer = LayerMask.GetMask("wall");
@@ -61,11 +74,18 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         horizontalInput = Input.GetAxis("Horizontal");
+
         body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
         horizontalMove = horizontalInput * speed;
 
         // Adds Animator Parameter that allows player to transition from idle state to run state, and vice versa
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+
+        if (!wallJumping)
+        {
+            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+        }
+
 
         //Flip player when moving left-right
         if (horizontalInput > 0.01f)
@@ -79,10 +99,10 @@ public class PlayerMovement : MonoBehaviour
             canDoubleJump = true;
         }
 
-        isTouchingFront = Physics2D.OverlapCircle(frontCheck.position, 1.0f, wallLayer);
+        isTouchingFront = Physics2D.OverlapCircle(frontCheck.position, checkRadius, wallLayer);
 
-        //wall kumping
-        if (Input.GetKey(KeyCode.UpArrow) && isTouchingFront)
+        //wall jumping
+        if (Input.GetKeyDown(KeyCode.UpArrow) && isTouchingFront && horizontalInput != 0)
         {
             wallJumping = true;
             Invoke("setWallJumpFalse", wallJumpTime);
@@ -102,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 body.velocity = new Vector2(body.velocity.x, jumpPower);
             }
-            else if (canDoubleJump)
+            else if (Input.GetKey(KeyCode.J) && canDoubleJump)
             {
                 body.velocity = new Vector2(body.velocity.x, jumpPower);
                 canDoubleJump = false;
@@ -130,4 +150,29 @@ public class PlayerMovement : MonoBehaviour
         wallJumping = false;
     }
 
+    /// <summary>
+    /// Character can attack when not facing an object directly in front of it.
+    /// </summary>
+    /// <returns></returns>
+    public bool canAttack()
+    {
+        return !isTouchingFront && attacksRemaining > 0;
+    }
+
+    /// <summary>
+    /// update the attack type
+    /// 
+    /// 0: fire
+    /// 1: water
+    /// 2: earth
+    /// 3: air
+    /// </summary>
+    /// <param name="value"></param>
+    public void updateAttackSelected(int value)
+    {
+        if (value > -1 && value < 4)
+        {
+            attackSelected = value;
+        }
+    }
 }
