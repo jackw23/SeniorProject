@@ -16,8 +16,8 @@ public class PathRequestManager : MonoBehaviour
         pathfinding = GetComponent<Pathfinding>();
     }
 
-    public static void RequestPath(Vector3 startPosition, Vector3 endPosition, Action<Vector3[], bool> callback) {
-        PathRequest pathRequest = new PathRequest(startPosition, endPosition, callback);
+    public static void RequestPath(Vector3 startPosition, Vector3 endPosition, Action<Vector3[], bool> callback, bool flying) {
+        PathRequest pathRequest = new PathRequest(startPosition, endPosition, callback, flying);
         instance.pathRequestQueue.Enqueue(pathRequest);
         instance.TryProcessingNext();
     } 
@@ -26,7 +26,7 @@ public class PathRequestManager : MonoBehaviour
         if (!isProcessingPath && pathRequestQueue.Count > 0) {
             currentPathRequest = pathRequestQueue.Dequeue();
             isProcessingPath = true;
-            //pathfinding.StartPath(currentPathRequest.startPosition, currentPathRequest.endPosition);
+            pathfinding.StartPath(currentPathRequest.startPosition, currentPathRequest.endPosition);
         }
     }
 
@@ -40,11 +40,13 @@ public class PathRequestManager : MonoBehaviour
         public Vector3 startPosition;
         public Vector3 endPosition;
         public Action<Vector3[], bool> callback;
+        bool flying;
 
-        public PathRequest(Vector3 _startPosition, Vector3 _endPosition, Action<Vector3[], bool> _callback) {
+        public PathRequest(Vector3 _startPosition, Vector3 _endPosition, Action<Vector3[], bool> _callback, bool _flying) {
             startPosition = _startPosition;
             endPosition = _endPosition;
             callback = _callback;
+            flying = _flying;
         }
     }
 }

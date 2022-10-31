@@ -7,26 +7,26 @@ using UnityEngine;
 public class Pathfinding : MonoBehaviour
 {
     public Transform player, target;
-    //PathRequestManager requestManager;
+    PathRequestManager requestManager;
     Grid grid;
 
     void Awake() {
         grid = GetComponent<Grid>();
-        //requestManager = GetComponent<PathRequestManager>();
+        requestManager = GetComponent<PathRequestManager>();
     }
 
-    void Update() {
-        FindPath(player.position, target.position);
-    }
-
-    // public void StartPath(Vector3 startPosition, Vector3 endPosition) {
-    //     StartCoroutine(FindPath(startPosition,endPosition));
+    // void Update() {
+    //     FindPath(player.position, target.position);
     // }
 
-    public void FindPath(Vector3 startPosition, Vector3 endPosition) {
+    public void StartPath(Vector3 startPosition, Vector3 endPosition) {
+        StartCoroutine(FindPath(startPosition,endPosition));
+    }
 
-        // Vector3[] waypoints;
-        // bool pathSuccess = false;
+    IEnumerator FindPath(Vector3 startPosition, Vector3 endPosition) {
+
+        Vector3[] waypoints = new Vector3[0];
+        bool pathSuccess = false;
 
         Node startNode = grid.GetNodeFromWorldPosition(startPosition);
         startNode.gCost = 0;
@@ -51,7 +51,7 @@ public class Pathfinding : MonoBehaviour
             closedSet.Add(current);
 
             if (current == endNode) {
-                //pathSuccess = true;
+                pathSuccess = true;
                 RetracePath(startNode, endNode);
                 break;
             }
@@ -59,7 +59,7 @@ public class Pathfinding : MonoBehaviour
             List<Node> neighbors = grid.GetNodeNeighbors(current);
             
             foreach (Node node in neighbors) {
-                if (!node.walkable || closedSet.Contains(node)) {
+                if ((!node.walkable && !node || closedSet.Contains(node)) {
                     continue;
                 }
 
@@ -75,10 +75,11 @@ public class Pathfinding : MonoBehaviour
                 }
             }
         }
-        // yield return null;
-        // if (pathSuccess) {
-        //     waypoints = RetracePath(startNode, endNode);
-        // }
+        yield return null;
+        if (pathSuccess) {
+            waypoints = RetracePath(startNode, endNode);
+        }
+        requestManager.FinishedProcessingPath(waypoints, pathSuccess);
     }
 
     int GetDistance(Node nodeA, Node nodeB) {
@@ -92,23 +93,23 @@ public class Pathfinding : MonoBehaviour
         }
     }
 
-    void RetracePath(Node startNode, Node endNode) {
-        //List<Vector3> path = new List<Vector3>();
-        List<Node> path = new List<Node>();
+    Vector3[] RetracePath(Node startNode, Node endNode) {
+        List<Vector3> path = new List<Vector3>();
+        List<Node> nodePath = new List<Node>();
         Node current = endNode;
         //Debug.Log("Hello");
 
         while(current != startNode) {
-            path.Add(current);
-            //nodePath.Add(current);
+            path.Add(current.worldPosition);
+            nodePath.Add(current);
             current = current.parent;
         }
         path.Reverse();
 
-        grid.path = path;
-        // Vector3[] waypoints = path.ToArray();
-        // Array.Reverse(waypoints);
-        //return waypoints;
+        grid.path = nodePath;
+        Vector3[] waypoints = path.ToArray();
+        Array.Reverse(waypoints);
+        return waypoints;
     }
 
     Node FindLowestF(List<Node> list) {

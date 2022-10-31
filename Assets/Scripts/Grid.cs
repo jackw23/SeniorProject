@@ -65,7 +65,7 @@ public class Grid : MonoBehaviour
             for (int y = 0; y < gridSizeY; y++) {
                 Vector3 worldPosition = worldBottomLeft + Vector3.right * (nodeDiameter * x + nodeRadius) + Vector3.up * (nodeDiameter * y + nodeRadius);
                 bool walkable = !(Physics2D.OverlapCircle(worldPosition, nodeRadius-0.05f, unwalkableMask));
-                grid[x,y] = new Node(walkable, worldPosition, x, y);
+                grid[x,y] = new Node(walkable, false, worldPosition, x, y);
             }
         }
     }
