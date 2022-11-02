@@ -28,29 +28,24 @@ public class Grid : MonoBehaviour
     }
 
     
-    void OnDrawGizmos() {
+    void OnDrawGizmosSelected() {
         Gizmos.DrawWireCube(transform.position, new Vector3(worldSize.x, worldSize.y, 1.0f));
 
         if (grid != null) {
             
             Node playerNode = GetNodeFromWorldPosition(playerTransform.position);
-            Node enemyNode = GetNodeFromWorldPosition(enemyTransform.position);
+            // Node enemyNode = GetNodeFromWorldPosition(enemyTransform.position);
 
             foreach (Node n in grid) {
-                if (n.walkable) {
+                if (n.walkable && n.flyable) {
                     Gizmos.color = Color.white;
+                } else if (n.flyable) {
+                    Gizmos.color = Color.magenta;
                 } else {
                     Gizmos.color = Color.red;
                 }
                 if (playerNode == n) {
                     Gizmos.color = Color.green;
-                }
-                if (enemyNode == n) {
-                    Gizmos.color = Color.cyan;
-                }
-                if (path != null && path.Contains(n)) {
-                    Debug.Log("Hello");
-                    Gizmos.color = Color.black;
                 }
                 Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter-.1f));
             }
@@ -66,6 +61,28 @@ public class Grid : MonoBehaviour
                 Vector3 worldPosition = worldBottomLeft + Vector3.right * (nodeDiameter * x + nodeRadius) + Vector3.up * (nodeDiameter * y + nodeRadius);
                 bool walkable = !(Physics2D.OverlapCircle(worldPosition, nodeRadius-0.05f, unwalkableMask));
                 grid[x,y] = new Node(walkable, false, worldPosition, x, y);
+            }
+        }
+
+        for (int x = 0; x < gridSizeX; x++) {
+            for (int y = 1; y < gridSizeY; y++) {
+                if (y < gridSizeY - 1) {
+                    if (grid[x,y].walkable && !grid[x, y-1].walkable && grid[x, y+1].walkable) {
+                        grid[x, y].SetFlyable(true);
+                    }
+                    if (grid[x,y].walkable && (grid[x, y-1].walkable || grid[x, y-1].flyable) && grid[x, y+1].walkable) {
+                        grid[x,y].SetFlyable(true);
+                        grid[x,y].SetWalkable(false);
+                    }
+                } else {
+                    if (grid[x,y].walkable && !grid[x, y-1].walkable) {
+                        grid[x,y].SetFlyable(true);
+                    }
+                    if (grid[x,y].walkable && (grid[x, y-1].walkable || grid[x, y-1].flyable)) {
+                        grid[x,y].SetFlyable(true);
+                        grid[x,y].SetWalkable(false);
+                    }
+                }
             }
         }
     }

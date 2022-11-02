@@ -20,6 +20,14 @@ public class Node
         gridY = _gridY;
     }
 
+    public void SetFlyable(bool _flyable) {
+        flyable = _flyable;
+    }
+
+    public void SetWalkable(bool _walkable) {
+        walkable = _walkable;
+    }
+
     public int fCost {
         get {
             return gCost + hCost;
