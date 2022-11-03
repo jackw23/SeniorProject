@@ -15,8 +15,7 @@ TagManager:
   - canhit
   - Minimap
   - wall
-  - 
-  - 
+  - Player
   - 
   - 
   - 
@@ -53,9 +52,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+
   - name: Ground
     uniqueID: 182668341
     locked: 0
   - name: Ground_Front
     uniqueID: 3231176969
     locked: 0
+
+
