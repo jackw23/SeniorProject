@@ -16,6 +16,7 @@ public class StateMachine : MonoBehaviour
     //public Animator animator;
     [HideInInspector] public SpriteRenderer sprite;
     [HideInInspector] public Enemy enemy;
+    [HideInInspector] public Rigidbody2D rigidBody;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class StateMachine : MonoBehaviour
         health = GetComponent<Health>();
         sprite = GetComponent<SpriteRenderer>();
         enemy = GetComponent<Enemy>();
+        rigidBody = GetComponent<Rigidbody2D>();
 
         originalPosition = transform.position;
 
