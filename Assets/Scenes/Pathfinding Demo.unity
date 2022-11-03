@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 239958029}
   - component: {fileID: 239958031}
   - component: {fileID: 239958030}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Ground_Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1827,12 +1827,8 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1076088667878631834, guid: 4e47af28b4ba741ce9804cd318612f38, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 92dc5fd35ad07452cbb4501123046b43, type: 3}
-    - target: {fileID: 1076088667878631834, guid: 4e47af28b4ba741ce9804cd318612f38, type: 3}
       propertyPath: m_DrawMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1076088667878631835, guid: 4e47af28b4ba741ce9804cd318612f38, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
@@ -1840,7 +1836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1076088667878631835, guid: 4e47af28b4ba741ce9804cd318612f38, type: 3}
       propertyPath: m_SpriteTilingProperty.drawMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1076088667878631835, guid: 4e47af28b4ba741ce9804cd318612f38, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
@@ -1852,11 +1848,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1076088667878631835, guid: 4e47af28b4ba741ce9804cd318612f38, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.48
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1076088667878631835, guid: 4e47af28b4ba741ce9804cd318612f38, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.32
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1076088667878631839, guid: 4e47af28b4ba741ce9804cd318612f38, type: 3}
       propertyPath: m_Name
@@ -2059,10 +2055,12 @@ MonoBehaviour:
   wallJumpTime: 0.05
   checkRadius: 0
   attacksRemaining: 99999
+  health: 50
   attackSelected: 0
   frontCheck: {fileID: 1151646417}
   wallSlidingSpeed: 0
   flightEnabled: 1
+  animator: {fileID: 0}
 --- !u!61 &1151646420
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2231,7 +2229,7 @@ GameObject:
   - component: {fileID: 1456675176}
   - component: {fileID: 1456675178}
   - component: {fileID: 1456675177}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Ground_Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2876,7 +2874,7 @@ GameObject:
   - component: {fileID: 1486945991}
   - component: {fileID: 1486945990}
   - component: {fileID: 1486945992}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5981,8 +5979,16 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8283059225818760509, guid: 012446cef707943818365c07fa593238, type: 3}
+      propertyPath: bulletTravelTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283059225818760509, guid: 012446cef707943818365c07fa593238, type: 3}
       propertyPath: verticalMovement
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283059225818760509, guid: 012446cef707943818365c07fa593238, type: 3}
+      propertyPath: rangedAttackSpeed
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8283059225818760511, guid: 012446cef707943818365c07fa593238, type: 3}
       propertyPath: playerTransform
@@ -6105,7 +6111,7 @@ PrefabInstance:
       objectReference: {fileID: -492283691, guid: 4318744578d1b1c49a8881992a76da22, type: 3}
     - target: {fileID: 2925689523874509403, guid: f2a77ae870ff79946bf03cc871bf1fad, type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2a77ae870ff79946bf03cc871bf1fad, type: 3}
@@ -6172,6 +6178,14 @@ PrefabInstance:
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1151646417}
+    - target: {fileID: 6300485428011808721, guid: ba57a47fdd18749cd877f5bff7c23c11, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 6300485428011808721, guid: ba57a47fdd18749cd877f5bff7c23c11, type: 3}
+      propertyPath: unwalkableMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 6300485428011808750, guid: ba57a47fdd18749cd877f5bff7c23c11, type: 3}
       propertyPath: m_Name
       value: Pathfinding

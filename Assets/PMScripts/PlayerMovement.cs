@@ -186,5 +186,10 @@ public class PlayerMovement : MonoBehaviour
     public void takeDamage(int _damage = 1)
     {
         health -= _damage;
+        Debug.Log("Player took " + _damage + " damage! Current health is " + health + ".");
+
+        if (health <= 0) {
+            Debug.Log("Player has died!");
+        }
     }
 }

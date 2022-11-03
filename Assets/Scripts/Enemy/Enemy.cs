@@ -9,9 +9,10 @@ public class Enemy : MonoBehaviour
     public float meleeRange = 0.5f;
     public float rangedAttackRange = 10.0f;
     public float bulletTravelTime = 5.0f;
-    public float meleeDamage = 20.0f;
-    public float rangedDamage = 15.0f;
-    public float contactDamage = 5.0f;
+    public float rangedAttackSpeed = 5.0f;
+    public int meleeDamage = 20;
+    public int rangedDamage = 15;
+    public int contactDamage = 5;
     public float meleeAttackRate = 0.5f;
     public float rangedAttackRate = 0.3f;
     public float idleTime = 5.0f;
@@ -24,6 +25,7 @@ public class Enemy : MonoBehaviour
     public LayerMask playerLayer;
     public GameObject bulletPrefab;
     Health health;
+    PlayerMovement playerMovement;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +36,12 @@ public class Enemy : MonoBehaviour
     public void MeleeAttack(Collider2D collider) {
         //Animator;
         if (collider != null) {
-            Debug.Log("The AI unit hit " + collider.name + " for " + meleeDamage + " damage!");
+            playerMovement = collider.GetComponent<PlayerMovement>();
+
+            if (playerMovement != null) {
+                playerMovement.takeDamage(meleeDamage);
+            }
+            //Debug.Log("The AI unit hit " + collider.name + " for " + meleeDamage + " damage!");
         } else {
             Debug.Log("Constant Attack");
         }
@@ -47,12 +54,17 @@ public class Enemy : MonoBehaviour
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         bulletScript.bulletDamage = rangedDamage;
         bulletScript.bulletLifeSpan = bulletTravelTime;
+        bulletScript.bulletSpeed = rangedAttackSpeed;
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.collider.name == "Player") {
-            Debug.Log("Player lost " + contactDamage + " health!");
-            health.TakeDamage(40);
+            playerMovement = collision.collider.GetComponent<PlayerMovement>();
+            
+            if (playerMovement != null) {
+                playerMovement.takeDamage(contactDamage);
+            }
+            // health.TakeDamage(40);
         }
     }
 
