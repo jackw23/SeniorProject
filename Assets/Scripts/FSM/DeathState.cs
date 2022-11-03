@@ -14,6 +14,7 @@ public class DeathState : State
     {
         // Destroy(stateMachine.gameObject);
         stateMachine.boxCollider2D.enabled = false;
+        stateMachine.rigidBody.isKinematic = true;
         stateMachine.unit.enabled = false;
         stateMachine.health.enabled = false;
         stateMachine.sprite.enabled = false;

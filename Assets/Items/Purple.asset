@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f547270693773e47af9c96c864d7071, type: 3}
-  m_Name: Blue
+  m_Name: Purple
   m_EditorClassIdentifier: 
-  id: 2
-  value: 15
-  itemName: Blue
-  icon: {fileID: 21300000, guid: 3be56cf03801a4d4aa545a1073663428, type: 3}
+  id: 0
+  value: 0
+  itemName: Purple
+  icon: {fileID: 0}
   itemType: 0

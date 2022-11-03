@@ -28,12 +28,12 @@ public class ChaseState : State
         float side = enemyTransform.position.x - playerTransform.position.x;
         float height = enemyTransform.position.y - playerTransform.position.y;
 
-        if (side > 3.0f || side < - 3.0f) {
+        if (MathF.Abs(side) > stateMachine.enemy.aggroRange) {
             stateMachine.followingPath = false;
             stateMachine.unit.StopPathPosition();
             stateMachine.nextState = stateMachine.idle;
             Exit(stateMachine);
-        } else if (Math.Abs(side) <= 1.5f) {
+        } else if (Vector3.Distance(playerTransform.position, enemyTransform.position) <= stateMachine.enemy.rangedAttackRange) {
             stateMachine.followingPath = false;
             stateMachine.unit.StopPathPosition();
             stateMachine.nextState = stateMachine.attack;
