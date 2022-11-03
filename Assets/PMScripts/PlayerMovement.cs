@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float wallJumpTime;
     [SerializeField] private float checkRadius;
     [SerializeField] private int attacksRemaining = 99999;
+    [SerializeField] private int health = 99999;
 
     private Rigidbody2D body;
     private BoxCollider2D boxCollider;
@@ -63,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         //anim = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
 
         groundLayer = LayerMask.GetMask("ground");
         wallLayer = LayerMask.GetMask("wall");
@@ -174,5 +176,15 @@ public class PlayerMovement : MonoBehaviour
         {
             attackSelected = value;
         }
+    }
+
+    /// <summary>
+    /// Function to call to take damage
+    /// Damage argument has default value of 1
+    /// </summary>
+    /// <param name="_damage"></param>
+    public void takeDamage(int _damage = 1)
+    {
+        health -= _damage;
     }
 }

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
+/// 
+/// Tutorial source: https://www.youtube.com/watch?v=PUpC44Q64zY&list=PLgOEwFbvGm5o8hayFB6skAfa8Z-mw4dPV&index=4
+/// 
 /// This object requires a 2D box collider and at least for now, an animator component as well.
 /// It requires a transform to check if an object is in front of it.
 /// 
