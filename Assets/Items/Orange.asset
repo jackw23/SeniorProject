@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   value: 0
-  itemName: new item
+  itemName: Orange
   icon: {fileID: 0}
   itemType: 0
