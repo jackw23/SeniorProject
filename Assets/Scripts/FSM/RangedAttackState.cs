@@ -25,7 +25,7 @@ public class RangedAttackState : State
 
     public override void Execute(StateMachine stateMachine)
     {
-        if (Vector3.Distance(playerTransform.position, enemyTransform.position) < 5.0f && !stateMachine.enemy.constantAim) {
+        if (Vector3.Distance(playerTransform.position, enemyTransform.position) < stateMachine.enemy.rangedAttackRange && !stateMachine.enemy.constantAim) {
             if (Time.time > nextAttackTime) {
                 if (enemyTransform.position.x - playerTransform.position.x > 0) {
                     enemyTransform.rotation = Quaternion.LookRotation(Vector3.back);

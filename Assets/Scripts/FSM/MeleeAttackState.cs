@@ -24,8 +24,11 @@ public class MeleeAttackState : State
         Collider2D[] colliders = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, stateMachine.enemy.playerLayer);
 
         if (!stateMachine.enemy.constantMelee && colliders.Length > 0) {
-            stateMachine.enemy.MeleeAttack(colliders[0]);
-            nextAttackTime = Time.time + 1 / stateMachine.enemy.meleeAttackRate;
+            if (Time.time > nextAttackTime) {
+                stateMachine.enemy.MeleeAttack(colliders[0]);
+                nextAttackTime = Time.time + 1 / stateMachine.enemy.meleeAttackRate;
+            }
+
         } else if (stateMachine.enemy.constantMelee) {
             stateMachine.enemy.MeleeAttack(null);
             stateMachine.nextState = stateMachine.idle;
