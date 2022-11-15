@@ -13,6 +13,7 @@ public class UIUpgradePanel : MonoBehaviour
     public Button noUpgrade;
     public static UpgradeButton currentUpgradeButton;
     public static GameObject currentUBText;
+    public static GameObject player;
 
     void Start()
     {
@@ -28,6 +29,11 @@ public class UIUpgradePanel : MonoBehaviour
         currentUBText = ubt;
     }
 
+    public static void setPlayer(GameObject _player)
+    {
+        player = _player;
+    }
+
     public static void UpdateUB()
     {
         if (currentUpgradeButton.bottomText == "Level")
@@ -39,7 +45,7 @@ public class UIUpgradePanel : MonoBehaviour
 
         }
         currentUBText.GetComponent<TMP_Text>().text = currentUpgradeButton.number.ToString();
-
+        player.GetComponent<PlayerAttack>().LevelUpAttack("fire");
 
     }
     /*void OnEnable()
