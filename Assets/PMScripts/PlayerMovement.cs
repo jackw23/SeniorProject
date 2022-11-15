@@ -14,6 +14,9 @@ using UnityEngine;
 /// 
 /// The serialized parameters below can be tuned as needed for different characters.
 /// 
+/// Items to be picked up using this script need to have a 2D collider attached to them,
+/// As well as an ItemPickup script. They need to be layered with the "pickup" layer.
+/// 
 /// Recommended values to start out with:
 /// 
 /// Speed: 10
@@ -21,7 +24,8 @@ using UnityEngine;
 /// Flight Power: 1
 /// X and Y Wall Force: 3
 /// Wall Jump Time: 0.05
-/// Check Radiius: 3
+/// Check Radius: 3
+/// Pickup Radius: 3
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {
@@ -31,10 +35,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public bool canDoubleJump = true;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
+    [SerializeField] private LayerMask pickupLayer;
     [SerializeField] public float xWallForce;
     [SerializeField] public float yWallForce;
     [SerializeField] public float wallJumpTime;
     [SerializeField] private float checkRadius;
+    [SerializeField] private float pickupRadius;
     [SerializeField] private int attacksRemaining = 99999;
     [SerializeField] private int health = 99999;
 
@@ -68,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
 
         groundLayer = LayerMask.GetMask("ground");
         wallLayer = LayerMask.GetMask("wall");
+        pickupLayer = LayerMask.GetMask("pickup");
     }
 
     /// <summary>
@@ -141,6 +148,24 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             animator.SetBool("IsAttacking", true);
+        }
+
+        // picking up items
+        // press "p" to pickup items in front of the character within checkRadius
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            var itemToPickup = Physics2D.OverlapCircle(frontCheck.position, pickupRadius, pickupLayer);
+            if (itemToPickup != null)
+            {
+                var obj = itemToPickup.gameObject;
+                // this should always happen here (i.e. items with pickup layer should have ItemPickup script)
+                // but we can check just in case
+                var itemPickupScript = obj.GetComponent<ItemPickup>();
+                if (itemPickupScript != null)
+                {
+                    itemPickupScript.PickUp();
+                }
+            }
         }
     }
 
