@@ -6,6 +6,7 @@ using TMPro;
 
 public class  UISkillTree: MonoBehaviour
 {
+    public GameObject player;
     public GameObject fireSkillLevelBtn;
     public GameObject fireSkillLevelText;
 
@@ -78,6 +79,7 @@ public class  UISkillTree: MonoBehaviour
     private void Start()
     {
         //UpgradeButton fireSkillLevel = new UpgradeButton("Fire", "Skill", "Level", 0);
+        UIUpgradePanel.setPlayer(player);
        
     }
 
