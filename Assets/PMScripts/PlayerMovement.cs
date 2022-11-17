@@ -17,6 +17,8 @@ using UnityEngine;
 /// Items to be picked up using this script need to have a 2D collider attached to them,
 /// As well as an ItemPickup script. They need to be layered with the "pickup" layer.
 /// 
+/// Health has been normalized to be "full" at 1000, but we can change that as needed.
+/// 
 /// Recommended values to start out with:
 /// 
 /// Speed: 10
@@ -42,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float checkRadius;
     [SerializeField] private float pickupRadius;
     [SerializeField] private int attacksRemaining = 99999;
-    [SerializeField] private int health = 99999;
+    [SerializeField] private int health = 1000;
 
     private Rigidbody2D body;
     private BoxCollider2D boxCollider;
@@ -211,5 +213,23 @@ public class PlayerMovement : MonoBehaviour
     public void takeDamage(int _damage = 1)
     {
         health -= _damage;
+    }
+
+    /// <summary>
+    /// Function to call to increase health
+    /// </summary>
+    /// <param name="_damage"></param>
+    public void addHealth(int _health = 1)
+    {
+        health += _health;
+    }
+
+    /// <summary>
+    /// Function to call to get player's health value
+    /// </summary>
+    /// <param name="_damage"></param>
+    public int getHealth()
+    {
+        return health;
     }
 }
