@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Red
   m_EditorClassIdentifier: 
   id: 1
-  value: 10
+  value: 1
   itemName: Red
-  icon: {fileID: 21300000, guid: 8cdab9af5e3c441cc97197fec5bd07e4, type: 3}
+  icon: {fileID: 21300000, guid: 0deb881d1d1fe9b4d9f879f25ad69bc7, type: 3}
   itemType: 0
-  number: 0

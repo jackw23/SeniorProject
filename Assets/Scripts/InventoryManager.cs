@@ -10,9 +10,10 @@ public class InventoryManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public static InventoryManager Instance;
+    public static int numUpgradeCoins;
     public List<Item> Items = new List<Item>();
     public Dictionary<Item, int> ItemAmounts = new Dictionary<Item, int>();
-
+    public GameObject Player;
     public Transform ItemContent;
     public GameObject InventoryItem;
     public Toggle EnableRemove;
@@ -26,7 +27,9 @@ public class InventoryManager : MonoBehaviour
     {
         if (ItemAmounts.TryGetValue(item, out int amount))
         {
+          
             ItemAmounts[item]++;
+
         }
         else
         {
@@ -76,6 +79,7 @@ public class InventoryManager : MonoBehaviour
             //Debug.Log("Picking up " + Item.name);
 
             var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
+            
             // = obj.transform.Find("ItemName").GetComponent<TMP_Text>();
             //Debug.Log("Printing item name" + tmpugui);
 
@@ -83,22 +87,28 @@ public class InventoryManager : MonoBehaviour
             var itemNumber = obj.transform.Find("ItemNumber").GetComponent<Text>();
 
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
-            var removeButton = obj.transform.Find("RemoveButton").GetComponent<Button>();
+            //var removeButton = obj.transform.Find("RemoveButton").GetComponent<Button>();
             //Debug.Log(itemName);
             //Debug.Log(itemIcon);
             itemName.text = item.itemName;
+            obj.name = itemName.text;
             //Debug.Log("itemName.text" + tmpugui.text);
 
             itemIcon.sprite = item.icon;
             itemNumber.text = "x" + ItemAmounts[item].ToString();
 
-            if (EnableRemove.isOn)
+            if (itemName.text == "Upgrade Coin")
+            {
+                obj.GetComponent<Button>().interactable = false;
+            }
+
+            /*if (EnableRemove.isOn)
             {
                 removeButton.gameObject.SetActive(true);
-            }
+            }*/
         }
 
-        //SetInventoryItems();
+        SetInventoryItems();
     }
 
     public void EnableItemsRemove()
@@ -127,8 +137,14 @@ public class InventoryManager : MonoBehaviour
         for (int i = 0; i < Items.Count; i++)
         {
             InventoryItems[i].AddItem(Items[i]);
+            InventoryItems[i].setPlayer(Player);
 
         }
+
+    }
+
+    public void getNumCoins()
+    {
 
     }
 

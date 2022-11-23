@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Green
   m_EditorClassIdentifier: 
   id: 2
-  value: 5
+  value: 1
   itemName: Green
-  icon: {fileID: 21300000, guid: 7af9025362f79498fa2c2e74d329ec59, type: 3}
+  icon: {fileID: 21300000, guid: 3651a854357fd834fa59adddc24aeecf, type: 3}
   itemType: 0
-  number: 0
