@@ -75,7 +75,16 @@ public class InventoryManager : MonoBehaviour
 
     public void Remove(Item item)
     {
-        Items.Remove(item);
+        if (ItemAmounts[item] > 1)
+        {
+            ItemAmounts[item] = ItemAmounts[item] - 1;
+        }
+        else
+        {
+            Items.Remove(item);
+        }
+
+        ListItem();
     }
     
 

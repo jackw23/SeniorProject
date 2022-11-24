@@ -23,10 +23,10 @@ public class UIUpgradePanel : MonoBehaviour
         {
             yesUpgrade.GetComponent<Button>().interactable = false;
         }
-        else
-        {
-            yesUpgrade.onClick.AddListener(() => Upgrade());
-        }
+        
+        yesUpgrade.onClick.AddListener(() => Upgrade());
+        
+
     }
 
     public static void setUpgradeButton(UpgradeButton ub)
