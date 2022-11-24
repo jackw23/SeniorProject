@@ -16,4 +16,4 @@ MonoBehaviour:
   value: 1
   itemName: Upgrade Coin
   icon: {fileID: 21300000, guid: 0ce02301189cb564ba752f1592bb41b6, type: 3}
-  itemType: 1
+  itemType: 2

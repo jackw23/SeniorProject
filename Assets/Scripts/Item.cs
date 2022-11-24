@@ -5,7 +5,7 @@ using TMPro;
 
 //Code heavily inspired by this tutorial: https://www.youtube.com/watch?v=AoD_F1fSFFg
 
-[CreateAssetMenu (fileName = "New Item", menuName = "Item/Create New Item")]
+[CreateAssetMenu(fileName = "New Item", menuName = "Item/Create New Item")]
 public class Item : ScriptableObject
 {
     public int id;
@@ -15,7 +15,7 @@ public class Item : ScriptableObject
     public Sprite icon;
     public ItemType itemType;
     //public int number = 0;
-   public enum ItemType
+    public enum ItemType
     {
         HealthPotion = 1,
         UpgradeCoin = 2,
