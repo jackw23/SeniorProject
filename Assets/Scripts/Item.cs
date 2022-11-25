@@ -14,7 +14,7 @@ public class Item : ScriptableObject
     //public TMP_Text itemNameTMP;
     public Sprite icon;
     public ItemType itemType;
-    //public int number = 0;
+    //public int amount = 0;
     public enum ItemType
     {
         HealthPotion = 1,
