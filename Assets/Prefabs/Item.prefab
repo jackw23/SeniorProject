@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.34756133, g: 0.754717, b: 0.15236738, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -387,7 +387,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68da46c5838d90041ae23c8e0205ed7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RemoveButton: {fileID: 0}
 --- !u!223 &8078520367738322848
 Canvas:
   m_ObjectHideFlags: 0

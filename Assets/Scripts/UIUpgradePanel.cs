@@ -15,7 +15,7 @@ public class UIUpgradePanel : MonoBehaviour
     public static UpgradeButton currentUpgradeButton;
     public static GameObject currentUBText;
     public static GameObject player;
-    public GameObject insufficientUCsText;
+    //public GameObject insufficientUCsText;
 
     void Start()
     {
@@ -48,7 +48,7 @@ public class UIUpgradePanel : MonoBehaviour
         if (InventoryManager.Instance.numUpgradeCoins <= 0)
         {
             //insufficientUCsFlag = true;
-            insufficientUCsText.SetActive(true);
+            //insufficientUCsText.SetActive(true);
             yesUpgrade.GetComponent<Button>().interactable = false;
         }
         else

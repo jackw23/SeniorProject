@@ -38,7 +38,7 @@ public class InventoryManager : MonoBehaviour
             Debug.Log("its is upgrade coin");
             upgradeCoinItem = item;
             UIUpgradePanel.yesUpgrade.GetComponent<Button>().interactable = true;
-            UIUpgradePanel.insufficientUCsText.SetActive(false);
+            //UIUpgradePanel.insufficientUCsText.SetActive(false);
             UISkillTree.UpdateNumCoinsText();
 
         }
