@@ -64,6 +64,8 @@ public class  UISkillTree: MonoBehaviour
     
     public GameObject upgradePanel;
     public GameObject upgradeMessage;
+    public TMP_Text numCoinsText;
+    
     //private List<>
     UpgradeButton fireSkillLevel = new UpgradeButton("Fire", "Skill", "Level", 1);
     UpgradeButton fireSkillCD = new UpgradeButton("Fire", "Skill", "Cooldown", 10);
@@ -188,6 +190,10 @@ public class  UISkillTree: MonoBehaviour
         }
     }
 
+    public void UpdateNumCoinsText()
+    {
+        numCoinsText.text = "x" + InventoryManager.Instance.numUpgradeCoins; 
+    }
   
     /*
     public static void UpdateUI(GameObject buttonText, UpgradeButton button)

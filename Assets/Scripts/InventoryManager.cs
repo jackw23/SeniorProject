@@ -21,6 +21,7 @@ public class InventoryManager : MonoBehaviour
     public InventoryItemController[] InventoryItems;
     public UIUpgradePanel UIUpgradePanel;
     public Item upgradeCoinItem;
+    public UISkillTree UISkillTree;
     private void Awake()
     {
         Instance = this;
@@ -38,6 +39,8 @@ public class InventoryManager : MonoBehaviour
             upgradeCoinItem = item;
             UIUpgradePanel.yesUpgrade.GetComponent<Button>().interactable = true;
             UIUpgradePanel.insufficientUCsText.SetActive(false);
+            UISkillTree.UpdateNumCoinsText();
+
         }
         if (ItemAmounts.TryGetValue(item, out int amount))
         {
@@ -182,6 +185,7 @@ public class InventoryManager : MonoBehaviour
         {
             UIUpgradePanel.yesUpgrade.GetComponent<Button>().interactable = false;
         }
+        UISkillTree.UpdateNumCoinsText();
     }
 
     public void PrintInventory()
