@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 //Code heavily inspired by this tutorial: https://www.youtube.com/watch?v=AoD_F1fSFFg
 
@@ -60,17 +61,23 @@ public class InventoryManager : MonoBehaviour
 
     public void Remove(Item item)
     {
-        Items.Remove(item);
+       
+            Items.Remove(item);
+        
     }
     
-
-    public void ListItem()
+    public void cleanInventory()
     {
         foreach (Transform item in ItemContent)
         {
             Destroy(item.gameObject);
         }
+    }
 
+    public void ListItem()
+    {
+
+        cleanInventory();
         foreach (var item in Items)
         {
             //TMP_Text tmpugui; 
@@ -108,7 +115,11 @@ public class InventoryManager : MonoBehaviour
             }*/
         }
 
+        
         SetInventoryItems();
+
+        
+
     }
 
     public void EnableItemsRemove()
