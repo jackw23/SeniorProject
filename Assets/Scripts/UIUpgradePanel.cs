@@ -11,14 +11,19 @@ public class UIUpgradePanel : MonoBehaviour
     // Start is called before the first frame update
     public Button yesUpgrade;
     public Button noUpgrade;
+    public TMP_Text currentUpgradeCoins;
     public static UpgradeButton currentUpgradeButton;
     public static GameObject currentUBText;
     public static GameObject player;
+    public GameObject insufficientUCsText;
 
     void Start()
     {
+        if (InventoryManager.Instance.numUpgradeCoins <= 0)
+        {
+            yesUpgrade.GetComponent<Button>().interactable = false;
+        }
         yesUpgrade.onClick.AddListener(() => UpdateUB());
-
     }
     public static void setUpgradeButton(UpgradeButton ub)
     {
@@ -34,6 +39,24 @@ public class UIUpgradePanel : MonoBehaviour
         player = _player;
     }
 
+    public void updateCurrentUpgradeCoins(int i)
+    {
+        currentUpgradeCoins.text = "Current Upgrade Coins: " + i;
+    }
+    public void Upgrade()
+    {
+        if (InventoryManager.Instance.numUpgradeCoins <= 0)
+        {
+            //insufficientUCsFlag = true;
+            insufficientUCsText.SetActive(true);
+            yesUpgrade.GetComponent<Button>().interactable = false;
+        }
+        else
+        {
+            UpdateUB();
+            InventoryManager.Instance.useUpgradeCoin();
+        }
+    }
     public static void UpdateUB()
     {
         if (currentUpgradeButton.bottomText == "Level")

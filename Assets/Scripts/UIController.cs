@@ -22,6 +22,10 @@ public class UIController : MonoBehaviour
             InventoryManager.Instance.ListItem();
 
             pauseMenu.SetActive(!pauseMenu.activeInHierarchy);
+            if (!pauseMenu.activeSelf)
+            {
+                InventoryManager.Instance.cleanInventory();
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.M))

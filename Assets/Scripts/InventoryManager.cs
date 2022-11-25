@@ -11,7 +11,7 @@ public class InventoryManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public static InventoryManager Instance;
-    public static int numUpgradeCoins;
+    public int numUpgradeCoins;
     public List<Item> Items = new List<Item>();
     public Dictionary<Item, int> ItemAmounts = new Dictionary<Item, int>();
     public GameObject Player;
@@ -19,13 +19,26 @@ public class InventoryManager : MonoBehaviour
     public GameObject InventoryItem;
     public Toggle EnableRemove;
     public InventoryItemController[] InventoryItems;
+    public UIUpgradePanel UIUpgradePanel;
+    public Item upgradeCoinItem;
     private void Awake()
     {
         Instance = this;
+        numUpgradeCoins = 0;
+        UIUpgradePanel.updateCurrentUpgradeCoins(numUpgradeCoins);
     }
 
     public void Add(Item item)
     {
+        if (item.itemType.Equals(Item.ItemType.UpgradeCoin))
+        {
+            numUpgradeCoins++;
+            UIUpgradePanel.updateCurrentUpgradeCoins(numUpgradeCoins);
+            Debug.Log("its is upgrade coin");
+            upgradeCoinItem = item;
+            UIUpgradePanel.yesUpgrade.GetComponent<Button>().interactable = true;
+            UIUpgradePanel.insufficientUCsText.SetActive(false);
+        }
         if (ItemAmounts.TryGetValue(item, out int amount))
         {
           
@@ -104,10 +117,12 @@ public class InventoryManager : MonoBehaviour
             itemIcon.sprite = item.icon;
             itemNumber.text = "x" + ItemAmounts[item].ToString();
 
+            
             if (itemName.text == "Upgrade Coin")
             {
                 obj.GetComponent<Button>().interactable = false;
             }
+            
 
             /*if (EnableRemove.isOn)
             {
@@ -157,6 +172,16 @@ public class InventoryManager : MonoBehaviour
     public void getNumCoins()
     {
 
+    }
+    public void useUpgradeCoin()
+    {
+        var temp = ItemAmounts[upgradeCoinItem] = ItemAmounts[upgradeCoinItem] - 1;
+        numUpgradeCoins = temp;
+        UIUpgradePanel.updateCurrentUpgradeCoins(temp);
+        if (numUpgradeCoins <= 0)
+        {
+            UIUpgradePanel.yesUpgrade.GetComponent<Button>().interactable = false;
+        }
     }
 
     public void PrintInventory()

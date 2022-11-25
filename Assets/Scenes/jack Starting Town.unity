@@ -152,12 +152,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac4f39783c4c7943bd72900971f4142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numUpgradeCoins: 0
   Items: []
   Player: {fileID: 870741847}
   ItemContent: {fileID: 335514235}
   InventoryItem: {fileID: 5837790795018340874, guid: 210a6d614c9d7a041a6b4d56bdb1df6e, type: 3}
   EnableRemove: {fileID: 527556569}
   InventoryItems: []
+  UIUpgradePanel: {fileID: 1383162838}
+  upgradeCoinItem: {fileID: 0}
 --- !u!4 &22223740
 Transform:
   m_ObjectHideFlags: 0
@@ -259,6 +262,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: -5246148126084630920, guid: 6898c48e5cf5577449b601a370eaec3b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6898c48e5cf5577449b601a370eaec3b, type: 3}
+--- !u!1 &71039523 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3381990090254834843, guid: 5bc2515822ca2a347b8d6a9bc3f8a29c, type: 3}
+  m_PrefabInstance: {fileID: 1935258897}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &104896933
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2496,6 +2504,17 @@ Transform:
   m_Father: {fileID: 1888912315}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1131809262 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4138040638417847577, guid: 5bc2515822ca2a347b8d6a9bc3f8a29c, type: 3}
+  m_PrefabInstance: {fileID: 1935258897}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1150464928
 GameObject:
   m_ObjectHideFlags: 0
@@ -3451,6 +3470,17 @@ Transform:
   m_Father: {fileID: 870741849}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1383162838 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5296925041052538508, guid: 5bc2515822ca2a347b8d6a9bc3f8a29c, type: 3}
+  m_PrefabInstance: {fileID: 1935258897}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87f00516256a3ca4f9c0659f3b9faaf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1412568003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4905,6 +4935,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3381990090254834843, guid: 5bc2515822ca2a347b8d6a9bc3f8a29c, type: 3}
+      propertyPath: m_Name
+      value: InsufficientUpgradeCoins
+      objectReference: {fileID: 0}
+    - target: {fileID: 3381990090254834843, guid: 5bc2515822ca2a347b8d6a9bc3f8a29c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4627766844946615452, guid: 5bc2515822ca2a347b8d6a9bc3f8a29c, type: 3}
       propertyPath: Player
       value: 
@@ -4916,6 +4954,26 @@ PrefabInstance:
     - target: {fileID: 4640889829588337819, guid: 5bc2515822ca2a347b8d6a9bc3f8a29c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: ListItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 4885087213724400324, guid: 5bc2515822ca2a347b8d6a9bc3f8a29c, type: 3}
+      propertyPath: m_Name
+      value: CoinImage
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296925040246398919, guid: 5bc2515822ca2a347b8d6a9bc3f8a29c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 22223739}
+    - target: {fileID: 5296925040246398919, guid: 5bc2515822ca2a347b8d6a9bc3f8a29c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: cleanInventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296925040246398919, guid: 5bc2515822ca2a347b8d6a9bc3f8a29c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: InventoryManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296925040246398919, guid: 5bc2515822ca2a347b8d6a9bc3f8a29c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5296925040274541545, guid: 5bc2515822ca2a347b8d6a9bc3f8a29c, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -4929,6 +4987,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 870741847}
+    - target: {fileID: 5296925041052538508, guid: 5bc2515822ca2a347b8d6a9bc3f8a29c, type: 3}
+      propertyPath: currentUpgradeCoins
+      value: 
+      objectReference: {fileID: 1131809262}
+    - target: {fileID: 5296925041052538508, guid: 5bc2515822ca2a347b8d6a9bc3f8a29c, type: 3}
+      propertyPath: insufficientUCsText
+      value: 
+      objectReference: {fileID: 71039523}
     - target: {fileID: 5296925041169628626, guid: 5bc2515822ca2a347b8d6a9bc3f8a29c, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -287.91492
