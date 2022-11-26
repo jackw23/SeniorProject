@@ -75,12 +75,40 @@ public class InventoryManager : MonoBehaviour
         return -1;
     }
 
+    public void UpdateItemAmount(Item item)
+    {
+        foreach (Transform i in ItemContent)
+        {
+            var iicItem = i.GetComponent<InventoryItemController>().getItem();
+            if (iicItem.itemName == item.itemName)
+            {
+                var tempItemNumber = i.Find("ItemNumber").GetComponent<Text>();
+                tempItemNumber.text = "x" + ItemAmounts[item].ToString();
+            }
+
+            //Destroy(item.gameObject);
+        }
+    }
+
     public void Remove(Item item)
     {
-       
+        ItemAmounts[item] = ItemAmounts[item] - 1;
+
+        if (ItemAmounts[item] > 0)
+        {
+            //ListItem();
+            UpdateItemAmount(item);
+            //decrement number
+        }
+        else
+        {
             Items.Remove(item);
-        
+            ItemAmounts.Remove(item);
+
+        }
     }
+
+
     
     public void cleanInventory()
     {
@@ -92,8 +120,9 @@ public class InventoryManager : MonoBehaviour
 
     public void ListItem()
     {
-
+       
         cleanInventory();
+        
         foreach (var item in Items)
         {
             //TMP_Text tmpugui; 
@@ -133,11 +162,9 @@ public class InventoryManager : MonoBehaviour
             }*/
         }
 
-        
+      
         SetInventoryItems();
-
         
-
     }
 
     public void EnableItemsRemove()

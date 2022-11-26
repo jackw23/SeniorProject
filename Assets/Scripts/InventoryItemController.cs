@@ -13,7 +13,11 @@ public class InventoryItemController : MonoBehaviour
     public void RemoveItem()
     {
         InventoryManager.Instance.Remove(item);
-        Destroy(gameObject);
+        
+        if (InventoryManager.Instance.ItemAmounts.TryGetValue(item, out int amount) == false)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void AddItem(Item newItem)
@@ -24,6 +28,11 @@ public class InventoryItemController : MonoBehaviour
     public void setPlayer(GameObject _player)
     {
         Player = _player;
+    }
+    
+    public Item getItem()
+    {
+        return item;
     }
 
     public void UseItem()
