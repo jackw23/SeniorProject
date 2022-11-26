@@ -7,6 +7,7 @@ using TMPro;
 public class  UISkillTree: MonoBehaviour
 {
     public GameObject player;
+    public static UISkillTree Instance;
     public GameObject fireSkillLevelBtn;
     public GameObject fireSkillLevelText;
 
@@ -57,7 +58,9 @@ public class  UISkillTree: MonoBehaviour
 
     public GameObject earthUltimateCDBtn;
     public GameObject earthUltimateCDText;
-
+    
+    public GameObject currentButtonGO;
+    public GameObject SkillUpgradeButtonsParent;
 
     //public Button yesUpgrade;
     //public Button noUpgrade;
@@ -69,15 +72,26 @@ public class  UISkillTree: MonoBehaviour
     //private List<>
     UpgradeButton fireSkillLevel = new UpgradeButton("Fire", "Skill", "Level", 1);
     UpgradeButton fireSkillCD = new UpgradeButton("Fire", "Skill", "Cooldown", 10);
+    //UpgradeButton fireSkillCD = new UpgradeButton("Fire", "Skill", "Cooldown", 2);
+
     UpgradeButton waterSkillLevel = new UpgradeButton("Water", "Skill", "Level", 1);
     UpgradeButton waterSkillCD = new UpgradeButton("Water", "Skill", "Cooldown", 10);
+    //UpgradeButton waterSkillCD = new UpgradeButton("Water", "Skill", "Cooldown", 3);
+
     UpgradeButton airSkillLevel = new UpgradeButton("Air", "Skill", "Level", 1);
     UpgradeButton airSkillCD = new UpgradeButton("Air", "Skill", "Cooldown", 10);
+    //UpgradeButton airSkillCD = new UpgradeButton("Air", "Skill", "Cooldown", 1);
+
     UpgradeButton earthSkillLevel = new UpgradeButton("Earth", "Skill", "Level", 1);
     UpgradeButton earthSkillCD = new UpgradeButton("Earth", "Skill", "Cooldown", 10);
+    //UpgradeButton earthSkillCD = new UpgradeButton("Earth", "Skill", "Cooldown", 5);
 
 
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         //UpgradeButton fireSkillLevel = new UpgradeButton("Fire", "Skill", "Level", 0);
@@ -109,6 +123,7 @@ public class  UISkillTree: MonoBehaviour
             UpdateUpgradeMessage(fireSkillLevel);
             UIUpgradePanel.setUpgradeButton(fireSkillLevel);
             UIUpgradePanel.setUBText(fireSkillLevelText);
+            currentButtonGO = fireSkillLevelBtn;
         }
 
         if (buttonPressed == fireSkillCDBtn)
@@ -116,6 +131,8 @@ public class  UISkillTree: MonoBehaviour
             UpdateUpgradeMessage(fireSkillCD);
             UIUpgradePanel.setUpgradeButton(fireSkillCD);
             UIUpgradePanel.setUBText(fireSkillCDText);
+            currentButtonGO = fireSkillCDBtn;
+
         }
 
         if (buttonPressed == waterSkillLevelBtn)
@@ -123,6 +140,8 @@ public class  UISkillTree: MonoBehaviour
             UpdateUpgradeMessage(waterSkillLevel);
             UIUpgradePanel.setUpgradeButton(waterSkillLevel);
             UIUpgradePanel.setUBText(waterSkillLevelText);
+            currentButtonGO = waterSkillLevelBtn;
+
         }
 
         if (buttonPressed == waterSkillCDBtn)
@@ -130,6 +149,8 @@ public class  UISkillTree: MonoBehaviour
             UpdateUpgradeMessage(waterSkillCD);
             UIUpgradePanel.setUpgradeButton(waterSkillCD);
             UIUpgradePanel.setUBText(waterSkillCDText);
+            currentButtonGO = waterSkillCDBtn;
+
         }
 
         if (buttonPressed == airSkillLevelBtn)
@@ -137,6 +158,8 @@ public class  UISkillTree: MonoBehaviour
             UpdateUpgradeMessage(airSkillLevel);
             UIUpgradePanel.setUpgradeButton(airSkillLevel);
             UIUpgradePanel.setUBText(airSkillLevelText);
+            currentButtonGO = airSkillLevelBtn;
+
         }
 
         if (buttonPressed == airSkillCDBtn)
@@ -144,6 +167,8 @@ public class  UISkillTree: MonoBehaviour
             UpdateUpgradeMessage(airSkillCD);
             UIUpgradePanel.setUpgradeButton(airSkillCD);
             UIUpgradePanel.setUBText(airSkillCDText);
+            currentButtonGO = airSkillCDBtn;
+
         }
 
         if (buttonPressed == earthSkillLevelBtn)
@@ -151,6 +176,8 @@ public class  UISkillTree: MonoBehaviour
             UpdateUpgradeMessage(earthSkillLevel);
             UIUpgradePanel.setUpgradeButton(earthSkillLevel);
             UIUpgradePanel.setUBText(earthSkillLevelText);
+            currentButtonGO = earthSkillLevelBtn;
+
         }
 
         if (buttonPressed == earthSkillCDBtn)
@@ -158,6 +185,8 @@ public class  UISkillTree: MonoBehaviour
             UpdateUpgradeMessage(earthSkillCD);
             UIUpgradePanel.setUpgradeButton(earthSkillCD);
             UIUpgradePanel.setUBText(earthSkillCDText);
+            currentButtonGO = earthSkillCDBtn;
+
         }
 
         //OpenUpgradePanel();
@@ -194,7 +223,17 @@ public class  UISkillTree: MonoBehaviour
     {
         numCoinsText.text = "x" + InventoryManager.Instance.numUpgradeCoins; 
     }
-  
+
+    public void MaxUpgrade()
+    {
+        /*var tempArray = SkillUpgradeButtonsParent.GetComponentInChildren<Button>().gameObject.name;
+        foreach (string name in tempArray)
+        {
+
+        }*/
+        currentButtonGO.GetComponent<Button>().interactable = false;
+    }
+
     /*
     public static void UpdateUI(GameObject buttonText, UpgradeButton button)
     {

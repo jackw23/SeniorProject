@@ -57,6 +57,8 @@ public class UIUpgradePanel : MonoBehaviour
             InventoryManager.Instance.useUpgradeCoin();
         }
     }
+
+    
     public static void UpdateUB()
     {
         if (currentUpgradeButton.bottomText == "Level")
@@ -66,10 +68,17 @@ public class UIUpgradePanel : MonoBehaviour
         {
             currentUpgradeButton.subtractNumber();
 
+            if (currentUpgradeButton.number <= 5)
+            {
+                UISkillTree.Instance.MaxUpgrade();
+
+            }
+
         }
         currentUBText.GetComponent<TMP_Text>().text = currentUpgradeButton.number.ToString();
         player.GetComponent<PlayerAttack>().LevelUpAttack("fire");
 
+        
     }
     /*void OnEnable()
     {

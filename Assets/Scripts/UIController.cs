@@ -26,6 +26,7 @@ public class UIController : MonoBehaviour
             {
                 InventoryManager.Instance.cleanInventory();
             }
+
         }
 
         if (Input.GetKeyDown(KeyCode.M))
