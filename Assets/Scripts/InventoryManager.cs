@@ -120,50 +120,55 @@ public class InventoryManager : MonoBehaviour
 
     public void ListItem()
     {
-       
         cleanInventory();
         
         foreach (var item in Items)
         {
-            //TMP_Text tmpugui; 
-            GameObject obj = Instantiate(InventoryItem, ItemContent);
-
-            //Debug.Log("Picking up " + Item.name);
-
-            var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
-            
-            // = obj.transform.Find("ItemName").GetComponent<TMP_Text>();
-            //Debug.Log("Printing item name" + tmpugui);
-
-
-            var itemNumber = obj.transform.Find("ItemNumber").GetComponent<Text>();
-
-            var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
-            //var removeButton = obj.transform.Find("RemoveButton").GetComponent<Button>();
-            //Debug.Log(itemName);
-            //Debug.Log(itemIcon);
-            itemName.text = item.itemName;
-            obj.name = itemName.text;
-            //Debug.Log("itemName.text" + tmpugui.text);
-
-            itemIcon.sprite = item.icon;
-            itemNumber.text = "x" + ItemAmounts[item].ToString();
-
-            
-            if (itemName.text == "Upgrade Coin")
+            if (item.itemName != "Upgrade Coin")
             {
-                obj.GetComponent<Button>().interactable = false;
+                //TMP_Text tmpugui; 
+                GameObject obj = Instantiate(InventoryItem, ItemContent);
+
+                //Debug.Log("Picking up " + Item.name);
+
+                var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
+
+                // = obj.transform.Find("ItemName").GetComponent<TMP_Text>();
+                //Debug.Log("Printing item name" + tmpugui);
+
+
+                var itemNumber = obj.transform.Find("ItemNumber").GetComponent<Text>();
+
+                var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
+                //var removeButton = obj.transform.Find("RemoveButton").GetComponent<Button>();
+                //Debug.Log(itemName);
+                //Debug.Log(itemIcon);
+                itemName.text = item.itemName;
+                obj.name = itemName.text;
+                //Debug.Log("itemName.text" + tmpugui.text);
+
+                itemIcon.sprite = item.icon;
+                itemNumber.text = "x" + ItemAmounts[item].ToString();
+
+
+                if (itemName.text == "Upgrade Coin")
+                {
+                    obj.GetComponent<Button>().interactable = false;
+                }
+
+                obj.GetComponent<InventoryItemController>().AddItem(item);
+                obj.GetComponent<InventoryItemController>().setPlayer(Player);
+
+
+                /*if (EnableRemove.isOn)
+                {
+                    removeButton.gameObject.SetActive(true);
+                }*/
             }
-            
-
-            /*if (EnableRemove.isOn)
-            {
-                removeButton.gameObject.SetActive(true);
-            }*/
         }
 
       
-        SetInventoryItems();
+        //SetInventoryItems();
         
     }
 
