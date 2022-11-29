@@ -94,11 +94,7 @@ public class PlayerMovement : MonoBehaviour
         // Adds Animator Parameter that allows player to transition from idle state to run state, and vice versa
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-        // Don't get stuck on walls
-        if (!Physics2D.OverlapCircle(frontCheck.position, 0.25f, groundLayer))
-        {
-            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
-        }
+        body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
 
 
         //Flip player when moving left-right
