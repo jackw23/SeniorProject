@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -45,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float pickupRadius;
     [SerializeField] private int attacksRemaining = 99999;
     [SerializeField] private int health = 1000;
+    private DateTime doubleJumpTimer;
 
     private Rigidbody2D body;
     private BoxCollider2D boxCollider;
@@ -86,13 +88,14 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
 
-        body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+        //body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
         horizontalMove = horizontalInput * speed;
 
         // Adds Animator Parameter that allows player to transition from idle state to run state, and vice versa
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-        if (!wallJumping)
+        // Don't get stuck on walls
+        if (!Physics2D.OverlapCircle(frontCheck.position, 0.25f, groundLayer))
         {
             body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
         }
@@ -104,13 +107,11 @@ public class PlayerMovement : MonoBehaviour
         else if (horizontalInput < -0.01f)
             transform.localScale = new Vector3(-1, 1, 1);
 
-        //check to enable double jumping
-        if (Physics2D.Raycast(transform.position, Vector2.down, distToGround + .1f, groundLayer))
-        {
-            canDoubleJump = true;
-        }
 
-        isTouchingFront = Physics2D.OverlapCircle(frontCheck.position, checkRadius, wallLayer);
+        if (Physics2D.OverlapCircle(frontCheck.position, checkRadius, groundLayer))
+        {
+            isTouchingFront = true;
+        }
 
         //wall jumping
         if (Input.GetKeyDown(KeyCode.UpArrow) && isTouchingFront && horizontalInput != 0)
@@ -132,8 +133,10 @@ public class PlayerMovement : MonoBehaviour
             if (Physics2D.Raycast(transform.position, Vector2.down, distToGround + .1f, groundLayer))
             {
                 body.velocity = new Vector2(body.velocity.x, jumpPower);
+                doubleJumpTimer = DateTime.Now;
+                canDoubleJump = true;
             }
-            else if (Input.GetKey(KeyCode.J) && canDoubleJump)
+            else if ((DateTime.Now - doubleJumpTimer).Milliseconds > 300 && canDoubleJump)
             {
                 body.velocity = new Vector2(body.velocity.x, jumpPower);
                 canDoubleJump = false;
