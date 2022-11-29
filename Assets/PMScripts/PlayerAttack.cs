@@ -15,7 +15,14 @@ using UnityEngine;
 /// </summary>
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] private float attackCooldown;
+    [SerializeField] private float fireAttackCooldown;
+    [SerializeField] private float waterAttackCooldown;
+    [SerializeField] private float airAttackCooldown;
+    [SerializeField] private float earthAttackCooldown;
+    [SerializeField] private float currentAttackCooldown;
+
+    //[SerializeField] private Dictionary<string, float> attackCooldowns;
+
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject[] fireballs;
     [SerializeField] private GameObject[] airBursts;
@@ -29,12 +36,19 @@ public class PlayerAttack : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
+
+        /*
+        attackCooldowns.Add("fire", 0.7f);
+        attackCooldowns.Add("water", 0.7f);
+        attackCooldowns.Add("earth", 0.7f);
+        attackCooldowns.Add("air", 0.7f);
+        */
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0) && cooldownTimer > attackCooldown && playerMovement.canAttack())
+        if (Input.GetMouseButton(0) && cooldownTimer > currentAttackCooldown && playerMovement.canAttack())
         {
             // should always be 0-3
             switch (playerMovement.attackSelected)
@@ -66,6 +80,8 @@ public class PlayerAttack : MonoBehaviour
 
         fireballs[FindFireball()].transform.position = firePoint.position;
         fireballs[FindFireball()].GetComponent<Fireball>().SetDirection(Mathf.Sign(transform.localScale.x));
+
+        currentAttackCooldown = fireAttackCooldown;
     }
 
     private int FindFireball()
@@ -85,6 +101,9 @@ public class PlayerAttack : MonoBehaviour
 
         waterBalls[FindWaterball()].transform.position = firePoint.position;
         waterBalls[FindWaterball()].GetComponent<Waterball>().SetDirection(Mathf.Sign(transform.localScale.x));
+
+        currentAttackCooldown = waterAttackCooldown;
+
     }
 
     private int FindWaterball()
@@ -104,6 +123,9 @@ public class PlayerAttack : MonoBehaviour
 
         waterBalls[FindEarthBlock()].transform.position = firePoint.position;
         waterBalls[FindEarthBlock()].GetComponent<EarthBlock>().SetDirection(Mathf.Sign(transform.localScale.x));
+
+        currentAttackCooldown = earthAttackCooldown;
+
     }
 
     private int FindEarthBlock()
@@ -123,6 +145,9 @@ public class PlayerAttack : MonoBehaviour
 
         airBursts[FindAirBurst()].transform.position = firePoint.position;
         airBursts[FindAirBurst()].GetComponent<Airburst>().SetDirection(Mathf.Sign(transform.localScale.x));
+
+        currentAttackCooldown = airAttackCooldown;
+
     }
 
     private int FindAirBurst()
@@ -170,4 +195,23 @@ public class PlayerAttack : MonoBehaviour
 
     }
 
+    public void LevelUpCooldown(string s)
+    {
+        if (s == "fire")
+        {
+            fireAttackCooldown -= 0.1f;
+        }
+        else if (s == "water")
+        {
+            waterAttackCooldown -= 0.1f;
+        }
+        else if (s == "air")
+        {
+            airAttackCooldown -= 0.1f;
+        }
+        else if (s == "earth")
+        {
+            earthAttackCooldown -= 0.1f;
+        }
+    }
 }

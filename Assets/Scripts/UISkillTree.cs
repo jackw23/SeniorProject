@@ -71,19 +71,19 @@ public class  UISkillTree: MonoBehaviour
     
     //private List<>
     UpgradeButton fireSkillLevel = new UpgradeButton("Fire", "Skill", "Level", 1);
-    UpgradeButton fireSkillCD = new UpgradeButton("Fire", "Skill", "Cooldown", 10);
+    UpgradeButton fireSkillCD = new UpgradeButton("Fire", "Skill", "Cooldown", 7);
     //UpgradeButton fireSkillCD = new UpgradeButton("Fire", "Skill", "Cooldown", 2);
 
     UpgradeButton waterSkillLevel = new UpgradeButton("Water", "Skill", "Level", 1);
-    UpgradeButton waterSkillCD = new UpgradeButton("Water", "Skill", "Cooldown", 10);
+    UpgradeButton waterSkillCD = new UpgradeButton("Water", "Skill", "Cooldown", 7);
     //UpgradeButton waterSkillCD = new UpgradeButton("Water", "Skill", "Cooldown", 3);
 
     UpgradeButton airSkillLevel = new UpgradeButton("Air", "Skill", "Level", 1);
-    UpgradeButton airSkillCD = new UpgradeButton("Air", "Skill", "Cooldown", 10);
+    UpgradeButton airSkillCD = new UpgradeButton("Air", "Skill", "Cooldown", 7);
     //UpgradeButton airSkillCD = new UpgradeButton("Air", "Skill", "Cooldown", 1);
 
     UpgradeButton earthSkillLevel = new UpgradeButton("Earth", "Skill", "Level", 1);
-    UpgradeButton earthSkillCD = new UpgradeButton("Earth", "Skill", "Cooldown", 10);
+    UpgradeButton earthSkillCD = new UpgradeButton("Earth", "Skill", "Cooldown", 7);
     //UpgradeButton earthSkillCD = new UpgradeButton("Earth", "Skill", "Cooldown", 5);
 
 

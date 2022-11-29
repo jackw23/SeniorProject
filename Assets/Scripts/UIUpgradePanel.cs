@@ -68,40 +68,49 @@ public class UIUpgradePanel : MonoBehaviour
             if (currentUpgradeButton.element.ToLower() == "fire")
             {
                 player.GetComponent<PlayerAttack>().LevelUpAttack("fire");
-
             }
             else if (currentUpgradeButton.element.ToLower() == "water")
             {
                 player.GetComponent<PlayerAttack>().LevelUpAttack("water");
-
             }
             else if (currentUpgradeButton.element.ToLower() == "air")
             {
                 player.GetComponent<PlayerAttack>().LevelUpAttack("air");
-
             }
             else if (currentUpgradeButton.element.ToLower() == "earth")
             {
                 player.GetComponent<PlayerAttack>().LevelUpAttack("earth");
-
             }
         }
         else if (currentUpgradeButton.bottomText == "Cooldown")
         {
             currentUpgradeButton.subtractNumber();
 
-            if (currentUpgradeButton.number <= 5)
+            if (currentUpgradeButton.number <= 3)
             {
                 UISkillTree.Instance.MaxUpgrade();
+            }
 
+            if(currentUpgradeButton.element.ToLower() == "fire")
+            {
+                player.GetComponent<PlayerAttack>().LevelUpCooldown("fire");
+            }
+            else if (currentUpgradeButton.element.ToLower() == "water")
+            {
+                player.GetComponent<PlayerAttack>().LevelUpCooldown("water");
+            }
+            else if (currentUpgradeButton.element.ToLower() == "air")
+            {
+                player.GetComponent<PlayerAttack>().LevelUpCooldown("air");
+            }
+            else if (currentUpgradeButton.element.ToLower() == "earth")
+            {
+                player.GetComponent<PlayerAttack>().LevelUpCooldown("earth");
             }
 
         }
         currentUBText.GetComponent<TMP_Text>().text = currentUpgradeButton.number.ToString();
         
-        
-
-
     }
     /*void OnEnable()
     {
