@@ -64,7 +64,29 @@ public class UIUpgradePanel : MonoBehaviour
         if (currentUpgradeButton.bottomText == "Level")
         {
             currentUpgradeButton.addNumber();
-        }else if (currentUpgradeButton.bottomText == "Cooldown")
+
+            if (currentUpgradeButton.element.ToLower() == "fire")
+            {
+                player.GetComponent<PlayerAttack>().LevelUpAttack("fire");
+
+            }
+            else if (currentUpgradeButton.element.ToLower() == "water")
+            {
+                player.GetComponent<PlayerAttack>().LevelUpAttack("water");
+
+            }
+            else if (currentUpgradeButton.element.ToLower() == "air")
+            {
+                player.GetComponent<PlayerAttack>().LevelUpAttack("air");
+
+            }
+            else if (currentUpgradeButton.element.ToLower() == "earth")
+            {
+                player.GetComponent<PlayerAttack>().LevelUpAttack("earth");
+
+            }
+        }
+        else if (currentUpgradeButton.bottomText == "Cooldown")
         {
             currentUpgradeButton.subtractNumber();
 
@@ -76,9 +98,10 @@ public class UIUpgradePanel : MonoBehaviour
 
         }
         currentUBText.GetComponent<TMP_Text>().text = currentUpgradeButton.number.ToString();
-        player.GetComponent<PlayerAttack>().LevelUpAttack("fire");
-
         
+        
+
+
     }
     /*void OnEnable()
     {

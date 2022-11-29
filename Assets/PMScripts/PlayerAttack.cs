@@ -141,44 +141,32 @@ public class PlayerAttack : MonoBehaviour
         {
             for (int i = 0; i < fireballs.Length; i++)
             {
-                //Debug.Log("fireball dmg before: " + fireballs[i].GetComponent<Fireball>().getDamage());
                 fireballs[i].GetComponent<Fireball>().IncreaseDamage();
-                //Debug.Log("fireball dmg after: " + fireballs[i].GetComponent<Fireball>().getDamage());
-
             }
         }
-        /*
+        
         else if (s == "water")
         {
             for (int i = 0; i < waterBalls.Length; i++)
             {
-                //Debug.Log("fireball dmg before: " + fireballs[i].GetComponent<Fireball>().getDamage());
-                waterBalls[i].GetComponent<Fireball>().IncreaseDamage();
-                //Debug.Log("fireball dmg after: " + fireballs[i].GetComponent<Fireball>().getDamage());
-
+                waterBalls[i].GetComponent<Waterball>().IncreaseDamage();
             }
         }
         else if (s == "air")
         {
             for (int i = 0; i < fireballs.Length; i++)
             {
-                //Debug.Log("fireball dmg before: " + fireballs[i].GetComponent<Fireball>().getDamage());
-                fireballs[i].GetComponent<Fireball>().IncreaseDamage();
-                //Debug.Log("fireball dmg after: " + fireballs[i].GetComponent<Fireball>().getDamage());
-
+                fireballs[i].GetComponent<Airburst>().IncreaseDamage();
             }
         }
         else if (s == "earth")
         {
             for (int i = 0; i < fireballs.Length; i++)
             {
-                //Debug.Log("fireball dmg before: " + fireballs[i].GetComponent<Fireball>().getDamage());
-                fireballs[i].GetComponent<Fireball>().IncreaseDamage();
-                //Debug.Log("fireball dmg after: " + fireballs[i].GetComponent<Fireball>().getDamage());
-
+                fireballs[i].GetComponent<EarthBlock>().IncreaseDamage();
             }
         }
-        */
+        
 
     }
 

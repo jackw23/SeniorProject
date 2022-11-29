@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3549408774917848312}
   - component: {fileID: 3549408774917848319}
   - component: {fileID: 3549408774917848318}
-  - component: {fileID: 7729705032877958481}
+  - component: {fileID: 3770993217133326913}
   m_Layer: 0
-  m_Name: RedItem
+  m_Name: 5HP Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3549408774917848317}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -639.7095, y: 247.95277, z: -1286.6267}
-  m_LocalScale: {x: 108.94235, y: 108.94235, z: 2.178847}
+  m_LocalScale: {x: 5, y: 5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1920aa3a2efddfc4b81013f1066b79a6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1592a39cc5a2c224fba94c072b50a2ac, type: 3}
   m_Color: {r: 1, g: 0.0092200115, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,7 +102,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
---- !u!114 &7729705032877958481
+--- !u!114 &3770993217133326913
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3549408774917848317}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89d956b3bdc459f4cb5919cfb6b04c86, type: 3}
+  m_Script: {fileID: 11500000, guid: 78d2f15424ff50b45a42413e967f1f19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Item: {fileID: 11400000, guid: e0383a52740b58b45821e2f952bbbccc, type: 2}
