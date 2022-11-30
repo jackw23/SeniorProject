@@ -12,6 +12,39 @@ EditorBuildSettings:
     path: Assets/Scenes/Starting Town.unity
     guid: a9af3a7ad161b50459e337735b37f4bb
   - enabled: 1
-    path: Assets/Scenes/Levels/Graveyard.unity
+    path: Assets/Scenes/Levels/Graveyard/Graveyard.unity
     guid: f7b559ec62e9f134798198b5a4d99907
+  - enabled: 1
+    path: Assets/Scenes/Levels/Fiery Pits/Well_1.unity
+    guid: 741719f6a050a3145b6f5ba12b661f51
+  - enabled: 1
+    path: Assets/Scenes/Levels/Fiery Pits/Underground_1.unity
+    guid: ce905a3d3e1e7d844962fbaaff270d94
+  - enabled: 1
+    path: Assets/Scenes/Levels/Fiery Pits/Underground_2.unity
+    guid: c95782ae15d9c4f418bed5536923a5dc
+  - enabled: 1
+    path: Assets/Scenes/Levels/Fiery Pits/Underground_3.unity
+    guid: 95b89f72060c5b24588b40c2ca07a58c
+  - enabled: 1
+    path: Assets/Scenes/Levels/Fiery Pits/Underground_4.unity
+    guid: 8ac442879a1662e4ab0fd55b76cd94f2
+  - enabled: 1
+    path: Assets/Scenes/Levels/Fiery Pits/Underground_5.unity
+    guid: d5437ec40479b5940a4e75b6000614cc
+  - enabled: 1
+    path: Assets/Scenes/Levels/Fiery Pits/Underground_6.unity
+    guid: e23ed5e556e0592488326b5d7b8d8eee
+  - enabled: 1
+    path: Assets/Scenes/Levels/Fiery Pits/Underground_7.unity
+    guid: c529331174f023143a210fe6f91067b2
+  - enabled: 1
+    path: Assets/Scenes/Levels/Fiery Pits/Underground_8.unity
+    guid: 685fcfb587dbad446a99cd7562c38cf6
+  - enabled: 1
+    path: Assets/Scenes/Levels/Fiery Pits/Underground_9.unity
+    guid: bb10faea45c68ff4d8cbe9b1e09c5ca6
+  - enabled: 1
+    path: Assets/Scenes/Levels/Fiery Pits/Underground_10.unity
+    guid: cdd185b207e38ba44b1809dc40084031
   m_configObjects: {}
