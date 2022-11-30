@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +13,8 @@ public class ChangeLevel : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            int index = SceneManager.GetActiveScene().buildIndex;
+            PlayerPrefs.SetInt("prevScene", index);
             SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single);
         }
     }
