@@ -1974,7 +1974,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-<<<<<<< Updated upstream
     - target: {fileID: 1076088667878631833, guid: 4e47af28b4ba741ce9804cd318612f38, type: 3}
       propertyPath: playerTransform
       value: 
@@ -2012,9 +2011,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1076088667878631839, guid: 4e47af28b4ba741ce9804cd318612f38, type: 3}
-=======
-    - target: {fileID: 3759157343547105253, guid: f7197e9adafbfca499a2bf01b4b78d8b, type: 3}
->>>>>>> Stashed changes
       propertyPath: m_Name
       value: Red Witch
       objectReference: {fileID: 0}
@@ -2079,7 +2075,6 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-<<<<<<< Updated upstream
   m_SourcePrefab: {fileID: 100100000, guid: 4e47af28b4ba741ce9804cd318612f38, type: 3}
 --- !u!1 &1151646414
 GameObject:
@@ -2216,7 +2211,7 @@ MonoBehaviour:
   wallJumpTime: 0.05
   checkRadius: 0
   attacksRemaining: 99999
-  health: 50
+  health: 99999
   attackSelected: 0
   frontCheck: {fileID: 1151646417}
   wallSlidingSpeed: 0
@@ -2248,9 +2243,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
-=======
-  m_SourcePrefab: {fileID: 100100000, guid: f7197e9adafbfca499a2bf01b4b78d8b, type: 3}
->>>>>>> Stashed changes
 --- !u!1 &1298016975
 GameObject:
   m_ObjectHideFlags: 0
@@ -3038,13 +3030,7 @@ GameObject:
   - component: {fileID: 1486945991}
   - component: {fileID: 1486945990}
   - component: {fileID: 1486945992}
-<<<<<<< Updated upstream
   m_Layer: 7
-=======
-  - component: {fileID: 1486945994}
-  - component: {fileID: 1486945993}
-  m_Layer: 6
->>>>>>> Stashed changes
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6138,7 +6124,6 @@ Transform:
   m_Father: {fileID: 380740128}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
 --- !u!1001 &1927972837
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6224,13 +6209,6 @@ PrefabInstance:
       objectReference: {fileID: 1151646417}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 012446cef707943818365c07fa593238, type: 3}
-=======
---- !u!4 &1939134838 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6911841620549527839, guid: 66e4fa78a6db743f6ad4763ff6585d67, type: 3}
-  m_PrefabInstance: {fileID: 85820836}
-  m_PrefabAsset: {fileID: 0}
->>>>>>> Stashed changes
 --- !u!1 &2083150478
 GameObject:
   m_ObjectHideFlags: 0
@@ -6417,7 +6395,6 @@ PrefabInstance:
     - target: {fileID: 6300485428011808721, guid: ba57a47fdd18749cd877f5bff7c23c11, type: 3}
       propertyPath: playerTransform
       value: 
-<<<<<<< Updated upstream
       objectReference: {fileID: 1151646417}
     - target: {fileID: 6300485428011808721, guid: ba57a47fdd18749cd877f5bff7c23c11, type: 3}
       propertyPath: obstacleMask.m_Bits
@@ -6427,9 +6404,6 @@ PrefabInstance:
       propertyPath: unwalkableMask.m_Bits
       value: 128
       objectReference: {fileID: 0}
-=======
-      objectReference: {fileID: 2130792269}
->>>>>>> Stashed changes
     - target: {fileID: 6300485428011808750, guid: ba57a47fdd18749cd877f5bff7c23c11, type: 3}
       propertyPath: m_Name
       value: Pathfinding

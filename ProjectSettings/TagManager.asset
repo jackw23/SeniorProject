@@ -11,11 +11,12 @@ TagManager:
   - 
   - Water
   - UI
-  - canhit
   - ground
+  - canhit
   - Minimap
   - wall
   - Player
+  - pickup
   - Enemy
   - 
   - 
@@ -52,4 +53,10 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 3157071097
+    locked: 0
+  - name: Ground_Front
+    uniqueID: 3568701843
     locked: 0

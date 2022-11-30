@@ -6,15 +6,17 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour
 {
     public Item Item;
-    void PickUp()
+    public void PickUp()
     {
         //Debug.Log("Picking up " + Item.name);
         InventoryManager.Instance.Add(Item);
         Destroy(gameObject);
     }
 
-    private void OnMouseDown()
+    
+    /*private void OnMouseDown()
     {
         PickUp();
     }
+    */
 }

@@ -13,6 +13,7 @@ public class InventoryItem : MonoBehaviour
         this.item = item;
     }
 
+    /*
     public void AddAmount(int amount)
     {
         this.amount = this.amount + amount;
@@ -21,5 +22,5 @@ public class InventoryItem : MonoBehaviour
     public void RemoveAmount(int amount)
     {
         this.amount = this.amount - amount;
-    }
+    }*/
 }

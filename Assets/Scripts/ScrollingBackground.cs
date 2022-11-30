@@ -7,8 +7,9 @@ public class ScrollingBackground : MonoBehaviour
     // Create references to two background sprites and float variable for movement speed
     [SerializeField] Transform _first, _second, _third, _fourth;
     [SerializeField] private float _scrollSpeed, _zOffset;
+    [SerializeField] private float _maximumDistance = 65.00f;
 
-    private float _horizontalDifference = 35.00f, _maximumDistance = 65.00f;
+    private float _horizontalDifference = 35.00f; 
 
     private Vector3 newPosition;
 

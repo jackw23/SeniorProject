@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -14,6 +15,11 @@ using UnityEngine;
 /// 
 /// The serialized parameters below can be tuned as needed for different characters.
 /// 
+/// Items to be picked up using this script need to have a 2D collider attached to them,
+/// As well as an ItemPickup script. They need to be layered with the "pickup" layer.
+/// 
+/// Health has been normalized to be "full" at 1000, but we can change that as needed.
+/// 
 /// Recommended values to start out with:
 /// 
 /// Speed: 10
@@ -21,7 +27,8 @@ using UnityEngine;
 /// Flight Power: 1
 /// X and Y Wall Force: 3
 /// Wall Jump Time: 0.05
-/// Check Radiius: 3
+/// Check Radius: 3
+/// Pickup Radius: 3
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {
@@ -31,12 +38,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public bool canDoubleJump = true;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
+    [SerializeField] private LayerMask pickupLayer;
     [SerializeField] public float xWallForce;
     [SerializeField] public float yWallForce;
     [SerializeField] public float wallJumpTime;
     [SerializeField] private float checkRadius;
+    [SerializeField] private float pickupRadius;
     [SerializeField] private int attacksRemaining = 99999;
-    [SerializeField] private int health = 99999;
+    [SerializeField] private int health = 1000;
+    private DateTime doubleJumpTimer;
 
     private Rigidbody2D body;
     private BoxCollider2D boxCollider;
@@ -68,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
 
         groundLayer = LayerMask.GetMask("ground");
         wallLayer = LayerMask.GetMask("wall");
+        pickupLayer = LayerMask.GetMask("pickup");
     }
 
     /// <summary>
@@ -77,16 +88,13 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
 
-        body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+        //body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
         horizontalMove = horizontalInput * speed;
 
         // Adds Animator Parameter that allows player to transition from idle state to run state, and vice versa
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-        if (!wallJumping)
-        {
-            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
-        }
+        body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
 
 
         //Flip player when moving left-right
@@ -95,13 +103,11 @@ public class PlayerMovement : MonoBehaviour
         else if (horizontalInput < -0.01f)
             transform.localScale = new Vector3(-1, 1, 1);
 
-        //check to enable double jumping
-        if (Physics2D.Raycast(transform.position, Vector2.down, distToGround + .1f, groundLayer))
-        {
-            canDoubleJump = true;
-        }
 
-        isTouchingFront = Physics2D.OverlapCircle(frontCheck.position, checkRadius, wallLayer);
+        if (Physics2D.OverlapCircle(frontCheck.position, checkRadius, groundLayer))
+        {
+            isTouchingFront = true;
+        }
 
         //wall jumping
         if (Input.GetKeyDown(KeyCode.UpArrow) && isTouchingFront && horizontalInput != 0)
@@ -123,8 +129,10 @@ public class PlayerMovement : MonoBehaviour
             if (Physics2D.Raycast(transform.position, Vector2.down, distToGround + .1f, groundLayer))
             {
                 body.velocity = new Vector2(body.velocity.x, jumpPower);
+                doubleJumpTimer = DateTime.Now;
+                canDoubleJump = true;
             }
-            else if (Input.GetKey(KeyCode.J) && canDoubleJump)
+            else if ((DateTime.Now - doubleJumpTimer).Milliseconds > 300 && canDoubleJump)
             {
                 body.velocity = new Vector2(body.velocity.x, jumpPower);
                 canDoubleJump = false;
@@ -141,6 +149,24 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             animator.SetBool("IsAttacking", true);
+        }
+
+        // picking up items
+        // press "p" to pickup items in front of the character within checkRadius
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            var itemToPickup = Physics2D.OverlapCircle(frontCheck.position, pickupRadius, pickupLayer);
+            if (itemToPickup != null)
+            {
+                var obj = itemToPickup.gameObject;
+                // this should always happen here (i.e. items with pickup layer should have ItemPickup script)
+                // but we can check just in case
+                var itemPickupScript = obj.GetComponent<ItemPickup>();
+                if (itemPickupScript != null)
+                {
+                    itemPickupScript.PickUp();
+                }
+            }
         }
     }
 
@@ -191,5 +217,23 @@ public class PlayerMovement : MonoBehaviour
         if (health <= 0) {
             Debug.Log("Player has died!");
         }
+    }
+
+    /// <summary>
+    /// Function to call to increase health
+    /// </summary>
+    /// <param name="_damage"></param>
+    public void addHealth(int _health)
+    {
+        health += _health;
+    }
+
+    /// <summary>
+    /// Function to call to get player's health value
+    /// </summary>
+    /// <param name="_damage"></param>
+    public int getHealth()
+    {
+        return health;
     }
 }
