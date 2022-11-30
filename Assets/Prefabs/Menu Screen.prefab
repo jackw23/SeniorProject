@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: x5
+  m_text: x0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1105,6 +1105,8 @@ MonoBehaviour:
   earthUltimateLevelText: {fileID: 0}
   earthUltimateCDBtn: {fileID: 0}
   earthUltimateCDText: {fileID: 0}
+  currentButtonGO: {fileID: 0}
+  SkillUpgradeButtonsParent: {fileID: 0}
   upgradePanel: {fileID: 7683721183056433423}
   upgradeMessage: {fileID: 7683721182467822437}
   numCoinsText: {fileID: 0}
@@ -1462,7 +1464,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cost: 1 skill point'
+  m_text: 'Cost: 1 Upgrade Coin'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2339,7 +2341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7683721183056433422
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4844,7 +4846,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6972309778915635928, guid: c19578b01b6bcfb4d968532b4548e67d, type: 3}
       propertyPath: m_text
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7080732850215157754, guid: c19578b01b6bcfb4d968532b4548e67d, type: 3}
       propertyPath: m_text
@@ -5013,7 +5015,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6972309778915635928, guid: c19578b01b6bcfb4d968532b4548e67d, type: 3}
       propertyPath: m_text
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7080732850215157754, guid: c19578b01b6bcfb4d968532b4548e67d, type: 3}
       propertyPath: m_text
@@ -5843,7 +5845,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6972309778915635928, guid: c19578b01b6bcfb4d968532b4548e67d, type: 3}
       propertyPath: m_text
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7080732850215157754, guid: c19578b01b6bcfb4d968532b4548e67d, type: 3}
       propertyPath: m_text
@@ -6032,7 +6034,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6972309778915635928, guid: c19578b01b6bcfb4d968532b4548e67d, type: 3}
       propertyPath: m_text
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7080732850215157754, guid: c19578b01b6bcfb4d968532b4548e67d, type: 3}
       propertyPath: m_text

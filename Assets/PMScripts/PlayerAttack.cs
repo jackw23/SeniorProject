@@ -48,6 +48,23 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown("0"))
+        {
+            playerMovement.updateAttackSelected(0);
+        }
+        if (Input.GetKeyDown("1"))
+        {
+            playerMovement.updateAttackSelected(1);
+        }
+        if (Input.GetKeyDown("2"))
+        {
+            playerMovement.updateAttackSelected(2);
+        }
+        if (Input.GetKeyDown("3"))
+        {
+            playerMovement.updateAttackSelected(3);
+        }
+
         if (Input.GetMouseButton(0) && cooldownTimer > currentAttackCooldown && playerMovement.canAttack())
         {
             // should always be 0-3
