@@ -12,13 +12,13 @@ GameObject:
   - component: {fileID: 8944967988419523145}
   - component: {fileID: 8944967988419523150}
   - component: {fileID: 8944967988419523151}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: BlueArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8944967988419523148
 Transform:
   m_ObjectHideFlags: 0
@@ -137,13 +137,13 @@ GameObject:
   - component: {fileID: 8944967988466936951}
   - component: {fileID: 8944967988466936948}
   - component: {fileID: 8944967988466936949}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: PinkArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8944967988466936954
 Transform:
   m_ObjectHideFlags: 0
@@ -260,7 +260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8944967989089599531}
   - component: {fileID: 8944967989089599528}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: MinimapTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -276,7 +276,7 @@ Transform:
   m_GameObject: {fileID: 8944967989089599529}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.0703, y: 0.1224, z: 11}
-  m_LocalScale: {x: 3.7065983, y: 3.734693, z: 1}
+  m_LocalScale: {x: 8.340451, y: 8.049728, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8944967989173726345}
@@ -326,7 +326,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: df282e49a27058e469c2d1bbe25a9939, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b6cbd0d517d355e45a0515bd5c1c40ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -347,7 +347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8944967989173726345}
   - component: {fileID: 8944967989173726344}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Map BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,8 +362,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8944967989173726350}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3393408, y: -2.1964858, z: 1}
-  m_LocalScale: {x: 31.967724, y: 16.071426, z: 1}
+  m_LocalPosition: {x: -2.84843, y: -0.43802, z: 1}
+  m_LocalScale: {x: 86.720375, y: 38.545876, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8944967989089599531}
