@@ -17,6 +17,7 @@ public class StateMachine : MonoBehaviour
     [HideInInspector] public SpriteRenderer sprite;
     [HideInInspector] public Enemy enemy;
     [HideInInspector] public Rigidbody2D rigidBody;
+    [HideInInspector] public Animator animator;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class StateMachine : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         enemy = GetComponent<Enemy>();
         rigidBody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
 
         originalPosition = transform.position;
 
@@ -75,6 +77,10 @@ public class StateMachine : MonoBehaviour
 
     public Vector3 GetOriginalPosition() {
         return originalPosition;
+    }
+
+    public void SetOriginalPosition(Vector3 _originalPosition) {
+        originalPosition = _originalPosition;
     }
     // TODO: Add components needed by the grunt for its various states, such as initial position and whatnot
 }

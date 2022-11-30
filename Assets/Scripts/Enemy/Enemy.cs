@@ -9,9 +9,9 @@ public class Enemy : MonoBehaviour
     public float meleeRange = 0.5f;
     public float rangedAttackRange = 10.0f;
     public float bulletTravelTime = 5.0f;
-    public float rangedAttackSpeed = 5.0f;
     public int meleeDamage = 20;
     public int rangedDamage = 15;
+    public int rangedAttackSpeed = 5;
     public int contactDamage = 5;
     public float meleeAttackRate = 0.5f;
     public float rangedAttackRate = 0.3f;
@@ -25,18 +25,27 @@ public class Enemy : MonoBehaviour
     public LayerMask playerLayer;
     public GameObject bulletPrefab;
     Health health;
-    PlayerMovement playerMovement;
+    Animator animator;
+    private float animatorTimer;
     // Start is called before the first frame update
     void Start()
     {
         stateMachine = GetComponent<StateMachine>();
         health = GetComponent<Health>();
+        animator = GetComponent<Animator>();
+
+        AnimationClip[] animationClips = animator.runtimeAnimatorController.animationClips;
+        foreach (AnimationClip clip in animationClips) {
+            if (clip.name == "Attack") {
+                animatorTimer = clip.length;
+            }
+        }
     }
 
     public void MeleeAttack(Collider2D collider) {
-        //Animator;
+        animator.SetBool("attack", true);
         if (collider != null) {
-            playerMovement = collider.GetComponent<PlayerMovement>();
+            PlayerMovement playerMovement = collider.GetComponent<PlayerMovement>();
 
             if (playerMovement != null) {
                 playerMovement.takeDamage(meleeDamage);
@@ -49,22 +58,35 @@ public class Enemy : MonoBehaviour
     }
 
     public void RangedAttack() {
+        StartCoroutine(Ranged());
+    }
+
+    IEnumerator Ranged() {
+        //animator.SetBool("attack", true);
+
+        yield return new WaitForSeconds(animatorTimer / 2);
+
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         bulletScript.bulletDamage = rangedDamage;
         bulletScript.bulletLifeSpan = bulletTravelTime;
         bulletScript.bulletSpeed = rangedAttackSpeed;
+        
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.collider.name == "Player") {
-            playerMovement = collision.collider.GetComponent<PlayerMovement>();
-            
-            if (playerMovement != null) {
-                playerMovement.takeDamage(contactDamage);
-            }
-            // health.TakeDamage(40);
+        if (collision.collider.name == "Red Witch") {
+            Debug.Log("Player lost " + contactDamage + " health!");
+            //health.TakeDamage(100);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collider) {
+        if (collider.name == "Red Witch") {
+            Debug.Log("Red witch took 15 damage");
+            PlayerMovement player = collider.GetComponent<PlayerMovement>();
+            player.takeDamage(contactDamage);
         }
     }
 

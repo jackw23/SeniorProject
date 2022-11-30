@@ -7,11 +7,13 @@ public class MoveLeftState : State
 {
     public Transform enemyTransform;
     public Transform playerTransform;
+    Animator animator;
     public float movementSpeed = 0.8f;
 
     public override void Enter(StateMachine stateMachine) {
         enemyTransform = stateMachine.transform;
         playerTransform = stateMachine.playerTransform;
+        animator = stateMachine.animator;
 
         enemyTransform.rotation = Quaternion.LookRotation(Vector3.back);
     }
@@ -30,6 +32,7 @@ public class MoveLeftState : State
             if (!stateMachine.followingPath) {
                 stateMachine.followingPath = true;
                 stateMachine.unit.StartPath(newDestination);
+                animator.SetBool("moving", true);
             }
         } else {
             stateMachine.nextState = stateMachine.idle;
@@ -40,6 +43,7 @@ public class MoveLeftState : State
     }
 
     public override void Exit(StateMachine stateMachine) {
+        animator.SetBool("moving", false);
         stateMachine.TransitionState(stateMachine.nextState);
 
     }

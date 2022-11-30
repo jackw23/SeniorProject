@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,17 +8,25 @@ using System;
 public class IdleState : State
 {
     private float time;
+    private bool startUp = true;
     private Transform playerTransform, enemyTransform;
+    private Animator animator;
     public override void Enter(StateMachine stateMachine)
     {
         time = Time.time;
         playerTransform = stateMachine.playerTransform;
         enemyTransform = stateMachine.transform;
-        //Animator.setTrigger("Idle");
+        animator = stateMachine.animator;
+        animator.SetBool("idle", true);
     }
 
     public override void Execute(StateMachine stateMachine)
     {
+        // if (startUp) {
+        //     stateMachine.SetOriginalPosition(enemyTransform.position);
+        //     startUp = false;
+        // }
+
         float horizontalDistance = Math.Abs(enemyTransform.position.x - playerTransform.position.x);
 
         if (horizontalDistance < stateMachine.enemy.aggroRange && stateMachine.enemy.mobile && stateMachine.enemy.aggressive) {
@@ -37,11 +46,15 @@ public class IdleState : State
                 } else {
                     if (enemyTransform.position.x > stateMachine.GetOriginalPosition().x) {
                         stateMachine.nextState = stateMachine.moveLeft;
+                        
                     } else {
                         stateMachine.nextState = stateMachine.moveRight;
                     }
                     Exit(stateMachine);
                 }
+            } else if (stateMachine.enemy.aggressive) {
+                stateMachine.nextState = stateMachine.attack;
+                Exit(stateMachine);
             } else if (stateMachine.enemy.constantAim) {
                 stateMachine.nextState = stateMachine.attack;
                 Exit(stateMachine);
@@ -60,6 +73,7 @@ public class IdleState : State
 
     public override void Exit(StateMachine stateMachine)
     {
+        animator.SetBool("idle", false);
         stateMachine.TransitionState(stateMachine.nextState);
     }
 }

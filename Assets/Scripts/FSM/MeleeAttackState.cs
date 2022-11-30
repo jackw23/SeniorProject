@@ -7,8 +7,9 @@ using UnityEngine;
 public class MeleeAttackState : State
 {
     Transform enemyTransform, playerTransform, attackPoint;
-    float attackRange, attackCenter;
+    float attackRange, attackCenter, attackTimer, animationTime;
     float nextAttackTime = 0f;
+    Animator animator;
     
     public override void Enter(StateMachine stateMachine)
     {
@@ -17,16 +18,30 @@ public class MeleeAttackState : State
         attackPoint = stateMachine.enemy.attackPoint;
         attackRange = stateMachine.enemy.meleeRange;
         attackCenter = enemyTransform.position.x + attackPoint.position.x;
+        animator = stateMachine.animator;
+        animator.SetBool("idle", true);
+
+        AnimationClip[] animationClips = animator.runtimeAnimatorController.animationClips;
+        foreach (AnimationClip clip in animationClips) {
+            if (clip.name == "Attack") {
+                attackTimer = clip.length;
+            }
+        }
     }  
 
     public override void Execute(StateMachine stateMachine)
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, stateMachine.enemy.playerLayer);
-
+        Debug.Log(attackTimer);
         if (!stateMachine.enemy.constantMelee && colliders.Length > 0) {
             if (Time.time > nextAttackTime) {
                 stateMachine.enemy.MeleeAttack(colliders[0]);
+                animationTime = Time.time + attackTimer;
                 nextAttackTime = Time.time + 1 / stateMachine.enemy.meleeAttackRate;
+            }
+
+            if (Time.time > animationTime) {
+                animator.SetBool("attack", false);  
             }
 
         } else if (stateMachine.enemy.constantMelee) {
@@ -41,6 +56,8 @@ public class MeleeAttackState : State
 
     public override void Exit(StateMachine stateMachine)
     {   
+        animator.SetBool("attack", false);
+        animator.SetBool("idle", false);
         stateMachine.TransitionState(stateMachine.nextState);
     }   
 }

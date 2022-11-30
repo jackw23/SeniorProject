@@ -42,6 +42,9 @@ public class Unit : MonoBehaviour
     public void OnPathFound(Vector3[] newPath, bool successfull) {
         if (successfull) {
             Vector3[] path = newPath;
+            foreach (Vector3 node in path) {
+                //Debug.Log(node);
+            }
             targetIndex = 0;
             StopCoroutine("FollowPath");
             StartCoroutine(FollowPath(path));
@@ -89,8 +92,9 @@ public class Unit : MonoBehaviour
     IEnumerator FollowPath(Vector3[] path) {
         followingPath = true;
         Vector3 currentWaypoint = path[0];
+        Vector3 actualWaypoint = new Vector3(currentWaypoint.x, transform.position.y, currentWaypoint.z);
         while (followingPath) {
-            if (transform.position == currentWaypoint) {
+            if ((transform.position == currentWaypoint && flying) || (transform.position == actualWaypoint && !flying)) {
                 targetIndex++;
                 if (targetIndex >= path.Length) {
                     // targetIndex = 0;
@@ -99,8 +103,18 @@ public class Unit : MonoBehaviour
                     yield break;
                 }
                 currentWaypoint = path[targetIndex];
+                actualWaypoint = new Vector3(currentWaypoint.x, transform.position.y, currentWaypoint.z);
             }
-            transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
+            //Debug.Log(currentWaypoint);
+            if (flying) {
+                transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
+            } else {
+                //Debug.Log(actualWaypoint);
+                transform.position = Vector3.MoveTowards(transform.position, actualWaypoint, speed * Time.deltaTime);
+            }
+
+            // traansform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
+            
             yield return null;
         }
     }
