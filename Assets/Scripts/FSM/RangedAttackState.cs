@@ -7,7 +7,8 @@ public class RangedAttackState : State
     Transform enemyTransform, playerTransform, firePointTransform;
     float nextAttackTime = 0f;
     Vector3 attackDirection;
-    float angle;
+    float angle, attackTimer, animationStart, animationTime;
+    Animator animator;
 
     public override void Enter(StateMachine stateMachine)
     {
@@ -20,6 +21,16 @@ public class RangedAttackState : State
             angle = Mathf.Atan2(attackDirection.y, attackDirection.x) * Mathf.Rad2Deg;
             firePointTransform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
+
+        animator = stateMachine.animator;
+        animator.SetBool("idle", true);
+
+        AnimationClip[] animationClips = animator.runtimeAnimatorController.animationClips;
+        foreach (AnimationClip clip in animationClips) {
+            if (clip.name == "Attack") {
+                attackTimer = clip.length;
+            }
+        }
         
     }
 
@@ -27,6 +38,9 @@ public class RangedAttackState : State
     {
         if (Vector3.Distance(playerTransform.position, enemyTransform.position) < stateMachine.enemy.rangedAttackRange && !stateMachine.enemy.constantAim) {
             if (Time.time > nextAttackTime) {
+                animationTime = Time.time + attackTimer;
+                animator.SetBool("attack", true);
+                animationStart = Time.time;
                 if (enemyTransform.position.x - playerTransform.position.x > 0) {
                     enemyTransform.rotation = Quaternion.LookRotation(Vector3.back);
                 } else {
@@ -36,9 +50,13 @@ public class RangedAttackState : State
                 attackDirection = playerTransform.position - firePointTransform.position;
                 angle = Mathf.Atan2(attackDirection.y, attackDirection.x) * Mathf.Rad2Deg;
                 firePointTransform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-                
+
                 stateMachine.enemy.RangedAttack(); 
                 nextAttackTime = Time.time + 1 / stateMachine.enemy.rangedAttackRate;
+            }
+
+            if (Time.time > animationTime) {
+                animator.SetBool("attack", false);  
             }
         } else if (stateMachine.enemy.constantAim) {
             stateMachine.enemy.RangedAttack(); 
@@ -53,6 +71,8 @@ public class RangedAttackState : State
 
     public override void Exit(StateMachine stateMachine)
     {
+        animator.SetBool("attack", false);
+        animator.SetBool("idle", false);
         stateMachine.enemy.firePoint.rotation = enemyTransform.rotation;
         stateMachine.TransitionState(stateMachine.nextState);
     }

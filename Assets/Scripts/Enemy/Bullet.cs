@@ -6,7 +6,8 @@ public class Bullet : MonoBehaviour
 {
     public float bulletSpeed = 10.0f;
     Rigidbody2D rigidBody2D;
-    public float bulletDamage = 0f;
+    PlayerMovement playerMovement;
+    public int bulletDamage = 0;
     float time;
     public float bulletLifeSpan;
 
@@ -27,7 +28,12 @@ public class Bullet : MonoBehaviour
     }
 
     public void OnTriggerEnter2D(Collider2D collider) {
-        Debug.Log("Dealt " + bulletDamage + " damage to " + collider.name);
+        playerMovement = collider.GetComponent<PlayerMovement>();
+
+        if (playerMovement != null) {
+            playerMovement.takeDamage(bulletDamage);
+        }
+        //Debug.Log("Dealt " + bulletDamage + " damage to " + collider.name);
         Destroy(gameObject);
     }
 }

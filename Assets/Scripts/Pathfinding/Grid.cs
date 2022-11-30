@@ -34,7 +34,7 @@ public class Grid : MonoBehaviour
         if (grid != null) {
             
             Node playerNode = GetNodeFromWorldPosition(playerTransform.position);
-            // Node enemyNode = GetNodeFromWorldPosition(enemyTransform.position);
+            Node enemyNode = GetNodeFromWorldPosition(enemyTransform.position);
 
             foreach (Node n in grid) {
                 if (n.walkable && n.flyable) {
@@ -46,6 +46,9 @@ public class Grid : MonoBehaviour
                 }
                 if (playerNode == n) {
                     Gizmos.color = Color.green;
+                }
+                if (enemyNode == n) {
+                    Gizmos.color = Color.cyan;
                 }
                 Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter-.1f));
             }
