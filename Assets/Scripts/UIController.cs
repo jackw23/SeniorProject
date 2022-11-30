@@ -19,7 +19,17 @@ public class UIController : MonoBehaviour
     {
         if (Input.GetKeyDown("escape"))
         {
+            /*
+            if (!pauseMenu.activeSelf)
+            {
+                InventoryManager.Instance.cleanInventory();
+            }*/
+            InventoryManager.Instance.ListItem();
+
             pauseMenu.SetActive(!pauseMenu.activeInHierarchy);
+            
+           
+
         }
 
         if (Input.GetKeyDown(KeyCode.M))

@@ -218,7 +218,7 @@ public class PlayerMovement : MonoBehaviour
     /// Function to call to increase health
     /// </summary>
     /// <param name="_damage"></param>
-    public void addHealth(int _health = 1)
+    public void addHealth(int _health)
     {
         health += _health;
     }

@@ -71,4 +71,9 @@ public class Airburst : MonoBehaviour
 
         transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z);
     }
+
+    public void IncreaseDamage()
+    {
+        damage = damage + 1;
+    }
 }
