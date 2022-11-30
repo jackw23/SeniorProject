@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f547270693773e47af9c96c864d7071, type: 3}
-  m_Name: 2HP
+  m_Name: 20HP
   m_EditorClassIdentifier: 
   id: 0
-  value: 2
-  itemName: +2HP
+  value: 20
+  itemName: +20HP
   icon: {fileID: 21300000, guid: 6df38042fa5139b4db35586033fc0b9b, type: 3}
   itemType: 1

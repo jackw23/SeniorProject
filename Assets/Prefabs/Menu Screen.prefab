@@ -2341,7 +2341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7683721183056433422
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4850,7 +4850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7080732850215157754, guid: c19578b01b6bcfb4d968532b4548e67d, type: 3}
       propertyPath: m_text
-      value: CD(s)
+      value: CD
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c19578b01b6bcfb4d968532b4548e67d, type: 3}
@@ -5019,7 +5019,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7080732850215157754, guid: c19578b01b6bcfb4d968532b4548e67d, type: 3}
       propertyPath: m_text
-      value: CD(s)
+      value: CD
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c19578b01b6bcfb4d968532b4548e67d, type: 3}
@@ -5849,7 +5849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7080732850215157754, guid: c19578b01b6bcfb4d968532b4548e67d, type: 3}
       propertyPath: m_text
-      value: CD(s)
+      value: CD
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c19578b01b6bcfb4d968532b4548e67d, type: 3}
@@ -6038,7 +6038,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7080732850215157754, guid: c19578b01b6bcfb4d968532b4548e67d, type: 3}
       propertyPath: m_text
-      value: CD(s)
+      value: CD
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}

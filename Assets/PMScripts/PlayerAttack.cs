@@ -138,8 +138,8 @@ public class PlayerAttack : MonoBehaviour
     {
         cooldownTimer = 0;
 
-        waterBalls[FindEarthBlock()].transform.position = firePoint.position;
-        waterBalls[FindEarthBlock()].GetComponent<EarthBlock>().SetDirection(Mathf.Sign(transform.localScale.x));
+        earthBlocks[FindEarthBlock()].transform.position = firePoint.position;
+        earthBlocks[FindEarthBlock()].GetComponent<EarthBlock>().SetDirection(Mathf.Sign(transform.localScale.x));
 
         currentAttackCooldown = earthAttackCooldown;
 
@@ -198,14 +198,14 @@ public class PlayerAttack : MonoBehaviour
         {
             for (int i = 0; i < fireballs.Length; i++)
             {
-                fireballs[i].GetComponent<Airburst>().IncreaseDamage();
+                airBursts[i].GetComponent<Airburst>().IncreaseDamage();
             }
         }
         else if (s == "earth")
         {
             for (int i = 0; i < fireballs.Length; i++)
             {
-                fireballs[i].GetComponent<EarthBlock>().IncreaseDamage();
+                earthBlocks[i].GetComponent<EarthBlock>().IncreaseDamage();
             }
         }
         
