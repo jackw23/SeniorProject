@@ -1724,6 +1724,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 225052977899031742, guid: b89060d1ac191584e80eb104d62a55c3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.8625
+      objectReference: {fileID: 0}
+    - target: {fileID: 225052977899031742, guid: b89060d1ac191584e80eb104d62a55c3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -126.3
       objectReference: {fileID: 0}
@@ -2016,6 +2020,10 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 225052977899031742, guid: b89060d1ac191584e80eb104d62a55c3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.825
+      objectReference: {fileID: 0}
+    - target: {fileID: 225052977899031742, guid: b89060d1ac191584e80eb104d62a55c3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -78.6
       objectReference: {fileID: 0}
@@ -2162,7 +2170,7 @@ Transform:
   m_GameObject: {fileID: 1223082791}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -102.560005, y: -48, z: 0}
-  m_LocalScale: {x: 1.6, y: 2.056199, z: 1}
+  m_LocalScale: {x: 2.4300187, y: 2.056199, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2549,6 +2557,37 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   frontCheck: {fileID: 115122213}
+--- !u!1 &1302450014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1302450015}
+  m_Layer: 0
+  m_Name: Firepoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1302450015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302450014}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1411187117}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1411187117 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3759157343547105259, guid: f7197e9adafbfca499a2bf01b4b78d8b, type: 3}
@@ -2982,7 +3021,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3759157343547105256, guid: f7197e9adafbfca499a2bf01b4b78d8b, type: 3}
       propertyPath: jumpPower
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3759157343547105256, guid: f7197e9adafbfca499a2bf01b4b78d8b, type: 3}
       propertyPath: checkRadius
@@ -3050,6 +3089,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7197e9adafbfca499a2bf01b4b78d8b, type: 3}
+--- !u!1 &1879584318 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3759157343547105253, guid: f7197e9adafbfca499a2bf01b4b78d8b, type: 3}
+  m_PrefabInstance: {fileID: 1879584317}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1879584319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879584318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02527a1993e04454aa22ea6d9de88d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCooldown: 0.5
+  firePoint: {fileID: 1302450015}
+  fireballs:
+  - {fileID: 1888912314}
+  - {fileID: 967950831}
+  - {fileID: 1273897974}
+  - {fileID: 1751463811}
+  - {fileID: 1282506902}
+  - {fileID: 1601518692}
+  - {fileID: 467281854}
+  - {fileID: 1150464928}
+  - {fileID: 781401624}
+  - {fileID: 593736775}
+  airBursts: []
+  waterBalls: []
+  earthBlocks: []
 --- !u!1 &1888912314
 GameObject:
   m_ObjectHideFlags: 0

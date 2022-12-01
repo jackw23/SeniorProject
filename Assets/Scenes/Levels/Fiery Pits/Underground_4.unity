@@ -685,7 +685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3759157343547105256, guid: f7197e9adafbfca499a2bf01b4b78d8b, type: 3}
       propertyPath: jumpPower
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3759157343547105256, guid: f7197e9adafbfca499a2bf01b4b78d8b, type: 3}
       propertyPath: checkRadius
@@ -745,6 +745,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7197e9adafbfca499a2bf01b4b78d8b, type: 3}
+--- !u!1 &433311657 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3759157343547105253, guid: f7197e9adafbfca499a2bf01b4b78d8b, type: 3}
+  m_PrefabInstance: {fileID: 433311656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &467281854
 GameObject:
   m_ObjectHideFlags: 0
@@ -1801,6 +1806,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 225052977899031742, guid: 0b3e0228e60534745827640152b42abc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9375
+      objectReference: {fileID: 0}
+    - target: {fileID: 225052977899031742, guid: 0b3e0228e60534745827640152b42abc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -65.41
       objectReference: {fileID: 0}
@@ -1847,6 +1856,34 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3759157343547105259, guid: f7197e9adafbfca499a2bf01b4b78d8b, type: 3}
   m_PrefabInstance: {fileID: 433311656}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1039816627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433311657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02527a1993e04454aa22ea6d9de88d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCooldown: 0.5
+  firePoint: {fileID: 1687296659}
+  fireballs:
+  - {fileID: 1888912314}
+  - {fileID: 967950831}
+  - {fileID: 1273897974}
+  - {fileID: 1751463811}
+  - {fileID: 1282506902}
+  - {fileID: 1601518692}
+  - {fileID: 467281854}
+  - {fileID: 1150464928}
+  - {fileID: 781401624}
+  - {fileID: 593736775}
+  airBursts: []
+  waterBalls: []
+  earthBlocks: []
 --- !u!1 &1115590615
 GameObject:
   m_ObjectHideFlags: 0
@@ -2098,6 +2135,10 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 225052977899031742, guid: 0b3e0228e60534745827640152b42abc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9125
+      objectReference: {fileID: 0}
+    - target: {fileID: 225052977899031742, guid: 0b3e0228e60534745827640152b42abc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.01
       objectReference: {fileID: 0}
@@ -2244,7 +2285,7 @@ Transform:
   m_GameObject: {fileID: 1223082791}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -42.9, y: -17, z: 0}
-  m_LocalScale: {x: 1.6, y: 2.4767852, z: 1}
+  m_LocalScale: {x: 2.3650002, y: 2.6625443, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2826,6 +2867,37 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   frontCheck: {fileID: 246120867}
+--- !u!1 &1687296658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1687296659}
+  m_Layer: 0
+  m_Name: Firepoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1687296659
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687296658}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1039816626}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1751463811
 GameObject:
   m_ObjectHideFlags: 0

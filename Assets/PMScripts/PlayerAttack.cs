@@ -67,7 +67,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (Input.GetMouseButton(0) && cooldownTimer > currentAttackCooldown && playerMovement.canAttack())
         {
-            // should always be 0-3
+            // Should always be 0-3
             switch (playerMovement.attackSelected)
             {
                 case 0:
