@@ -88,13 +88,13 @@ GameObject:
   - component: {fileID: 581779647752509324}
   - component: {fileID: 581779647752509325}
   - component: {fileID: 581779647752509326}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Map Marker Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &581779647752509327
 RectTransform:
   m_ObjectHideFlags: 0
