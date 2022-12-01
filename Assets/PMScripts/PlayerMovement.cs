@@ -179,12 +179,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
     /// <summary>
-    /// Character can attack when not facing an object directly in front of it.
+    /// Character can attack if attacks are remaining
     /// </summary>
     /// <returns></returns>
     public bool canAttack()
     {
-        return !isTouchingFront && attacksRemaining > 0;
+        return attacksRemaining > 0;
     }
 
     /// <summary>
