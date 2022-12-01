@@ -32,7 +32,6 @@ public class MeleeAttackState : State
     public override void Execute(StateMachine stateMachine)
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, stateMachine.enemy.playerLayer);
-        Debug.Log(attackTimer);
         if (!stateMachine.enemy.constantMelee && colliders.Length > 0) {
             if (Time.time > nextAttackTime) {
                 stateMachine.enemy.MeleeAttack(colliders[0]);

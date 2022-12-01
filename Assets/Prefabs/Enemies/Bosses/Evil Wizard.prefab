@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 6911841620549527839}
   - component: {fileID: 6911841620549527838}
   - component: {fileID: 6911841620549527833}
+  - component: {fileID: 7247866455415820404}
   - component: {fileID: 6911841620549527832}
   - component: {fileID: 6911841620549527835}
   - component: {fileID: 6911841620549527834}
@@ -134,7 +135,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.13444042, y: -0.95939684}
@@ -150,6 +151,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.0999665, y: 3.3098917}
   m_EdgeRadius: 0
+--- !u!70 &7247866455415820404
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6911841620549527812}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.017908573, y: -1.1282177}
+  m_Size: {x: 1.1193457, y: 2.9101677}
+  m_Direction: 0
 --- !u!50 &6911841620549527832
 Rigidbody2D:
   serializedVersion: 4
@@ -170,7 +187,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &6911841620549527835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,13 +207,14 @@ MonoBehaviour:
   chase: {fileID: 0}
   meleeUp: {fileID: 0}
   meleeDown: {fileID: 0}
+  meleeAttack: {fileID: 0}
   rangedAttack: {fileID: 0}
   fightStart: {fileID: 0}
   jump: {fileID: 0}
   jumpAway: {fileID: 0}
   nextState: {fileID: 0}
-  currentState: {fileID: 0}
   previousState: {fileID: 0}
+  currentState: {fileID: 0}
   boxCollider2D: {fileID: 0}
   rigidBody: {fileID: 0}
   spriteRenderer: {fileID: 0}
@@ -217,39 +235,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea543eef98d9142869c271803d081f84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossOne: 1
+  bossTwo: 0
+  bossThree: 0
+  stageOne: 1
   stageTwo: 0
   stageThree: 0
+  inStageOne: 0
   inStageTwo: 0
   inStageThree: 0
-  mobile: 0
   fightStarted: 0
-  speed: 5
-  damageResistance: 20
+  speed: 7
+  damageResistance: 30
+  contactDamage: 20
+  meleeOneDamage: 15
+  meleeTwoDamage: 20
   meleeAttackRange: 5
-  meleeUpDamage: 20
-  meleeDownDamage: 30
-  attackUpRange: 1.3
-  attackDownRange: 1.2
-  attackRange: 10
-  rangedAttackDamage: 30
-  meleeAttackRate: 0.3
-  rangedAttackRate: 0.1
-  contactDamage: 10
+  attackOneRange: 1.04
+  attackTwoRange: 1.35
+  rangedAttackRange: 0
+  rangedOneDamage: 0
+  rangedTwoDamage: 0
+  rangedThreeDamage: 0
+  rangedAttackTravelTime: 0
+  projectileOneSpeed: 0
+  projectileTwoSpeed: 0
   idleTime: 3
   idleStartUpTime: 5
   startUpTime: 2
-  layerMask:
+  idleMeleeTime: 4
+  idleRangedTime: 0
+  playerMask:
     serializedVersion: 2
     m_Bits: 1024
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  meleePointUp: {fileID: 6911841620670651067}
-  meleePointDown: {fileID: 6911841621061527699}
+  meleePointOne: {fileID: 6911841620670651067}
+  meleePointTwo: {fileID: 6911841621061527699}
   rangedPoint: {fileID: 0}
+  rangedPointTwo: {fileID: 0}
   groundPoint: {fileID: 6911841620306738221}
   groundPointSize: {x: 1.38, y: 0.05}
   jumpForce: {x: 1, y: 10}
+  projectileOne: {fileID: 0}
+  projectileTwo: {fileID: 0}
+  projectileThree: {fileID: 0}
 --- !u!114 &6911841620549527813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,7 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe8883b1ace043749da2355cef80cb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1000
+  maxHealth: 250
   stageTwoCutOff: 500
   stageThreeCutOff: 200
 --- !u!95 &6911841620549527836

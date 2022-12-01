@@ -33,6 +33,8 @@ public class BossJumpAwayState : BossState
     public override void Execute(BossStateMachine bossStateMachine)
     {
         if (Physics2D.OverlapBox(groundPoint.position, groundSize, 0, groundLayer)) {
+
+            Debug.Log("helo");
             animator.SetBool("jump", false);
             isJumping = false;
 
@@ -40,7 +42,7 @@ public class BossJumpAwayState : BossState
                 groundedTime = Time.time;
                 jumpTimeSet = true;
             }
-            if (jumpCounter >= 5) {
+            if (jumpCounter >= 1) {
                 if (bossStateMachine.previousState == bossStateMachine.meleeUp) {
                     bossStateMachine.endLoop = true;
                 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7620891672268948266}
   - component: {fileID: 5602906138027379399}
   - component: {fileID: 9012803532235714029}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Glowing Golem Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ Animator:
   m_GameObject: {fileID: 4173004463604314274}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 009139b0cf0ab44278d311a1a0be1a1d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 776c86c6686cb44cd86394e7b35bb58e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -11,13 +11,14 @@ GameObject:
   - component: {fileID: 956824220763513175}
   - component: {fileID: 956824220763513192}
   - component: {fileID: 956824220763513193}
+  - component: {fileID: 535728634953499154}
   - component: {fileID: 4928673463705776815}
   - component: {fileID: 956824220763513194}
   - component: {fileID: 956824220763513195}
   - component: {fileID: 956824220763513196}
   - component: {fileID: 956824220763513174}
   - component: {fileID: 263560077287147923}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Skeleton Warrior 1
   m_TagString: GameController
   m_Icon: {fileID: 0}
@@ -102,7 +103,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.23007512, y: -0.27767664}
@@ -118,6 +119,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0476017, y: 1.8092283}
   m_EdgeRadius: 0
+--- !u!70 &535728634953499154
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956824220763513197}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.21690762, y: -0.39850438}
+  m_Size: {x: 0.5080848, y: 1.557313}
+  m_Direction: 0
 --- !u!50 &4928673463705776815
 Rigidbody2D:
   serializedVersion: 4
@@ -138,7 +155,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &956824220763513194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c87936a2d8db149b8beea759d47f1f6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 30
   currentHealth: 0
 --- !u!114 &956824220763513174
 MonoBehaviour:
@@ -219,7 +236,9 @@ MonoBehaviour:
   aggroRange: 3
   meleeRange: 0.5
   rangedAttackRange: 10
+  rangedAttackSpeed: 5
   bulletTravelTime: 5
+  bulletPrefab: {fileID: 0}
   meleeDamage: 20
   rangedDamage: 15
   contactDamage: 5
@@ -227,7 +246,7 @@ MonoBehaviour:
   rangedAttackRate: 0.3
   idleTime: 5
   distanceMovedRight: 5
-  distanceMovedLeft: 5
+  distanceMovedLeft: 4
   distanceMovedUp: 5
   distanceMovedDown: 5
   attackPoint: {fileID: 956824221370969950}
@@ -235,7 +254,6 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
-  bulletPrefab: {fileID: 0}
 --- !u!95 &263560077287147923
 Animator:
   serializedVersion: 4

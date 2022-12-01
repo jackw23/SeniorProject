@@ -11,6 +11,7 @@ public class BossChaseState : BossState
     Animator animator;
     float movementSpeed;
     bool velocitySet;
+    int loopCounter = 0;
     public override void Enter(BossStateMachine bossStateMachine)
     {
         playerTransform = bossStateMachine.playerTransform;
@@ -35,6 +36,20 @@ public class BossChaseState : BossState
                     bossStateMachine.transform.rotation = Quaternion.LookRotation(Vector3.forward);
                 }
             }
+        } else if (bossEnemy.bossThree) {
+            if (bossStateMachine.previousState == bossStateMachine.idle || bossStateMachine.previousState == bossStateMachine.rangedAttack) {
+                if (bossStateMachine.transform.position.x - bossStateMachine.playerTransform.position.x < 0) {
+                    bossStateMachine.transform.rotation = Quaternion.LookRotation(Vector3.back);
+                } else {
+                    bossStateMachine.transform.rotation = Quaternion.LookRotation(Vector3.forward);
+                }
+            } else if (bossStateMachine.previousState == bossStateMachine.meleeAttack) {
+                if (bossStateMachine.transform.position.x - bossStateMachine.originalPosition.x < 0) {
+                    bossStateMachine.transform.rotation = Quaternion.LookRotation(Vector3.back);
+                } else {
+                    bossStateMachine.transform.rotation = Quaternion.LookRotation(Vector3.forward);
+                }
+            }
         }
 
         Debug.Log("Entering chase state");
@@ -46,14 +61,14 @@ public class BossChaseState : BossState
         if (bossStateMachine.previousState == bossStateMachine.idle || bossStateMachine.previousState == bossStateMachine.rangedAttack) {
             float playerSide = playerTransform.position.x - enemyTransform.position.x;
             if (playerSide > 0) {
-                if (bossEnemy.bossOne)
+                if (bossEnemy.bossOne || bossEnemy.bossThree)
                     animator.SetBool("moving", true);
                 else if (bossEnemy.bossTwo)
                     animator.SetBool("idle", true);
                 rigidbody2D.velocity = new Vector2(1.0f * movementSpeed, rigidbody2D.velocity.y);
                 velocitySet = true;
             } else if (playerSide < 0) {
-                if (bossEnemy.bossOne)
+                if (bossEnemy.bossOne || bossEnemy.bossThree)
                     animator.SetBool("moving", true);
                 else if (bossEnemy.bossTwo)
                     animator.SetBool("idle", true);
@@ -65,6 +80,8 @@ public class BossChaseState : BossState
                     bossStateMachine.nextState = bossStateMachine.meleeUp;
                 } else if (bossEnemy.bossTwo && bossEnemy.inStageOne || bossEnemy.inStageTwo) {
                     bossStateMachine.nextState = bossStateMachine.meleeAttack;
+                } else if (bossEnemy.bossThree) {
+                    bossStateMachine.nextState = bossStateMachine.meleeAttack;
                 }
                 rigidbody2D.velocity = Vector2.zero;
                 Exit(bossStateMachine);
@@ -74,21 +91,42 @@ public class BossChaseState : BossState
             if (originalSide > 0) {
                 if (bossEnemy.bossTwo) {
                     animator.SetBool("idle", true);
+                } else if (bossEnemy.bossThree) {
+                    animator.SetBool("moving", true);
                 }
                 rigidbody2D.velocity = new Vector2(1.0f * movementSpeed, rigidbody2D.velocity.y);
                 velocitySet = true;
             } else if (originalSide < 0) {
                 if (bossEnemy.bossTwo) {
                     animator.SetBool("idle", true);
+                } else if (bossEnemy.bossThree) {
+                    animator.SetBool("moving", true);
                 }
                 rigidbody2D.velocity = new Vector2(-1.0f * movementSpeed, rigidbody2D.velocity.y);
             }
             if (Mathf.Abs(originalSide) < 0.5f) {
-                if (bossStateMachine.previousState == bossStateMachine.meleeAttack) {
-                    bossStateMachine.nextState = bossStateMachine.idle;
-                } else if (bossStateMachine.previousState == bossStateMachine.rangedAttack) {
-                    bossStateMachine.nextState = bossStateMachine.idle;
+                if (bossEnemy.bossTwo && bossEnemy.inStageOne) {
+                    if (bossStateMachine.previousState == bossStateMachine.meleeAttack) {
+                        bossStateMachine.nextState = bossStateMachine.idle;
+                    } else if (bossStateMachine.previousState == bossStateMachine.rangedAttack) {
+                        bossStateMachine.nextState = bossStateMachine.idle;
+                    }
+                } else if (bossEnemy.bossTwo && bossEnemy.inStageTwo) {
+                    if (bossStateMachine.previousState == bossStateMachine.meleeAttack) {
+                        bossStateMachine.nextState = bossStateMachine.rangedAttack;
+                    }
+                } if (bossEnemy.bossThree) {
+                    if (bossEnemy.inStageOne) {
+                        if (loopCounter == 0) {
+                            bossStateMachine.nextState = bossStateMachine.rangedAttack;
+                            loopCounter++;
+                        } else if (loopCounter == 1) {
+                            bossStateMachine.nextState = bossStateMachine.idle;
+                            loopCounter++;
+                        }
+                    }
                 }
+
                 rigidbody2D.velocity = Vector2.zero;
                 Exit(bossStateMachine);
             }
@@ -97,10 +135,15 @@ public class BossChaseState : BossState
 
     public override void Exit(BossStateMachine bossStateMachine)
     {
-        if (bossEnemy.bossOne)
+        if (bossEnemy.bossOne || bossEnemy.bossThree) {
             animator.SetBool("moving", false);
-        else if (bossEnemy.bossTwo)
+            if (bossEnemy.bossThree && loopCounter > 1) {
+                loopCounter = 0;
+            }
+        }   
+        else if (bossEnemy.bossTwo) {
             animator.SetBool("idle", false);
+        }  
         bossStateMachine.TransitionState(bossStateMachine.nextState);
     }
 }

@@ -10,13 +10,19 @@ public class Bullet : MonoBehaviour
     public int bulletDamage = 0;
     float time;
     public float bulletLifeSpan;
+    public bool rightDirection;
 
 
     // Start is called before the first frame update
     void Start()
     {   
         rigidBody2D = GetComponent<Rigidbody2D>();
-        rigidBody2D.velocity = transform.right * bulletSpeed;
+        if (rightDirection) {
+            rigidBody2D.velocity = transform.right * bulletSpeed;
+        } else {
+            rigidBody2D.velocity = transform.right * bulletSpeed;
+        }
+        
         time = Time.time;
     }
 
@@ -27,13 +33,26 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    void KnockBack(PlayerMovement player) {
+        if (player.transform.position.x - transform.position.x > 0) {
+            player.knockBackRight = true;
+        } else {
+            player.knockBackRight = false;
+        }
+
+        player.knockBackCount = player.knockBackLength;
+    }
+
     public void OnTriggerEnter2D(Collider2D collider) {
         playerMovement = collider.GetComponent<PlayerMovement>();
 
         if (playerMovement != null) {
+
+            KnockBack(playerMovement);
+
             playerMovement.takeDamage(bulletDamage);
         }
-        //Debug.Log("Dealt " + bulletDamage + " damage to " + collider.name);
+        Debug.Log("Dealt " + bulletDamage + " damage to " + collider.name);
         Destroy(gameObject);
     }
 }

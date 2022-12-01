@@ -35,7 +35,7 @@ public class BossMeleeDownState : BossState
             attackAnimationStart = Time.time;
             animationTime = Time.time + attackTimer;
             attacked = true;
-            bossEnemy.MeleeAttack(false, true);
+            bossEnemy.MeleeAttack(2);
         }
 
         if (bossStateMachine.transform.position.x - bossStateMachine.playerTransform.position.x > 0) {

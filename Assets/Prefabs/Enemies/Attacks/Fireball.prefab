@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2869478578948190556}
   - component: {fileID: 1990747339136131787}
   - component: {fileID: 3368822940948771465}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,6 +140,7 @@ MonoBehaviour:
   bulletSpeed: 1
   bulletDamage: 0
   bulletLifeSpan: 0
+  rightDirection: 0
 --- !u!95 &3368822940948771465
 Animator:
   serializedVersion: 4

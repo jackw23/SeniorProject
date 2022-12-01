@@ -40,7 +40,9 @@ public class Unit : MonoBehaviour
     }
 
     public void OnPathFound(Vector3[] newPath, bool successfull) {
+        Debug.Log("fuck");
         if (successfull) {
+            Debug.Log("hello");
             Vector3[] path = newPath;
             foreach (Vector3 node in path) {
                 //Debug.Log(node);

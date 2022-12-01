@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 710970108609212658, guid: 012446cef707943818365c07fa593238, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 710970108609212658, guid: 012446cef707943818365c07fa593238, type: 3}
       propertyPath: m_GravityScale
       value: 1
       objectReference: {fileID: 0}
@@ -26,6 +30,10 @@ PrefabInstance:
     - target: {fileID: 8283059225818760497, guid: 012446cef707943818365c07fa593238, type: 3}
       propertyPath: m_Offset.y
       value: -0.7425734
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283059225818760497, guid: 012446cef707943818365c07fa593238, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8283059225818760497, guid: 012446cef707943818365c07fa593238, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -93,7 +101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8283059225818760508, guid: 012446cef707943818365c07fa593238, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8283059225818760509, guid: 012446cef707943818365c07fa593238, type: 3}
       propertyPath: mobile
@@ -112,12 +120,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8036803453969242286, guid: 03741951c59f24618a714b551d80217e, type: 3}
     - target: {fileID: 8283059225818760509, guid: 012446cef707943818365c07fa593238, type: 3}
+      propertyPath: rangedDamage
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283059225818760509, guid: 012446cef707943818365c07fa593238, type: 3}
       propertyPath: bulletTravelTime
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8283059225818760509, guid: 012446cef707943818365c07fa593238, type: 3}
+      propertyPath: rangedAttackRate
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283059225818760509, guid: 012446cef707943818365c07fa593238, type: 3}
       propertyPath: verticalMovement
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283059225818760510, guid: 012446cef707943818365c07fa593238, type: 3}
+      propertyPath: maxHealth
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8283059225818760511, guid: 012446cef707943818365c07fa593238, type: 3}
       propertyPath: playerTransform
@@ -162,3 +182,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &5908591223383642676
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4225974536933191857}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.02328515, y: -0.8926108}
+  m_Size: {x: 0.8555865, y: 2.3148112}
+  m_Direction: 0

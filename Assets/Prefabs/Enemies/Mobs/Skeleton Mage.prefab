@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1089243199014628859}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0.05, z: 0}
+  m_LocalPosition: {x: 1, y: 0.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42,13 +42,14 @@ GameObject:
   - component: {fileID: 1089243199024125058}
   - component: {fileID: 1089243199024125059}
   - component: {fileID: 1089243199024125056}
+  - component: {fileID: 4016096356910962319}
   - component: {fileID: 8373120923023597891}
   - component: {fileID: 1089243199024125057}
   - component: {fileID: 1089243199024125070}
   - component: {fileID: 1089243199024125071}
   - component: {fileID: 1089243199024125068}
   - component: {fileID: 9074351454817031355}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Skeleton Mage
   m_TagString: GameController
   m_Icon: {fileID: 0}
@@ -133,7 +134,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.08983064, y: -0.16169524}
@@ -149,6 +150,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5749164, y: 2.0779693}
   m_EdgeRadius: 0
+--- !u!70 &4016096356910962319
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089243199024125069}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.040354967, y: -0.32283914}
+  m_Size: {x: 0.619061, y: 1.7489984}
+  m_Direction: 0
 --- !u!50 &8373120923023597891
 Rigidbody2D:
   serializedVersion: 4
@@ -169,7 +186,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1089243199024125057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,9 +265,12 @@ MonoBehaviour:
   constantAim: 0
   constantMelee: 0
   aggroRange: 15
+  aggroMeleeRange: 0.5
   meleeRange: 0.5
   rangedAttackRange: 10
+  rangedAttackSpeed: 5
   bulletTravelTime: 5
+  bulletPrefab: {fileID: 4759890258090769934, guid: d9c01a1ee2f6d44c2967244e80cbb198, type: 3}
   meleeDamage: 20
   rangedDamage: 15
   contactDamage: 5
@@ -266,7 +286,6 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
-  bulletPrefab: {fileID: 4759890258090769934, guid: d9c01a1ee2f6d44c2967244e80cbb198, type: 3}
 --- !u!95 &9074351454817031355
 Animator:
   serializedVersion: 4

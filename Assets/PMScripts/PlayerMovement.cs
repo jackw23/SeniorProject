@@ -62,6 +62,12 @@ public class PlayerMovement : MonoBehaviour
     public bool flightEnabled = true;
     public Animator animator;
 
+    [HideInInspector] public float knockBackCount;
+    [Header("Knock Back Settings")]
+    public float knockBackLength;
+    [HideInInspector] public bool knockBackRight, knockBackSet;
+    public Vector2 knockBackStrength;
+
     // Need float variable for animator movement use
     float horizontalMove = 0f;
 
@@ -79,6 +85,8 @@ public class PlayerMovement : MonoBehaviour
         groundLayer = LayerMask.GetMask("ground");
         wallLayer = LayerMask.GetMask("wall");
         pickupLayer = LayerMask.GetMask("pickup");
+
+        knockBackSet = false;
     }
 
     /// <summary>
@@ -94,7 +102,22 @@ public class PlayerMovement : MonoBehaviour
         // Adds Animator Parameter that allows player to transition from idle state to run state, and vice versa
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-        body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+        // Added a knockBackTimer that starts counting down once the player collides with the trigger collider set around the
+        // enemies.
+        if (knockBackCount <= 0) {
+            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+            knockBackSet = false;
+        } else {
+            if (knockBackRight && !knockBackSet) {
+                body.velocity = new Vector2(knockBackStrength.x, knockBackStrength.y);
+                knockBackSet = true;
+            } else if (!knockBackRight && !knockBackSet) {
+                body.velocity = new Vector2(-knockBackStrength.x, knockBackStrength.y);
+                knockBackSet = true;
+            }
+            knockBackCount -= Time.deltaTime;
+        }
+        
 
 
         //Flip player when moving left-right

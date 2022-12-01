@@ -11,7 +11,8 @@ public class BossStateMachine : MonoBehaviour
     //List of states that will be used by the various bosses in the game
     [HideInInspector] public BossState idle, death, stageTransition, chase, meleeUp, meleeDown, meleeAttack, rangedAttack, fightStart, jump, jumpAway;
     
-    [HideInInspector] public BossState nextState, currentState, previousState;
+    [HideInInspector] public BossState nextState, previousState;
+    public BossState currentState;
     [HideInInspector] public BoxCollider2D boxCollider2D;
     [HideInInspector] public Rigidbody2D rigidBody;
     [HideInInspector] public SpriteRenderer spriteRenderer;
@@ -37,7 +38,7 @@ public class BossStateMachine : MonoBehaviour
         if (bossEnemy.bossOne) {
             meleeUp = (BossMeleeUpState)ScriptableObject.CreateInstance(typeof(BossMeleeUpState));
             meleeDown = (BossMeleeDownState)ScriptableObject.CreateInstance(typeof(BossMeleeDownState));
-        } else if (bossEnemy.bossTwo) {
+        } else {
             meleeAttack = (BossMeleeAttackState)ScriptableObject.CreateInstance(typeof(BossMeleeAttackState));
         }
         rangedAttack = (BossRangedAttackState)ScriptableObject.CreateInstance(typeof(BossRangedAttackState));

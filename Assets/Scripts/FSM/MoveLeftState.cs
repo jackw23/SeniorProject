@@ -23,12 +23,12 @@ public class MoveLeftState : State
         float horizontalDistance = Math.Abs(enemyTransform.position.x - playerTransform.position.x);
         float verticalDistance = Math.Abs(enemyTransform.position.y - playerTransform.position.y);
 
-        if (horizontalDistance < 3.0f && stateMachine.enemy.aggressive) {
+        if (horizontalDistance < 3.0f && verticalDistance < 3.0f && stateMachine.enemy.aggressive) {
             stateMachine.nextState = stateMachine.chase;
             stateMachine.unit.StopPathPosition();
             stateMachine.followingPath = false;
             Exit(stateMachine);
-        } else if (enemyTransform.position.x > newDestination.x + 0.6f) {
+        } else if (enemyTransform.position.x > newDestination.x + 1.0f) {
             if (!stateMachine.followingPath) {
                 stateMachine.followingPath = true;
                 stateMachine.unit.StartPath(newDestination);

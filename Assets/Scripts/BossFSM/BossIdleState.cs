@@ -1,3 +1,4 @@
+using System;
 using System.Dynamic;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,11 +19,20 @@ public class BossIdleState : BossState
         animator.SetBool("idle", true);
         time = Time.time;
 
-        if (bossStateMachine.transform.position.x - bossStateMachine.playerTransform.position.x > 0) {
-            bossStateMachine.transform.rotation = Quaternion.LookRotation(Vector3.back);
-        } else {
-            bossStateMachine.transform.rotation = Quaternion.LookRotation(Vector3.forward);
-        }
+        if (bossEnemy.bossOne || bossEnemy.bossTwo) {
+            if (bossStateMachine.transform.position.x - bossStateMachine.playerTransform.position.x > 0) {
+                bossStateMachine.transform.rotation = Quaternion.LookRotation(Vector3.back);
+            } else {
+                bossStateMachine.transform.rotation = Quaternion.LookRotation(Vector3.forward);
+            }
+        } else if (bossEnemy.bossThree) {
+            if (bossStateMachine.transform.position.x - bossStateMachine.playerTransform.position.x < 0) {
+                bossStateMachine.transform.rotation = Quaternion.LookRotation(Vector3.back);
+            } else {
+                bossStateMachine.transform.rotation = Quaternion.LookRotation(Vector3.forward);
+            }
+        }   
+
     }
 
     public override void Execute(BossStateMachine bossStateMachine)
@@ -49,22 +59,41 @@ public class BossIdleState : BossState
                 }
                 Exit(bossStateMachine);
             } 
-        } else if (bossEnemy.bossTwo && bossEnemy.inStageOne) {
-            if (bossStateMachine.previousState == bossStateMachine.fightStart) {
-                bossStateMachine.nextState = bossStateMachine.chase;
-            } else if (bossStateMachine.previousState == bossStateMachine.rangedAttack && bossStateMachine.endLoop) {
-                bossStateMachine.nextState = bossStateMachine.chase;
-            } else if (bossStateMachine.previousState == bossStateMachine.chase) {
-                bossStateMachine.nextState = bossStateMachine.rangedAttack;
+        } else if (bossEnemy.bossTwo) {
+            if (bossEnemy.inStageOne) {
+                if (bossStateMachine.previousState == bossStateMachine.fightStart) {
+                    bossStateMachine.nextState = bossStateMachine.chase;
+                } else if (bossStateMachine.previousState == bossStateMachine.rangedAttack && bossStateMachine.endLoop) {
+                    bossStateMachine.nextState = bossStateMachine.chase;
+                } else if (bossStateMachine.previousState == bossStateMachine.chase) {
+                    bossStateMachine.nextState = bossStateMachine.rangedAttack;
+                }
+            } else if (bossEnemy.inStageTwo) {
+                if (bossStateMachine.previousState == bossStateMachine.stageTransition || bossStateMachine.previousState == bossStateMachine.fightStart) {
+                    bossStateMachine.nextState = bossStateMachine.chase;
+                } else if (bossStateMachine.previousState == bossStateMachine.rangedAttack) {
+                    bossStateMachine.nextState = bossStateMachine.chase;
+                }
             }
             if (Time.time - time > bossEnemy.idleTime) {
                 Exit(bossStateMachine);
             }
-        } else if (bossEnemy.bossTwo && bossEnemy.inStageTwo) {
-            if (bossStateMachine.previousState == bossStateMachine.stageTransition) {
-                bossStateMachine.nextState = bossStateMachine.chase;
-            } else if (bossStateMachine.previousState == bossStateMachine.rangedAttack) {
-                bossStateMachine.nextState = bossStateMachine.chase;
+        } else if (bossEnemy.bossThree) {
+            if (bossEnemy.inStageOne) {
+                if (bossStateMachine.previousState == bossStateMachine.fightStart) {
+                    bossStateMachine.nextState = bossStateMachine.rangedAttack;
+                } else if (bossStateMachine.previousState == bossStateMachine.rangedAttack) {
+                    bossStateMachine.nextState = bossStateMachine.chase;
+                } else if (bossStateMachine.previousState == bossStateMachine.chase) {
+                    bossStateMachine.nextState = bossStateMachine.rangedAttack;
+                }
+            } else if (bossEnemy.inStageThree) {
+
+            } else if (bossEnemy.inStageThree) {
+
+            }
+            if (Time.time - time > bossEnemy.idleTime) {
+                Exit(bossStateMachine);
             }
         }
     }

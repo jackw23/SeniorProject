@@ -6,7 +6,7 @@ public class BossFightStartState : BossState
 {
     Animator animator;
     BossEnemy bossEnemy;
-    float time, glowTimer;
+    float time, animationTimer;
     bool animating;
     public override void Enter(BossStateMachine bossStateMachine)
     {
@@ -15,12 +15,13 @@ public class BossFightStartState : BossState
         bossEnemy = bossStateMachine.bossEnemy;
         animator = bossStateMachine.animator;
 
-        if (bossEnemy.bossTwo) {
-            AnimationClip[] animationClips = animator.runtimeAnimatorController.animationClips;
-            foreach (AnimationClip clip in animationClips) {
-                if (clip.name == "Glowing") {
-                    glowTimer = clip.length;
-                }
+        
+        AnimationClip[] animationClips = animator.runtimeAnimatorController.animationClips;
+        foreach (AnimationClip clip in animationClips) {
+            if (clip.name == "Glowing" && bossEnemy.bossTwo) {
+                animationTimer = clip.length;
+            } else if (clip.name == "Sneer" && bossEnemy.bossThree) {
+                animationTimer = clip.length;
             }
         }
 
@@ -39,12 +40,24 @@ public class BossFightStartState : BossState
         } else if (bossEnemy.bossTwo) {
             if (!animating) {
                 animator.SetBool("glowing", true);
-                time = Time.time + glowTimer;
+                time = Time.time + animationTimer;
                 animating = true;
             }
 
             if (Time.time >= time) {
                 animator.SetBool("glowing", false);
+                bossStateMachine.nextState = bossStateMachine.idle;
+                Exit(bossStateMachine);
+            }
+        } else if (bossEnemy.bossThree) {
+            if (!animating) {
+                animator.SetBool("sneer", true);
+                time = Time.time + animationTimer;
+                animating = true;
+            }
+
+            if (Time.time >= time) {
+                animator.SetBool("sneer", false);
                 bossStateMachine.nextState = bossStateMachine.idle;
                 Exit(bossStateMachine);
             }

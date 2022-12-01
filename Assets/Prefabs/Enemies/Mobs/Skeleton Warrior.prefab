@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6820959731276781419}
   - component: {fileID: 6820959731276781393}
   - component: {fileID: 5784841069228785664}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: Skeleton Warrior
   m_TagString: GameController
   m_Icon: {fileID: 0}
@@ -219,7 +219,9 @@ MonoBehaviour:
   aggroRange: 3
   meleeRange: 0.7
   rangedAttackRange: 10
+  rangedAttackSpeed: 5
   bulletTravelTime: 5
+  bulletPrefab: {fileID: 0}
   meleeDamage: 20
   rangedDamage: 15
   contactDamage: 5
@@ -235,7 +237,6 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
-  bulletPrefab: {fileID: 0}
 --- !u!95 &5784841069228785664
 Animator:
   serializedVersion: 4

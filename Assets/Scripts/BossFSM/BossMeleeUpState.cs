@@ -42,7 +42,7 @@ public class BossMeleeUpState : BossState
             attackAnimationStart = Time.time;
             animationTime = Time.time + attackTimer;
             attacked = true;
-            bossEnemy.MeleeAttack(true, false);
+            bossEnemy.MeleeAttack(1);
         }
 
         if (Time.time >= animationTime) {

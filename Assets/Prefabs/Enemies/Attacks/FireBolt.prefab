@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2171060118273492824}
   - component: {fileID: 3901945738479584363}
   - component: {fileID: 8822742497126594059}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: FireBolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,6 +140,7 @@ MonoBehaviour:
   bulletSpeed: 2
   bulletDamage: 15
   bulletLifeSpan: 0
+  rightDirection: 0
 --- !u!95 &8822742497126594059
 Animator:
   serializedVersion: 4

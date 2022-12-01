@@ -28,8 +28,10 @@ public class IdleState : State
         // }
 
         float horizontalDistance = Math.Abs(enemyTransform.position.x - playerTransform.position.x);
+        float verticalDistance = Math.Abs(enemyTransform.position.y - playerTransform.position.y);
 
-        if (horizontalDistance < stateMachine.enemy.aggroRange && stateMachine.enemy.mobile && stateMachine.enemy.aggressive) {
+        if (horizontalDistance < stateMachine.enemy.aggroRange && verticalDistance < stateMachine.enemy.aggroRange && stateMachine.enemy.mobile && stateMachine.enemy.aggressive) {
+            Debug.Log(verticalDistance);
             stateMachine.nextState = stateMachine.chase;
             Exit(stateMachine);
         }

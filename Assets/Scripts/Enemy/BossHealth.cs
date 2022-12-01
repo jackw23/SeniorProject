@@ -30,7 +30,7 @@ public class BossHealth : MonoBehaviour
             bossEnemy.inStageTwo = true;
         }
         if (bossEnemy.stageThree && currentHealth < stageThreeCutOff && !bossEnemy.stageThree) {
-            //Change stateMachine states to stage 3 states;
+            bossStateMachine.TransitionState(bossStateMachine.stageTransition);
             bossEnemy.inStageThree = true;
             bossEnemy.inStageTwo = false;
             bossEnemy.inStageOne = false;
