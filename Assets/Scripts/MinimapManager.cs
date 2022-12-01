@@ -13,11 +13,6 @@ public class MinimapManager : MonoBehaviour
     {
         //Create singleton so progress will be preserved across scenes
         SetUpSingleton();
-        //Hide all undiscovered areas
-        for (int i = 0; i < areas.Count; i++)
-        {
-            areas[i].SetActive(true);
-        }
     }
 
     private void OnEnable()
