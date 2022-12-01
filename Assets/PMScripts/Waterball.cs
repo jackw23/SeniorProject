@@ -31,6 +31,7 @@ public class Waterball : MonoBehaviour
 
     private void Awake()
     {
+        transform.localScale = new Vector3(1, 1, 1);
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
         canHitLayer = LayerMask.GetMask("canhit");
@@ -46,7 +47,7 @@ public class Waterball : MonoBehaviour
         }
 
         float movementSpeed = speed * Time.deltaTime * direction;
-        transform.Translate(movementSpeed, 0, 0);
+        transform.position = new Vector3(transform.position.x + movementSpeed, transform.position.y, transform.position.z);
 
 
         lifetime += Time.deltaTime;
@@ -64,11 +65,14 @@ public class Waterball : MonoBehaviour
         boxCollider.enabled = true;
 
         float localScaleX = transform.localScale.x;
-        if (Mathf.Sign(localScaleX) != direction)
+        if (_direction < 0)
         {
-            localScaleX = -localScaleX;
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector3(1, 1, 1);
         }
 
-        transform.localScale = new Vector3(localScaleX, transform.localScale.y, transform.localScale.z);
     }
 }
