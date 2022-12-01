@@ -47,4 +47,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Fiery Pits/Underground_10.unity
     guid: cdd185b207e38ba44b1809dc40084031
+  - enabled: 1
+    path: Assets/Scenes/Levels/Forest/Forest_1.unity
+    guid: 276889a6c11c0e8409909a8375341fba
+  - enabled: 1
+    path: Assets/Scenes/Levels/Forest/Forest_2.unity
+    guid: 3e82c9cdccffafd49a66b901c38efc81
+  - enabled: 1
+    path: Assets/Scenes/Levels/Forest/Forest_3.unity
+    guid: a014c5c1ff34c0a4fb274406d0c67e84
+  - enabled: 1
+    path: Assets/Scenes/Levels/Forest/Forest_4.unity
+    guid: 3a3e2773379211b49859ddf375be625f
+  - enabled: 1
+    path: Assets/Scenes/Levels/Forest/Forest_5.unity
+    guid: ba854a25117bc48458f5615913e9ccc1
+  - enabled: 1
+    path: Assets/Scenes/Levels/Forest/Forest_Boss.unity
+    guid: d8685d957789dfd4eaeab9b68181b66e
   m_configObjects: {}

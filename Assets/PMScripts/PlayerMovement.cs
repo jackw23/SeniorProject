@@ -179,12 +179,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
     /// <summary>
-    /// Character can attack when not facing an object directly in front of it.
+    /// Character can attack if attacks are remaining
     /// </summary>
     /// <returns></returns>
     public bool canAttack()
     {
-        return !isTouchingFront && attacksRemaining > 0;
+        return attacksRemaining > 0;
     }
 
     /// <summary>
@@ -218,7 +218,7 @@ public class PlayerMovement : MonoBehaviour
     /// Function to call to increase health
     /// </summary>
     /// <param name="_damage"></param>
-    public void addHealth(int _health = 1)
+    public void addHealth(int _health)
     {
         health += _health;
     }
