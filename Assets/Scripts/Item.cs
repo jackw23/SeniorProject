@@ -17,8 +17,8 @@ public class Item : ScriptableObject
     //public int number = 0;
    public enum ItemType
     {
-        HealthPotion,
-        UpgradeCoins,
-        Key
+        HealthPotion = 1,
+        UpgradeCoin = 2,
+        Key = 3
     }
 }
