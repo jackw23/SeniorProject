@@ -251,8 +251,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: The Witch's Journey
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 40ce8f7bf39b65f4c990d752ba8d1a16, type: 2}
-  m_sharedMaterial: {fileID: 280212285862484659, guid: 40ce8f7bf39b65f4c990d752ba8d1a16, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 38923359677003e49ace84b769918c11, type: 2}
+  m_sharedMaterial: {fileID: 280212285862484659, guid: 38923359677003e49ace84b769918c11, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -385,7 +385,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3a984e4d534514d40a4ba335d623ab12, type: 3}
+    m_Font: {fileID: 12800000, guid: b11c60897b9678f458931d65ad96f5f8, type: 3}
     m_FontSize: 41
     m_FontStyle: 0
     m_BestFit: 0
@@ -596,7 +596,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02527a1993e04454aa22ea6d9de88d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 0.5
+  fireAttackCooldown: 0
+  waterAttackCooldown: 0
+  airAttackCooldown: 0
+  earthAttackCooldown: 0
+  currentAttackCooldown: 0
   firePoint: {fileID: 1350778981}
   fireballs:
   - {fileID: 0}
@@ -708,7 +712,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &1074952850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -756,7 +760,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1074952847}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea6d4f3f7823e1f4a98edea470d4d278, type: 3}
+  m_Script: {fileID: 11500000, guid: dbc8c31e9866e8441b2d02e7c22f5066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1077715502
@@ -859,7 +863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1103644103
 Transform:
   m_ObjectHideFlags: 0
@@ -1041,7 +1045,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3a984e4d534514d40a4ba335d623ab12, type: 3}
+    m_Font: {fileID: 12800000, guid: b11c60897b9678f458931d65ad96f5f8, type: 3}
     m_FontSize: 41
     m_FontStyle: 0
     m_BestFit: 0
@@ -2143,6 +2147,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4308210202371754094, guid: f7197e9adafbfca499a2bf01b4b78d8b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4339728612069445400, guid: f7197e9adafbfca499a2bf01b4b78d8b, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -2194,7 +2202,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4048821288449979972, guid: 6376786d260b3ea429ec7313942f646b, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 119
+      value: 1143
       objectReference: {fileID: 0}
     - target: {fileID: 4048821288449979974, guid: 6376786d260b3ea429ec7313942f646b, type: 3}
       propertyPath: player
