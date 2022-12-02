@@ -8,21 +8,32 @@ public class Health : MonoBehaviour
     public float maxHealth = 100.0f;
     public float currentHealth;
     StateMachine stateMachine;
+    SpriteRenderer spriteRenderer;
+    Color defaultColor;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
+        spriteRenderer = GetComponent<SpriteRenderer>();
         stateMachine = GetComponent<StateMachine>();
+
+        currentHealth = maxHealth;
+        defaultColor = spriteRenderer.color;
     }
 
     public void TakeDamage(float amount) {
         currentHealth = currentHealth - amount;
-        //Animator.TakeDamage;
+        StartCoroutine(HitColor());
         
         if (currentHealth <= 0) {
             Death();
         }
+    }
+
+    IEnumerator HitColor() {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        spriteRenderer.color = defaultColor;
     }
 
     private void Death() {

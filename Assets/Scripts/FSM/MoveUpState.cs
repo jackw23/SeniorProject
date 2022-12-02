@@ -24,7 +24,7 @@ public class MoveUpState : State
             stateMachine.unit.StopPathPosition();
             stateMachine.followingPath = false;
             Exit(stateMachine);
-        } else if (enemyTransform.position.y <= newDestination.y - 0.6f) {
+        } else if (enemyTransform.position.y <= newDestination.y - 1.0f) {
             if (!stateMachine.followingPath) {
                 stateMachine.followingPath = true;
                 stateMachine.unit.StartPath(newDestination);

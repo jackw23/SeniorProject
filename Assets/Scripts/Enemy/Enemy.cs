@@ -62,9 +62,7 @@ public class Enemy : MonoBehaviour
     IEnumerator Melee(Collider2D collider) {
         animator.SetBool("attack", true);
 
-        if (animatorTimer <= 0.5f) {
-            yield return new WaitForSeconds(animatorTimer);
-        } else if (gameObject.name == "NightBorne") {
+        if (gameObject.name == "NightBorne") {
             yield return new WaitForSeconds(animatorTimer - (animatorTimer/12)*2);
         } else {
             yield return new WaitForSeconds(animatorTimer / 2);

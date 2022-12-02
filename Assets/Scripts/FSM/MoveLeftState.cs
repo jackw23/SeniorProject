@@ -28,7 +28,7 @@ public class MoveLeftState : State
             stateMachine.unit.StopPathPosition();
             stateMachine.followingPath = false;
             Exit(stateMachine);
-        } else if (enemyTransform.position.x > newDestination.x + 1.0f) {
+        } else if (enemyTransform.position.x >= newDestination.x + 1.0f) {
             if (!stateMachine.followingPath) {
                 stateMachine.followingPath = true;
                 stateMachine.unit.StartPath(newDestination);

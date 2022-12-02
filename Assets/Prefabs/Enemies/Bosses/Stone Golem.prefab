@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 3625439325895181183}
   - component: {fileID: 3625439325895181158}
   - component: {fileID: 7907175867297844964}
-  m_Layer: 12
+  m_Layer: 7
   m_Name: Stone Golem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -309,8 +309,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe8883b1ace043749da2355cef80cb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1000
-  stageTwoCutOff: 500
+  maxHealth: 150
+  stageTwoCutOff: 100
   stageThreeCutOff: 200
 --- !u!95 &3625439325895181158
 Animator:

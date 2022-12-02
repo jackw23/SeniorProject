@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 1089243199024125071}
   - component: {fileID: 1089243199024125068}
   - component: {fileID: 9074351454817031355}
-  m_Layer: 12
+  m_Layer: 7
   m_Name: Skeleton Mage
   m_TagString: GameController
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c87936a2d8db149b8beea759d47f1f6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 35
   currentHealth: 0
 --- !u!114 &1089243199024125068
 MonoBehaviour:

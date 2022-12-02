@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 8029141005248101493}
   - component: {fileID: 8029141005248101484}
   - component: {fileID: 3496753058263944587}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Big Bloated
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -372,7 +372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  stageTwoCutOff: 500
+  stageTwoCutOff: 50
   stageThreeCutOff: 200
 --- !u!95 &8029141005248101484
 Animator:

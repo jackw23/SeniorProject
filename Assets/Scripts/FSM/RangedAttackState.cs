@@ -16,7 +16,7 @@ public class RangedAttackState : State
         playerTransform = stateMachine.playerTransform;
         firePointTransform = stateMachine.enemy.firePoint;
 
-        if (!stateMachine.enemy.constantAim) {
+        if (!stateMachine.enemy.constantAim && stateMachine.unit.flying) {
             attackDirection = playerTransform.position - firePointTransform.position;
             angle = Mathf.Atan2(attackDirection.y, attackDirection.x) * Mathf.Rad2Deg;
             firePointTransform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -47,9 +47,12 @@ public class RangedAttackState : State
                     enemyTransform.rotation = Quaternion.LookRotation(Vector3.forward);
                 }
                 
-                attackDirection = playerTransform.position - firePointTransform.position;
-                angle = Mathf.Atan2(attackDirection.y, attackDirection.x) * Mathf.Rad2Deg;
-                firePointTransform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                if (stateMachine.unit.flying) {
+                    attackDirection = playerTransform.position - firePointTransform.position;
+                    angle = Mathf.Atan2(attackDirection.y, attackDirection.x) * Mathf.Rad2Deg;
+                    firePointTransform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                }
+
 
                 stateMachine.enemy.RangedAttack(); 
                 nextAttackTime = Time.time + 1 / stateMachine.enemy.rangedAttackRate;

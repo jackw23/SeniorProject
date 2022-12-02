@@ -6,6 +6,7 @@ public class BossDeathState : BossState
 {
     Animator animator;
     BoxCollider2D boxCollider2D;
+    CapsuleCollider2D capsuleCollider2D;
     Rigidbody2D rigidbody2D;
     float enterTime, deathTimer;
     public override void Enter(BossStateMachine bossStateMachine)
@@ -13,6 +14,7 @@ public class BossDeathState : BossState
         animator = bossStateMachine.animator;
         boxCollider2D = bossStateMachine.boxCollider2D;
         rigidbody2D = bossStateMachine.rigidBody;
+        capsuleCollider2D = bossStateMachine.capsuleCollider2D;
 
         AnimationClip[] animationClips = animator.runtimeAnimatorController.animationClips;
         foreach (AnimationClip clip in animationClips) {
@@ -30,6 +32,7 @@ public class BossDeathState : BossState
     {
         animator.SetBool("dead", true);
         boxCollider2D.enabled = false;
+        capsuleCollider2D.enabled = false;
         rigidbody2D.isKinematic = true;
         rigidbody2D.Sleep();
 

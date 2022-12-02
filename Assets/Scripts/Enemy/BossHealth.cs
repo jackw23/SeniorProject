@@ -4,23 +4,29 @@ using UnityEngine;
 
 public class BossHealth : MonoBehaviour
 {
-    public int maxHealth = 1000;
-    int currentHealth;
+    public float maxHealth = 1000;
+    float currentHealth;
     public int stageTwoCutOff = 500;
     public int stageThreeCutOff = 200;
     BossStateMachine bossStateMachine;
     BossEnemy bossEnemy;
+    SpriteRenderer spriteRenderer;
+    Color defaultColor;
     // Start is called before the first frame update
     void Start()
     {   
         bossEnemy = GetComponent<BossEnemy>();
         bossStateMachine = GetComponent<BossStateMachine>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         currentHealth = maxHealth;
+        defaultColor = spriteRenderer.color;
     }
 
-    public void TakeDamage(int damageAmount) {
-        currentHealth = currentHealth - damageAmount + bossEnemy.damageResistance;
+    public void TakeDamage(float damageAmount) {
+        currentHealth = currentHealth - damageAmount;
+        StartCoroutine(HitColor());
+        Debug.Log(currentHealth);
 
         if (bossEnemy.stageTwo && currentHealth < stageTwoCutOff && !bossEnemy.inStageTwo && !bossEnemy.inStageThree) {
             bossEnemy.speed = bossEnemy.speed * 1.5f;
@@ -35,9 +41,15 @@ public class BossHealth : MonoBehaviour
             bossEnemy.inStageTwo = false;
             bossEnemy.inStageOne = false;
         }
-        if (currentHealth < 0) {
+        if (currentHealth <= 0) {
             Death();
         }
+    }
+
+    IEnumerator HitColor() {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        spriteRenderer.color = defaultColor;
     }
 
     void Death() {

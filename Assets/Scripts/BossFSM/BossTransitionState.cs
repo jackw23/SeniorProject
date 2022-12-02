@@ -30,7 +30,13 @@ public class BossTransitionState : BossState
     {
         if (bossEnemy.bossTwo) {
             if (!armored) {
+                animator.SetBool("idle", false);
+                animator.SetBool("melee", false);
+                animator.SetBool("ranged", false);
                 animator.SetBool("armor", true);
+
+                bossEnemy.StopAllCoroutines();
+
                 animationStartTimer = Time.time;
                 animationTime = Time.time + armorTimer;
                 armored = true;

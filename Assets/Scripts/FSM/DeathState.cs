@@ -26,6 +26,7 @@ public class DeathState : State
         // Destroy(stateMachine.gameObject);
         animator.SetBool("dead", true);
         stateMachine.boxCollider2D.enabled = false;
+        stateMachine.capsuleCollider2D.enabled = false;
         stateMachine.rigidBody.isKinematic = true;
         stateMachine.rigidBody.Sleep();
 

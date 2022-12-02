@@ -35,6 +35,7 @@ public class Fireball : MonoBehaviour
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
         canHitLayer = LayerMask.GetMask("canhit");
+
     }
 
     private void Update()
@@ -43,7 +44,18 @@ public class Fireball : MonoBehaviour
 
         if (hit)
         {
-            gameObject.SetActive(false);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(frontCheck.position, checkRadius, canHitLayer);
+            if (colliders.Length > 0) {
+                BossHealth bossEnemyHealth = colliders[0].GetComponent<BossHealth>();
+                Health enemyHealth = colliders[0].GetComponent<Health>();
+                
+                if (bossEnemyHealth != null) {
+                    bossEnemyHealth.TakeDamage(damage);
+                } else if (enemyHealth != null) {
+                    enemyHealth.TakeDamage(damage);
+                }
+            }
+             gameObject.SetActive(false);
         }
 
         float movementSpeed = speed * Time.deltaTime * direction;

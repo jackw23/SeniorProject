@@ -12,6 +12,7 @@ public class StateMachine : MonoBehaviour
     [HideInInspector] public State nextState;
     public bool followingPath = false;
     [HideInInspector] public BoxCollider2D boxCollider2D;
+    [HideInInspector] public CapsuleCollider2D capsuleCollider2D;
     [HideInInspector] public Health health;
     //public Animator animator;
     [HideInInspector] public SpriteRenderer sprite;
@@ -28,6 +29,7 @@ public class StateMachine : MonoBehaviour
         enemy = GetComponent<Enemy>();
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        capsuleCollider2D = GetComponent<CapsuleCollider2D>();
 
         originalPosition = transform.position;
 
@@ -47,8 +49,6 @@ public class StateMachine : MonoBehaviour
             moveUp = (MoveUpState)ScriptableObject.CreateInstance(typeof(MoveUpState));
             moveDown = (MoveDownState)ScriptableObject.CreateInstance(typeof(MoveDownState));
         }
-    
-        Debug.Log("Hello");
 
         if (enemy.constantAim || enemy.constantMelee) {
             currentState = attack;

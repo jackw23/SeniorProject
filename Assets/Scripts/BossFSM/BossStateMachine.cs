@@ -14,6 +14,7 @@ public class BossStateMachine : MonoBehaviour
     [HideInInspector] public BossState nextState, previousState;
     public BossState currentState;
     [HideInInspector] public BoxCollider2D boxCollider2D;
+    [HideInInspector] public CapsuleCollider2D capsuleCollider2D;
     [HideInInspector] public Rigidbody2D rigidBody;
     [HideInInspector] public SpriteRenderer spriteRenderer;
     [HideInInspector] public BossHealth bossHealth;
@@ -31,6 +32,7 @@ public class BossStateMachine : MonoBehaviour
         bossEnemy = GetComponent<BossEnemy>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        capsuleCollider2D = GetComponent<CapsuleCollider2D>();
 
         idle = (BossIdleState)ScriptableObject.CreateInstance(typeof(BossIdleState)); 
         death = (BossDeathState)ScriptableObject.CreateInstance(typeof(BossDeathState));
@@ -46,6 +48,10 @@ public class BossStateMachine : MonoBehaviour
         jump = (BossJumpState)ScriptableObject.CreateInstance(typeof(BossJumpState));
         jumpAway = (BossJumpAwayState)ScriptableObject.CreateInstance(typeof(BossJumpAwayState));
 
+        if (bossEnemy.stageTwo || bossEnemy.stageThree) {
+            stageTransition = (BossTransitionState)ScriptableObject.CreateInstance(typeof(BossTransitionState));
+        }
+
         currentState = idle;
         originalPosition = transform.position;
 
@@ -59,6 +65,9 @@ public class BossStateMachine : MonoBehaviour
     }
 
     public void TransitionState(BossState bossState) {
+        if (bossState == stageTransition) {
+            rigidBody.velocity = new Vector2(0, 0);
+        }
         previousState = currentState;
         currentState = bossState;
         currentState.Enter(this);
