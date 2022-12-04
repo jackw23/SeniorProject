@@ -47,8 +47,6 @@ public class UIUpgradePanel : MonoBehaviour
     {
         if (InventoryManager.Instance.numUpgradeCoins <= 0)
         {
-            //insufficientUCsFlag = true;
-            //insufficientUCsText.SetActive(true);
             yesUpgrade.GetComponent<Button>().interactable = false;
         }
         else
@@ -112,17 +110,6 @@ public class UIUpgradePanel : MonoBehaviour
         currentUBText.GetComponent<TMP_Text>().text = currentUpgradeButton.number.ToString();
         
     }
-    /*void OnEnable()
-    {
-        //upgradePanelObj.currentUpgradeButton
-        //Register Button Events
-        yesUpgrade.onClick.AddListener(() => currentUpgradeButton.upgradeNumber());
-        //noUpgrade.onClick.AddListener(() => Upgrade(fireSkillCDBtn));
-        //yesUpgrade.onClick.AddListener();
-        //fireUltimateLevel.onClick.AddListener(() => buttonCallBack3());
-        //fireUltimateCD.onClick.AddListener(() => buttonCallBack4());
-    }*/
-    // Update is called once per frame
 
     //calls the upgrade numebr in upgradeButton... 
     void Update()

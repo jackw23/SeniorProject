@@ -23,14 +23,14 @@ public class UpgradeButton
 
     public void addNumber()
     {
-        Debug.Log("adding +1");
+        Debug.Log("adding 1 to upgrade button");
         number = this.number + 1;
 
     }
 
     public void subtractNumber()
     {
-        Debug.Log("subtract 1");
+        Debug.Log("subtracting 1 from upgrade button");
         number = this.number - 1;
 
     }

@@ -9,7 +9,6 @@ using TMPro;
 
 public class InventoryManager : MonoBehaviour
 {
-    // Start is called before the first frame update
     public static InventoryManager Instance;
     public int numUpgradeCoins;
     public List<Item> Items = new List<Item>();
@@ -126,26 +125,14 @@ public class InventoryManager : MonoBehaviour
         {
             if (item.itemName != "Upgrade Coin")
             {
-                //TMP_Text tmpugui; 
                 GameObject obj = Instantiate(InventoryItem, ItemContent);
 
-                //Debug.Log("Picking up " + Item.name);
-
                 var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
-
-                // = obj.transform.Find("ItemName").GetComponent<TMP_Text>();
-                //Debug.Log("Printing item name" + tmpugui);
-
-
                 var itemNumber = obj.transform.Find("ItemNumber").GetComponent<Text>();
-
                 var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
-                //var removeButton = obj.transform.Find("RemoveButton").GetComponent<Button>();
-                //Debug.Log(itemName);
-                //Debug.Log(itemIcon);
+  
                 itemName.text = item.itemName;
                 obj.name = itemName.text;
-                //Debug.Log("itemName.text" + tmpugui.text);
 
                 itemIcon.sprite = item.icon;
                 itemNumber.text = "x" + ItemAmounts[item].ToString();
@@ -165,11 +152,7 @@ public class InventoryManager : MonoBehaviour
                     removeButton.gameObject.SetActive(true);
                 }*/
             }
-        }
-
-      
-        //SetInventoryItems();
-        
+        }        
     }
 
     public void EnableItemsRemove()

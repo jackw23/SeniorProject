@@ -94,7 +94,6 @@ public class  UISkillTree: MonoBehaviour
     }
     private void Start()
     {
-        //UpgradeButton fireSkillLevel = new UpgradeButton("Fire", "Skill", "Level", 0);
         UIUpgradePanel.setPlayer(player);
        
     }
@@ -226,21 +225,8 @@ public class  UISkillTree: MonoBehaviour
 
     public void MaxUpgrade()
     {
-        /*var tempArray = SkillUpgradeButtonsParent.GetComponentInChildren<Button>().gameObject.name;
-        foreach (string name in tempArray)
-        {
-
-        }*/
         currentButtonGO.GetComponent<Button>().interactable = false;
     }
-
-    /*
-    public static void UpdateUI(GameObject buttonText, UpgradeButton button)
-    {
-        buttonText.GetComponent<TMP_Text>().text = button.number.ToString();
-
-    }*/
-
     void OnDisable()
     {
         //Un-Register Button Events

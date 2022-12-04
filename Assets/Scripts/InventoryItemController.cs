@@ -37,8 +37,6 @@ public class InventoryItemController : MonoBehaviour
 
     public void UseItem()
     {
-        Debug.Log("im in UseItem()");
-
         switch (item.itemType)
         {
             case Item.ItemType.HealthPotion:
