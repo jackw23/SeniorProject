@@ -59,3 +59,6 @@ TagManager:
   - name: Ground_Front
     uniqueID: 3568701843
     locked: 0
+  - name: Pickups
+    uniqueID: 3296106361
+    locked: 0
