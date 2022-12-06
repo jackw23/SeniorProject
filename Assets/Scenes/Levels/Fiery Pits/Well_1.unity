@@ -2996,6 +2996,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 224564641, guid: f7197e9adafbfca499a2bf01b4b78d8b, type: 3}
+      propertyPath: fireAttackCooldown
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 224564641, guid: f7197e9adafbfca499a2bf01b4b78d8b, type: 3}
       propertyPath: fireballs.Array.data[0]
       value: 
       objectReference: {fileID: 1888912314}

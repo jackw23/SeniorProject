@@ -12,7 +12,7 @@ public class PowerBar : MonoBehaviour
     [SerializeField] public GameObject water;
     [SerializeField] public GameObject earth;
     [SerializeField] public GameObject air;
-    [SerializeField] public float maxHealth = 10f;
+    [SerializeField] public float maxHealth = 300f;
     [SerializeField] public float powerCount = 5f;
 
     // Start is called before the first frame update

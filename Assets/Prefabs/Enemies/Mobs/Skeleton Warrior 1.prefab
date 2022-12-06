@@ -196,6 +196,7 @@ MonoBehaviour:
   nextState: {fileID: 0}
   followingPath: 0
   boxCollider2D: {fileID: 0}
+  capsuleCollider2D: {fileID: 0}
   health: {fileID: 0}
   sprite: {fileID: 0}
   enemy: {fileID: 0}
@@ -234,14 +235,15 @@ MonoBehaviour:
   constantAim: 0
   constantMelee: 0
   aggroRange: 3
+  aggroMeleeRange: 0.5
   meleeRange: 0.5
   rangedAttackRange: 10
   rangedAttackSpeed: 5
   bulletTravelTime: 5
   bulletPrefab: {fileID: 0}
-  meleeDamage: 20
+  meleeDamage: 30
   rangedDamage: 15
-  contactDamage: 5
+  contactDamage: 30
   meleeAttackRate: 0.5
   rangedAttackRate: 0.3
   idleTime: 5

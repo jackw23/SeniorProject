@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 3759157343547105257}
   - component: {fileID: 3759157343547105262}
   - component: {fileID: 3759157343547105263}
-  - component: {fileID: 224564641}
+  - component: {fileID: 3503391298797959910}
   m_Layer: 10
   m_Name: Red Witch
   m_TagString: Player
@@ -186,17 +186,17 @@ MonoBehaviour:
   checkRadius: 3
   pickupRadius: 3
   attacksRemaining: 99999
-  health: 99999
+  health: 300
   attackSelected: 0
   frontCheck: {fileID: 3759157342381637290}
   wallSlidingSpeed: 0
   flightEnabled: 1
   animator: {fileID: 3759157343547105263}
   knockBackCount: 0
-  knockBackLength: 0
+  knockBackLength: 0.5
   knockBackRight: 0
   knockBackSet: 0
-  knockBackStrength: {x: 0, y: 0}
+  knockBackStrength: {x: 5, y: 2}
 --- !u!61 &3759157343547105257
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -264,7 +264,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &224564641
+--- !u!114 &3503391298797959910
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -276,12 +276,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02527a1993e04454aa22ea6d9de88d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireAttackCooldown: 0
+  fireAttackCooldown: 1
   waterAttackCooldown: 0
   airAttackCooldown: 0
   earthAttackCooldown: 0
   currentAttackCooldown: 0
-  firePoint: {fileID: 1776502003}
+  firePoint: {fileID: 0}
   fireballs:
   - {fileID: 0}
   - {fileID: 0}
