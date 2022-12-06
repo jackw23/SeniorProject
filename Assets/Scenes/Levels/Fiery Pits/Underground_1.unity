@@ -2695,11 +2695,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02527a1993e04454aa22ea6d9de88d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireAttackCooldown: 0.5
-  waterAttackCooldown: 0
-  airAttackCooldown: 0
-  earthAttackCooldown: 0
-  currentAttackCooldown: 0
+  fireAttackCooldown: 0.7
+  waterAttackCooldown: 0.7
+  airAttackCooldown: 0.7
+  earthAttackCooldown: 0.7
+  currentAttackCooldown: 0.7
   firePoint: {fileID: 1729627315}
   fireballs:
   - {fileID: 1888912314}
