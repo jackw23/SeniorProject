@@ -78,6 +78,6 @@ public class Airburst : MonoBehaviour
 
     public void IncreaseDamage()
     {
-        damage = damage + 1;
+        damage = damage + 10;
     }
 }
