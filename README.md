@@ -19,3 +19,9 @@ Actions That Can Be Taken Within the Game and Associated Keys:
 6. Pick up items: P
 7. Shoot items (attack): left-click
 8. Open options menu: ESC
+
+Known Issues/Planned Fixes:
+- Inventory and Skilltree do not transfer between scenes. 
+
+Other Notes:
+- Water, Earth, and Wind attacks are not currently available for upgrade on the Skilltree.
