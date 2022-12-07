@@ -37,11 +37,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2690963636835092505, guid: 9a9f2e70ac2cc4dbea053a1f478cbd10, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25
+      value: -97.753044
       objectReference: {fileID: 0}
     - target: {fileID: 2690963636835092505, guid: 9a9f2e70ac2cc4dbea053a1f478cbd10, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.429
+      value: -41.838646
       objectReference: {fileID: 0}
     - target: {fileID: 2690963636835092505, guid: 9a9f2e70ac2cc4dbea053a1f478cbd10, type: 3}
       propertyPath: m_LocalPosition.z
@@ -75,9 +75,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2690963636835092514, guid: 9a9f2e70ac2cc4dbea053a1f478cbd10, type: 3}
+      propertyPath: maxHealth
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 2690963636835092515, guid: 9a9f2e70ac2cc4dbea053a1f478cbd10, type: 3}
       propertyPath: m_Name
-      value: Spider
+      value: Spider (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2690963636835092515, guid: 9a9f2e70ac2cc4dbea053a1f478cbd10, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2690963636835092517, guid: 9a9f2e70ac2cc4dbea053a1f478cbd10, type: 3}
       propertyPath: playerTransform
