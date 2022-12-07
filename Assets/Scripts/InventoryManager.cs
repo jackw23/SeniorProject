@@ -22,6 +22,8 @@ public class InventoryManager : MonoBehaviour
     public UIUpgradePanel UIUpgradePanel;
     public Item upgradeCoinItem;
     public UISkillTree UISkillTree;
+    public PowerBar PowerBar;
+
     private void Awake()
     {
         Instance = this;
@@ -227,6 +229,11 @@ public class InventoryManager : MonoBehaviour
             Debug.Log(i.itemName + " has " + ItemAmounts[i]);
 
         }
+    }
+
+    public void HealPowerBar(int amount)
+    {
+        PowerBar.Heal(amount);
     }
 }
 

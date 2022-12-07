@@ -59,6 +59,7 @@ MonoBehaviour:
   UIUpgradePanel: {fileID: 5296925041052538508}
   upgradeCoinItem: {fileID: 11400000, guid: a4a8c0ed917095845b93f6bee31f34e0, type: 2}
   UISkillTree: {fileID: 5296925040408794099}
+  PowerBar: {fileID: 7449963069944155139}
 --- !u!1 &7449963068811381481
 GameObject:
   m_ObjectHideFlags: 0
