@@ -90,7 +90,7 @@ public class Fireball : MonoBehaviour
 
     public void IncreaseDamage()
     {
-        damage = damage + 1;
+        damage = damage + 10;
     }
 
     public float getDamage()

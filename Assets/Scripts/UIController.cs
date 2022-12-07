@@ -27,14 +27,28 @@ public class UIController : MonoBehaviour
             InventoryManager.Instance.ListItem();
 
             pauseMenu.SetActive(!pauseMenu.activeInHierarchy);
-            
-           
+
+            togglePause();
 
         }
 
         if (Input.GetKeyDown(KeyCode.M))
         {
             map.SetActive(!map.activeInHierarchy);
+        }
+    }
+
+    bool togglePause()
+    {
+        if (Time.timeScale == 0f)
+        {
+            Time.timeScale = 1f;
+            return (false);
+        }
+        else
+        {
+            Time.timeScale = 0f;
+            return (true);
         }
     }
 }
