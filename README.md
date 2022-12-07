@@ -11,11 +11,11 @@ Steps to Build the Game Executable using Unity:
 
 Actions That Can Be Taken Within the Game and Associated Keys:
 
-Move left/right: A/D or left/right arrow keys
-Jump: space
-Double-jump: space (after jumping)
-Wall-jump: space and then hold arrow key facing wall to cling to wall
-Fly: F
-Pick up items: P
-Shoot items (attack): left-click
-Open options menu: ESC
+1. Move left/right: A/D or left/right arrow keys
+2. Jump: space
+3. Double-jump: space (after jumping)
+4. Wall-jump: space and then hold arrow key facing wall to cling to wall
+5. Fly: F
+6. Pick up items: P
+7. Shoot items (attack): left-click
+8. Open options menu: ESC
