@@ -77,11 +77,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2690963636835092515, guid: 9a9f2e70ac2cc4dbea053a1f478cbd10, type: 3}
       propertyPath: m_Name
-      value: Fox (1)
+      value: Fox
       objectReference: {fileID: 0}
     - target: {fileID: 2690963636835092515, guid: 9a9f2e70ac2cc4dbea053a1f478cbd10, type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2690963636835092517, guid: 9a9f2e70ac2cc4dbea053a1f478cbd10, type: 3}
       propertyPath: playerTransform

@@ -17,7 +17,8 @@ GameObject:
   - component: {fileID: 1887369099493448237}
   - component: {fileID: 1887369099493448215}
   - component: {fileID: 1503710532440646986}
-  m_Layer: 0
+  - component: {fileID: 5669000549347116810}
+  m_Layer: 7
   m_Name: LightBandit
   m_TagString: GameController
   m_Icon: {fileID: 0}
@@ -102,7 +103,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.11192274, y: 1.2871169}
@@ -138,7 +139,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1887369099493448235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d5a2e74246b479fa2d85311604e6cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 1.5
   flying: 0
 --- !u!114 &1887369099493448234
 MonoBehaviour:
@@ -179,6 +180,7 @@ MonoBehaviour:
   nextState: {fileID: 0}
   followingPath: 0
   boxCollider2D: {fileID: 0}
+  capsuleCollider2D: {fileID: 0}
   health: {fileID: 0}
   sprite: {fileID: 0}
   enemy: {fileID: 0}
@@ -196,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c87936a2d8db149b8beea759d47f1f6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 40
   currentHealth: 0
 --- !u!114 &1887369099493448215
 MonoBehaviour:
@@ -217,10 +219,13 @@ MonoBehaviour:
   constantAim: 0
   constantMelee: 0
   aggroRange: 3
+  aggroMeleeRange: 0.5
   meleeRange: 0.5
   rangedAttackRange: 10
+  rangedAttackSpeed: 5
   bulletTravelTime: 5
-  meleeDamage: 20
+  bulletPrefab: {fileID: 0}
+  meleeDamage: 15
   rangedDamage: 15
   contactDamage: 5
   meleeAttackRate: 0.5
@@ -235,7 +240,6 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
-  bulletPrefab: {fileID: 0}
 --- !u!95 &1503710532440646986
 Animator:
   serializedVersion: 4
@@ -256,6 +260,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &5669000549347116810
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887369099493448236}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.034391403, y: 1.001323}
+  m_Size: {x: 0.753088, y: 1.7275138}
+  m_Direction: 0
 --- !u!1 &1887369099555378206
 GameObject:
   m_ObjectHideFlags: 0
