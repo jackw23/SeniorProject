@@ -1029,7 +1029,7 @@ MonoBehaviour:
   SkillUpgradeButtonsParent: {fileID: 0}
   upgradePanel: {fileID: 7683721183056433423}
   upgradeMessage: {fileID: 7683721182467822437}
-  numCoinsText: {fileID: 0}
+  numCoinsText: {fileID: 7822151039621021549}
 --- !u!1 &7683721182459034527
 GameObject:
   m_ObjectHideFlags: 0
@@ -2340,7 +2340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yesUpgrade: {fileID: 7683721184307691185}
   noUpgrade: {fileID: 7683721183392894469}
-  currentUpgradeCoins: {fileID: 0}
+  currentUpgradeCoins: {fileID: 1895238085381259934}
 --- !u!1 &7683721183158442302
 GameObject:
   m_ObjectHideFlags: 0
