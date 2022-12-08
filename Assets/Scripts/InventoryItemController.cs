@@ -44,6 +44,7 @@ public class InventoryItemController : MonoBehaviour
             case Item.ItemType.HealthPotion:
                 Player.GetComponent<PlayerMovement>().addHealth(item.value);
                 //Player.GEtPlayerMovement.addHealth(item.value);
+                InventoryManager.Instance.HealPowerBar(item.value);
                 Debug.Log("using heatlth potion");
 
                 break;

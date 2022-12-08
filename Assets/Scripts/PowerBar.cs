@@ -73,6 +73,14 @@ public class PowerBar : MonoBehaviour
         Debug.Log("took damage");
     }
 
+    public void Heal(int amount)
+    {
+        var tempFloat = (float)amount; 
+        if (healthFill.fillAmount >= 0)
+            healthFill.fillAmount += 1f / maxHealth;
+        Debug.Log("healed by 1f");
+    }
+
     public void FillPower()
     {
         if (powerFill.fillAmount < 1)
