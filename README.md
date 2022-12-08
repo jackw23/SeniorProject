@@ -3,6 +3,7 @@
 Steps to Run the Game Executable:
 1. Navigate to the GameBuild folder
 2. Run the WitchJouney.exe file
+3. If on macOS run the WicthJourneyMac.app file
 
 Steps to Build the Game Executable using Unity:
 
