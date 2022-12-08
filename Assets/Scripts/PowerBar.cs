@@ -77,8 +77,8 @@ public class PowerBar : MonoBehaviour
     {
         var tempFloat = (float)amount; 
         if (healthFill.fillAmount >= 0)
-            healthFill.fillAmount += tempFloat / maxHealth;
-        Debug.Log("healed by + " + amount);
+            healthFill.fillAmount += 1f / maxHealth;
+        Debug.Log("healed by 1f");
     }
 
     public void FillPower()
