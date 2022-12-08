@@ -241,7 +241,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (health <= 0) {
             Debug.Log("Player has died!");
-            UnityEditor.EditorApplication.isPlaying = false;
+            //UnityEditor.EditorApplication.isPlaying = false;
+            Application.Quit();
         }
     }
 
