@@ -1,5 +1,9 @@
 # SeniorProject
 
+Steps to Run the Game Executable:
+1. Navigate to the GameBuild folder
+2. Run the WitchJouney.exe file
+
 Steps to Build the Game Executable using Unity:
 
 1. Use Github to download the repository onto your machine.
