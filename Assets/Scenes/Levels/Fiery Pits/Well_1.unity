@@ -1555,7 +1555,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 225052977899031728, guid: 72ca9332d2bf43042a690a72dead9daa, type: 3}
       propertyPath: sceneBuildIndex
-      value: 3
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 225052977899031729, guid: 72ca9332d2bf43042a690a72dead9daa, type: 3}
+      propertyPath: m_Size.x
+      value: 7.093048
+      objectReference: {fileID: 0}
+    - target: {fileID: 225052977899031729, guid: 72ca9332d2bf43042a690a72dead9daa, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.045135498
       objectReference: {fileID: 0}
     - target: {fileID: 225052977899031731, guid: 72ca9332d2bf43042a690a72dead9daa, type: 3}
       propertyPath: m_Name
@@ -2282,6 +2290,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 224564640}
     - target: {fileID: 5647565409119723302, guid: c8de76dc73bff714d92e6ddd49738b33, type: 3}
+      propertyPath: TopRoom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647565409119723302, guid: c8de76dc73bff714d92e6ddd49738b33, type: 3}
       propertyPath: leftRoom
       value: 999
       objectReference: {fileID: 0}
@@ -2295,7 +2307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5647565409119723302, guid: c8de76dc73bff714d92e6ddd49738b33, type: 3}
       propertyPath: BottomRoom
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5647565409119723302, guid: c8de76dc73bff714d92e6ddd49738b33, type: 3}
       propertyPath: TopPosition.x
@@ -3565,7 +3577,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 225052977899031728, guid: 72ca9332d2bf43042a690a72dead9daa, type: 3}
       propertyPath: sceneBuildIndex
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 225052977899031731, guid: 72ca9332d2bf43042a690a72dead9daa, type: 3}
       propertyPath: m_Name

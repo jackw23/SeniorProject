@@ -28,7 +28,7 @@ public class UIController : MonoBehaviour
 
             pauseMenu.SetActive(!pauseMenu.activeInHierarchy);
 
-            togglePause();
+            //togglePause();
 
         }
 
@@ -38,8 +38,9 @@ public class UIController : MonoBehaviour
         }
     }
 
-    bool togglePause()
+    public bool togglePause()
     {
+
         if (Time.timeScale == 0f)
         {
             Time.timeScale = 1f;

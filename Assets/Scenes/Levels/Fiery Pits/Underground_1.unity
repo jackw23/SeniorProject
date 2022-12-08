@@ -193,7 +193,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 225052977899031728, guid: 244e8873dd9ec504b8663cb8f5c2a4b3, type: 3}
       propertyPath: sceneBuildIndex
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 225052977899031731, guid: 244e8873dd9ec504b8663cb8f5c2a4b3, type: 3}
       propertyPath: m_Name
@@ -1073,7 +1073,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 225052977899031728, guid: 244e8873dd9ec504b8663cb8f5c2a4b3, type: 3}
       propertyPath: sceneBuildIndex
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 225052977899031731, guid: 244e8873dd9ec504b8663cb8f5c2a4b3, type: 3}
       propertyPath: m_Name
@@ -1509,7 +1509,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 225052977899031728, guid: 244e8873dd9ec504b8663cb8f5c2a4b3, type: 3}
       propertyPath: sceneBuildIndex
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 225052977899031731, guid: 244e8873dd9ec504b8663cb8f5c2a4b3, type: 3}
       propertyPath: m_Name
@@ -2109,7 +2109,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 225052977899031728, guid: 244e8873dd9ec504b8663cb8f5c2a4b3, type: 3}
       propertyPath: sceneBuildIndex
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 225052977899031731, guid: 244e8873dd9ec504b8663cb8f5c2a4b3, type: 3}
       propertyPath: m_Name
@@ -2356,23 +2356,23 @@ PrefabInstance:
       objectReference: {fileID: 847438997}
     - target: {fileID: 5647565409119723302, guid: c8de76dc73bff714d92e6ddd49738b33, type: 3}
       propertyPath: TopRoom
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5647565409119723302, guid: c8de76dc73bff714d92e6ddd49738b33, type: 3}
       propertyPath: leftRoom
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5647565409119723302, guid: c8de76dc73bff714d92e6ddd49738b33, type: 3}
-      propertyPath: ExtraRoom
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5647565409119723302, guid: c8de76dc73bff714d92e6ddd49738b33, type: 3}
-      propertyPath: RightRoom
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5647565409119723302, guid: c8de76dc73bff714d92e6ddd49738b33, type: 3}
-      propertyPath: BottomRoom
+      propertyPath: ExtraRoom
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647565409119723302, guid: c8de76dc73bff714d92e6ddd49738b33, type: 3}
+      propertyPath: RightRoom
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5647565409119723302, guid: c8de76dc73bff714d92e6ddd49738b33, type: 3}
+      propertyPath: BottomRoom
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5647565409119723302, guid: c8de76dc73bff714d92e6ddd49738b33, type: 3}
       propertyPath: TopPosition.x
@@ -2607,7 +2607,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 225052977899031728, guid: 244e8873dd9ec504b8663cb8f5c2a4b3, type: 3}
       propertyPath: sceneBuildIndex
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 225052977899031731, guid: 244e8873dd9ec504b8663cb8f5c2a4b3, type: 3}
       propertyPath: m_Name
